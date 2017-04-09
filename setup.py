@@ -25,7 +25,9 @@ REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
 
 try:
     import pypandoc
-    LONG_DESCRIPTION = pypandoc.convert('README.md', 'rst')
+    LONG_DESCRIPTION = open('README.md').read()
+    LONG_DESCRIPTION = LONG_DESCRIPTION[:LONG_DESCRIPTION.index('## Documentation for API Endpoints')]
+    LONG_DESCRIPTION = pypandoc.convert_text(LONG_DESCRIPTION, 'rst', format='md')
 except(IOError, ImportError):
     LONG_DESCRIPTION = open('README.md').read()
 
@@ -33,6 +35,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="Flat API Client",
+    author="The Flat Team (https://flat.io)",
     author_email="developers@flat.io",
     url="https://github.com/FlatIO/api-client-python",
     keywords=["Flat API", "MusicXML", "Music Notation", "MIDI"],
@@ -40,6 +43,7 @@ setup(
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
+    license="Apache",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
