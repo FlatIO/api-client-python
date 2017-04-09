@@ -39,5 +39,22 @@ setup(
     long_description=LONG_DESCRIPTION,
     install_requires=REQUIRES,
     packages=find_packages(),
-    include_package_data=True
+    include_package_data=True,
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Environment :: Console",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Education",
+        "Intended Audience :: System Administrators",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: MacOS",
+        "Operating System :: POSIX",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Artistic Software",
+        "Topic :: Education",
+        "Topic :: Multimedia :: Sound/Audio"
+    ]
 )
