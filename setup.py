@@ -30,7 +30,7 @@ setup(
     version=VERSION,
     description="Flat API",
     author_email="developers@flat.io",
-    url="",
+    url="https://github.com/FlatIO/api-client-python",
     keywords=["Swagger", "Flat API"],
     install_requires=REQUIRES,
     packages=find_packages(),
