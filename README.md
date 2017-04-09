@@ -1,4 +1,4 @@
-# Python API Client for the Flat REST API
+# Python Client for the Flat REST API
 
 [![Build Status](https://travis-ci.org/FlatIO/api-client-python.svg?branch=master)](https://travis-ci.org/FlatIO/api-client-python)
 
@@ -30,7 +30,7 @@ pip install git+https://github.com/FlatIO/api-client-python.git
 
 Then import the package:
 ```python
-import flat_api 
+import flat_api
 ```
 
 ### Setuptools
@@ -147,15 +147,14 @@ Class | Method | HTTP request | Description
 - **Type**: OAuth
 - **Flow**: accessCode
 - **Authorization URL**: https://flat.io/auth/oauth
-- **Scopes**: 
- - **account.public_profile**: Provides access to the basic person's public profile. Education profiles may be anonymized with this scope, you can request the scope `education_profile` to access to the a basic education account profile. 
- - **account.education_profile**: Provides access to the basic person's education profile and public organization information. 
- - **scores.readonly**: Allows read-only access to all a user's scores. You won't need this scope to read public scores. 
- - **scores.social**: Allow to post comments and like scores 
- - **scores**: Full, permissive scope to access all of a user's scores. 
+- **Scopes**:
+ - **account.public_profile**: Provides access to the basic person's public profile. Education profiles may be anonymized with this scope, you can request the scope `education_profile` to access to the a basic education account profile.
+ - **account.education_profile**: Provides access to the basic person's education profile and public organization information.
+ - **scores.readonly**: Allows read-only access to all a user's scores. You won't need this scope to read public scores.
+ - **scores.social**: Allow to post comments and like scores
+ - **scores**: Full, permissive scope to access all of a user's scores.
 
 
 ## Author
 
 Flat - developers@flat.io
-
