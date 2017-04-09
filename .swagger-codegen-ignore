@@ -1,3 +1,4 @@
 # Swagger Codegen Ignore
 README.md
 .gitignore
+.travis.yml
