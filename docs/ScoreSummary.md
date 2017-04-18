@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique identifier of the score | [optional] 
+**sharing_key** | **str** | The private sharing key of the score (available when the &#x60;privacy&#x60; mode is set to &#x60;privateLink&#x60;) | [optional] 
 **title** | **str** | The title of the score | [optional] 
 **privacy** | [**ScorePrivacy**](ScorePrivacy.md) |  | [optional] 
 **user** | [**UserPublicSummary**](UserPublicSummary.md) |  | [optional] 

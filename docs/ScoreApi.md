@@ -236,7 +236,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_score_comment**
-> delete_score_comment(score, comment)
+> delete_score_comment(score, comment, sharing_key=sharing_key)
 
 Delete a comment
 
@@ -255,10 +255,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 comment = 'comment_example' # str | Unique identifier of a sheet music comment 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Delete a comment
-    api_instance.delete_score_comment(score, comment)
+    api_instance.delete_score_comment(score, comment, sharing_key=sharing_key)
 except ApiException as e:
     print("Exception when calling ScoreApi->delete_score_comment: %s\n" % e)
 ```
@@ -269,6 +270,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **comment** | **str**| Unique identifier of a sheet music comment  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -339,7 +341,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fork_score**
-> ScoreDetails fork_score(score, body)
+> ScoreDetails fork_score(score, body, sharing_key=sharing_key)
 
 Fork a score
 
@@ -360,10 +362,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 body = flat_api.ScoreFork() # ScoreFork | 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Fork a score
-    api_response = api_instance.fork_score(score, body)
+    api_response = api_instance.fork_score(score, body, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->fork_score: %s\n" % e)
@@ -375,6 +378,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **body** | [**ScoreFork**](ScoreFork.md)|  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -493,7 +497,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score**
-> ScoreDetails get_score(score)
+> ScoreDetails get_score(score, sharing_key=sharing_key)
 
 Get a score's metadata
 
@@ -513,10 +517,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Get a score's metadata
-    api_response = api_instance.get_score(score)
+    api_response = api_instance.get_score(score, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score: %s\n" % e)
@@ -527,6 +532,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -544,7 +550,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_collaborator**
-> ScoreCollaborator get_score_collaborator(score, collaborator)
+> ScoreCollaborator get_score_collaborator(score, collaborator, sharing_key=sharing_key)
 
 Get a collaborator
 
@@ -565,10 +571,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 collaborator = 'collaborator_example' # str | Unique identifier of a **collaborator permission**, or unique identifier of a **User**, or unique identifier of a **Group** 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Get a collaborator
-    api_response = api_instance.get_score_collaborator(score, collaborator)
+    api_response = api_instance.get_score_collaborator(score, collaborator, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_collaborator: %s\n" % e)
@@ -580,6 +587,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **collaborator** | **str**| Unique identifier of a **collaborator permission**, or unique identifier of a **User**, or unique identifier of a **Group**  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -597,7 +605,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_collaborators**
-> list[ScoreCollaborator] get_score_collaborators(score)
+> list[ScoreCollaborator] get_score_collaborators(score, sharing_key=sharing_key)
 
 List the collaborators
 
@@ -617,10 +625,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # List the collaborators
-    api_response = api_instance.get_score_collaborators(score)
+    api_response = api_instance.get_score_collaborators(score, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_collaborators: %s\n" % e)
@@ -631,6 +640,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -648,7 +658,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_comments**
-> list[ScoreComment] get_score_comments(score)
+> list[ScoreComment] get_score_comments(score, sharing_key=sharing_key)
 
 List comments
 
@@ -668,10 +678,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # List comments
-    api_response = api_instance.get_score_comments(score)
+    api_response = api_instance.get_score_comments(score, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_comments: %s\n" % e)
@@ -682,6 +693,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -699,7 +711,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_revision**
-> ScoreRevision get_score_revision(score, revision)
+> ScoreRevision get_score_revision(score, revision, sharing_key=sharing_key)
 
 Get a score revision
 
@@ -717,10 +729,11 @@ from pprint import pprint
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 revision = 'revision_example' # str | Unique identifier of a score revision. You can use `last` to fetch the information related to the last version created. 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Get a score revision
-    api_response = api_instance.get_score_revision(score, revision)
+    api_response = api_instance.get_score_revision(score, revision, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_revision: %s\n" % e)
@@ -732,6 +745,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **revision** | **str**| Unique identifier of a score revision. You can use &#x60;last&#x60; to fetch the information related to the last version created.  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -749,7 +763,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_revision_data**
-> get_score_revision_data(score, revision, format, only_cached=only_cached, parts=parts)
+> str get_score_revision_data(score, revision, format, sharing_key=sharing_key, only_cached=only_cached, parts=parts)
 
 Get a score revision data
 
@@ -768,12 +782,14 @@ api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 revision = 'revision_example' # str | Unique identifier of a score revision. You can use `last` to fetch the information related to the last version created. 
 format = 'format_example' # str | The format of the file you will retrieve
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 only_cached = true # bool | Only return files already generated and cached in Flat's production cache. If the file is not availabe, a 404 will be returned  (optional)
 parts = 'parts_example' # str | An optional a set of parts to be exported. This parameter must be specified with a list of integers. For example \"1,2,5\".  (optional)
 
 try: 
     # Get a score revision data
-    api_instance.get_score_revision_data(score, revision, format, only_cached=only_cached, parts=parts)
+    api_response = api_instance.get_score_revision_data(score, revision, format, sharing_key=sharing_key, only_cached=only_cached, parts=parts)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_revision_data: %s\n" % e)
 ```
@@ -785,12 +801,13 @@ Name | Type | Description  | Notes
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **revision** | **str**| Unique identifier of a score revision. You can use &#x60;last&#x60; to fetch the information related to the last version created.  | 
  **format** | **str**| The format of the file you will retrieve | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
  **only_cached** | **bool**| Only return files already generated and cached in Flat&#39;s production cache. If the file is not availabe, a 404 will be returned  | [optional] 
  **parts** | **str**| An optional a set of parts to be exported. This parameter must be specified with a list of integers. For example \&quot;1,2,5\&quot;.  | [optional] 
 
 ### Return type
 
-void (empty response body)
+**str**
 
 ### Authorization
 
@@ -804,7 +821,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_revisions**
-> list[ScoreRevision] get_score_revisions(score)
+> list[ScoreRevision] get_score_revisions(score, sharing_key=sharing_key)
 
 List the revisions
 
@@ -824,10 +841,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # List the revisions
-    api_response = api_instance.get_score_revisions(score)
+    api_response = api_instance.get_score_revisions(score, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->get_score_revisions: %s\n" % e)
@@ -838,6 +856,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -908,7 +927,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **mark_score_comment_resolved**
-> mark_score_comment_resolved(score, comment)
+> mark_score_comment_resolved(score, comment, sharing_key=sharing_key)
 
 Mark the comment as resolved
 
@@ -927,10 +946,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 comment = 'comment_example' # str | Unique identifier of a sheet music comment 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Mark the comment as resolved
-    api_instance.mark_score_comment_resolved(score, comment)
+    api_instance.mark_score_comment_resolved(score, comment, sharing_key=sharing_key)
 except ApiException as e:
     print("Exception when calling ScoreApi->mark_score_comment_resolved: %s\n" % e)
 ```
@@ -941,6 +961,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **comment** | **str**| Unique identifier of a sheet music comment  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -958,7 +979,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **mark_score_comment_unresolved**
-> mark_score_comment_unresolved(score, comment)
+> mark_score_comment_unresolved(score, comment, sharing_key=sharing_key)
 
 Mark the comment as unresolved
 
@@ -977,10 +998,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 comment = 'comment_example' # str | Unique identifier of a sheet music comment 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Mark the comment as unresolved
-    api_instance.mark_score_comment_unresolved(score, comment)
+    api_instance.mark_score_comment_unresolved(score, comment, sharing_key=sharing_key)
 except ApiException as e:
     print("Exception when calling ScoreApi->mark_score_comment_unresolved: %s\n" % e)
 ```
@@ -991,6 +1013,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **comment** | **str**| Unique identifier of a sheet music comment  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -1008,7 +1031,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_score_comment**
-> ScoreComment post_score_comment(score, body)
+> ScoreComment post_score_comment(score, body, sharing_key=sharing_key)
 
 Post a new comment
 
@@ -1029,10 +1052,11 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 body = flat_api.ScoreCommentCreation() # ScoreCommentCreation | 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Post a new comment
-    api_response = api_instance.post_score_comment(score, body)
+    api_response = api_instance.post_score_comment(score, body, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->post_score_comment: %s\n" % e)
@@ -1044,6 +1068,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **body** | [**ScoreCommentCreation**](ScoreCommentCreation.md)|  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -1113,7 +1138,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_score_comment**
-> ScoreComment update_score_comment(score, comment, body)
+> ScoreComment update_score_comment(score, comment, body, sharing_key=sharing_key)
 
 Update an existing comment
 
@@ -1133,10 +1158,11 @@ api_instance = flat_api.ScoreApi()
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 comment = 'comment_example' # str | Unique identifier of a sheet music comment 
 body = flat_api.ScoreCommentUpdate() # ScoreCommentUpdate | 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try: 
     # Update an existing comment
-    api_response = api_instance.update_score_comment(score, comment, body)
+    api_response = api_instance.update_score_comment(score, comment, body, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->update_score_comment: %s\n" % e)
@@ -1149,6 +1175,7 @@ Name | Type | Description  | Notes
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **comment** | **str**| Unique identifier of a sheet music comment  | 
  **body** | [**ScoreCommentUpdate**](ScoreCommentUpdate.md)|  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
