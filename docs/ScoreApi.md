@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**get_score_revision**](ScoreApi.md#get_score_revision) | **GET** /scores/{score}/revisions/{revision} | Get a score revision
 [**get_score_revision_data**](ScoreApi.md#get_score_revision_data) | **GET** /scores/{score}/revisions/{revision}/{format} | Get a score revision data
 [**get_score_revisions**](ScoreApi.md#get_score_revisions) | **GET** /scores/{score}/revisions | List the revisions
+[**get_score_submissions**](ScoreApi.md#get_score_submissions) | **GET** /scores/{score}/submissions | List submissions related to the score
 [**get_user_scores**](ScoreApi.md#get_user_scores) | **GET** /users/{user}/scores | List user&#39;s scores
 [**mark_score_comment_resolved**](ScoreApi.md#mark_score_comment_resolved) | **PUT** /scores/{score}/comments/{comment}/resolved | Mark the comment as resolved
 [**mark_score_comment_unresolved**](ScoreApi.md#mark_score_comment_unresolved) | **DELETE** /scores/{score}/comments/{comment}/resolved | Mark the comment as unresolved
@@ -37,7 +38,7 @@ Share a score with a single user or a group. This API call allows to add, invite
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -90,7 +91,7 @@ Use this API method to **create a new music score in the current User account**.
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -141,7 +142,7 @@ Update a score by uploading a new revision for this one.
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -194,7 +195,7 @@ This API call will schedule the deletion of the score, its revisions, and whole 
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -242,7 +243,7 @@ Delete a comment
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -296,7 +297,7 @@ This API method allows you to change the metadata of a score document (e.g. its 
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -349,7 +350,7 @@ This API call will make a copy of the last revision of the specified score and c
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -402,7 +403,7 @@ List liked scores
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -455,15 +456,18 @@ Get the list of scores shared with a group.
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
 
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
-group = 'group_example' # str | Unique identifier of the group
+group = 'group_example' # str | Unique identifier of a Flat group 
 parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
 
 try: 
@@ -478,7 +482,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **group** | **str**| Unique identifier of the group | 
+ **group** | **str**| Unique identifier of a Flat group  | 
  **parent** | **str**| Filter the score forked from the score id &#x60;parent&#x60; | [optional] 
 
 ### Return type
@@ -487,7 +491,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -505,7 +509,7 @@ Get the details of a score identified by the `score` parameter in the URL. The c
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -558,7 +562,7 @@ Get the information about a collaborator (User or Group).
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -613,7 +617,7 @@ This API call will list the different collaborators of a score and their rights 
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -666,7 +670,7 @@ This method lists the different comments added on a music score (documents and i
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -719,11 +723,14 @@ When creating a score or saving a new version of a score, a revision is created 
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
@@ -753,7 +760,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -771,11 +778,14 @@ Retrieve the file corresponding to a score revision (the following formats are a
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.ScoreApi()
@@ -811,7 +821,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[OAuth2](../README.md#OAuth2)
 
 ### HTTP request headers
 
@@ -829,7 +839,7 @@ When creating a score or saving a new version of a score, a revision is created 
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -873,6 +883,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_score_submissions**
+> list[AssignmentSubmission] get_score_submissions(score)
+
+List submissions related to the score
+
+This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.ScoreApi()
+score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+
+try: 
+    # List submissions related to the score
+    api_response = api_instance.get_score_submissions(score)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ScoreApi->get_score_submissions: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+
+### Return type
+
+[**list[AssignmentSubmission]**](AssignmentSubmission.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_user_scores**
 > list[ScoreDetails] get_user_scores(user, parent=parent)
 
@@ -882,7 +943,7 @@ Get the list of scores owned by the User
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -933,7 +994,7 @@ Mark the comment as resolved
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -985,7 +1046,7 @@ Mark the comment as unresolved
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -1039,7 +1100,7 @@ Post a document or a contextualized comment on a document.  Please note that thi
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -1094,7 +1155,7 @@ Remove the specified collaborator from the score
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -1144,7 +1205,7 @@ Update an existing comment
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException

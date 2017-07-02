@@ -3,9 +3,9 @@
 """
     Flat API
 
-    # Introduction The Flat API allows you to easily extend the abilities of the [Flat Platform](https://flat.io), with a wide range of use cases including the following:     - Creating and importing new music scores using MusicXML or MIDI files    - Browsing, updating, copying, exporting the user's scores (for example in MP3, WAV or MIDI)    - Managing educational resources with Flat for Education: creating & updating the organization accounts, the classes, rosters and assignments.  The Flat API is built on HTTP. Our API is RESTful It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. The [schema](/swagger.yaml) of this API follows the [OpenAPI Initiative (OAI) specification](https://www.openapis.org/), you can use and work with [compatible Swagger tools](http://swagger.io/open-source-integrations/).  You can use your favorite HTTP/REST library for your programming language to use Flat's API. This specification and reference is [available on Github](https://github.com/FlatIO/api-reference).  # Beta Please note that this public API is currently in beta and subject to change.  Our whole platform and apps are based on this API, however not all the endpoints are available publicly yet. Feel free to [contact us](mailto:developers@flat.io) if you have any questions, feedback or features requests.  We don't offer any guarantees during this beta period. By using this API, you agree to update your app in a timely fashion in response to any beta-period changes that are rolled out.  By using this API, and especially on the behalf of a user account, you must accept, respect and enforce our [Terms of Service and Privacy Policy](https://flat.io/legal).  # SDKs  Our team maintains the following SDKs:   - [Python](https://github.com/FlatIO/api-client-python)   - [JavaScript (Node.js and Browser)](https://github.com/FlatIO/api-client-js)   - [PHP](https://github.com/FlatIO/api-client-php)  # Authentication The Flat API supports OAuth2, you can request API credentials [on our website](https://flat.io/developers). We provide two types of credentials:    - **Account Access Tokens**: Simple access tokens that allow to try and use this API **with your own account**. This is a great solution to create private apps.   - **OAuth2 Credentials**: If you plan to use the Flat API **on the behalf of mutliple users** or make this app public, request OAuth2 Credentials.  <!-- ReDoc-Inject: <security-definitions> -->  ### OAuth2 Authorization page  The Authorization page (`https://flat.io/auth/oauth`) supports all the standard parameters from the **Authorization Code** flow ([RFC6749/4.1.1](https://tools.ietf.org/html/rfc6749#section-4.1.1)) and the **Implicit** flow ([RFC6749/4.2.1](https://tools.ietf.org/html/rfc6749#section-4.2.1)). Here is a summary of the parameters available, including non-standard and optional parameters. All of them can be passed as query string when redirecting the end-user to the authorization page.  Property name  | Required | Values and Description ---------------|----------|----------------------- `client_id`    | Required | The client id (aka key) from the couple key/secret provided by Flat `response_type`| Required | We support `code` (**Authorization Code** flow, [RFC6749/4.1.1](https://tools.ietf.org/html/rfc6749#section-4.1.1)) and `token`, [RFC6749/4.2.1](https://tools.ietf.org/html/rfc6749#section-4.2.1)). It is strongly advised to use the Authorization Code flow for any server-side usage and the Implicit flow for any client-side (e.g. JavaScript) usage. `scope`        | Required | You must provide a list of scopes listed above and granted for your app, separated with a space. `redirect_uri` | Required | Determines where the response is sent. The value of this parameter must exactly match the value specified in your App Credentials settings. `state`        | Optional | An opaque string that is round-tripped in the protocol; that is to say, it is returned as a URI parameter in the Basic flow, and in the URI #fragment in the Implicit flow. `access_type`  | Optional, only available for the Authorization Code flow | The acceptable values are `online` and `offline`. When specifying `offline`, the API will return a refresh token during the access token exchange.  ### OAuth2 tokens revocation  This OAuth2 API supports token revocation ([RFC 7009](http://tools.ietf.org/html/rfc7009)) at the following endpoint: `https://api.flat.io/oauth/invalidate_token`.  # CORS This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with [W3C spec](https://www.w3.org/TR/cors/). And that allows cross-domain communication from the browser. All responses have a wildcard same-origin which makes them completely public and accessible to everyone, including any code on any site.  # Rate Limiting For authenticated requests, you can make up to 5,000 requests per hour. For unauthenticated requests, the rate limit allows you to make up to 500 requests per hour. Unauthenticated requests are associated with your IP address, and not the user or app making requests. You can contact us if you need [extra quota](https://flat.io/developers). To protect our quality of service, additional rate limits may apply to some API calls or actions.  You can check the returned HTTP headers of any API request to see your current rate limit status: ```bash curl -i https://api.flat.io/v2/me HTTP/1.1 200 OK Date: Sat, 25 Mar 2017 17:06:20 GMT X-RateLimit-Limit: 5000 X-RateLimit-Remaining: 4999 X-RateLimit-Reset: 1490465178 ```  The headers tell you everything you need to know about your current rate limit status:  Header name | Description ------------|------------ `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per hour. `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. This value can be negative if you try to go over the allowed quota. `X-RateLimit-Reset` | The time at which the current rate limit window resets in [UTC epoch seconds](http://en.wikipedia.org/wiki/Unix_time).  If you need the time in a different format, any modern programming language can get the job done. For example, if you open up the console on your web browser, you can easily get the reset time as a JavaScript Date object.  ```javascript new Date(1490465178 * 1000).toString() 'Sat Mar 25 2017 19:06:18 GMT+0100 (CET)' ```  Once you go over the rate limit you will receive an error response: ```bash curl -i https://api.flat.io/v2/me HTTP/1.1 403 Forbidden X-RateLimit-Limit: 5000 X-RateLimit-Remaining: 0 X-RateLimit-Reset: 1490465829  {   \"message\": \"API rate limit exceeded for xx.xxx.xxx.xx\",   \"code\": \"API_RATE_LIMIT_EXCEEDED\" } ``` 
+    The Flat API allows you to easily extend the abilities of the [Flat Platform](https://flat.io), with a wide range of use cases including the following:  * Creating and importing new music scores using MusicXML or MIDI files * Browsing, updating, copying, exporting the user's scores (for example in MP3, WAV or MIDI) * Managing educational resources with Flat for Education: creating & updating the organization accounts, the classes, rosters and assignments.  The Flat API is built on HTTP. Our API is RESTful It has predictable resource URLs. It returns HTTP response codes to indicate errors. It also accepts and returns JSON in the HTTP body. The [schema](/swagger.yaml) of this API follows the [OpenAPI Initiative (OAI) specification](https://www.openapis.org/), you can use and work with [compatible Swagger tools](http://swagger.io/open-source-integrations/). This API features Cross-Origin Resource Sharing (CORS) implemented in compliance with [W3C spec](https://www.w3.org/TR/cors/).  You can use your favorite HTTP/REST library for your programming language to use Flat's API. This specification and reference is [available on Github](https://github.com/FlatIO/api-reference).  Getting Started and learn more:  * [API Overview and interoduction](https://flat.io/developers/docs/api/) * [Authentication (Personal Access Tokens or OAuth2)](https://flat.io/developers/docs/api/authentication.html) * [SDKs](https://flat.io/developers/docs/api/sdks.html) * [Rate Limits](https://flat.io/developers/docs/api/rate-limits.html) * [Changelog](https://flat.io/developers/docs/api/changelog.html) 
 
-    OpenAPI spec version: 2.0.0
+    OpenAPI spec version: 2.2.0
     Contact: developers@flat.io
     Generated by: https://github.com/swagger-api/swagger-codegen.git
 """
@@ -117,7 +117,7 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -223,7 +223,7 @@ class ScoreApi(object):
 
         path_params = {}
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -336,7 +336,7 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -444,7 +444,7 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -557,9 +557,9 @@ class ScoreApi(object):
         if 'comment' in params:
             path_params['comment'] = params['comment']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -667,7 +667,7 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -782,9 +782,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -892,9 +892,9 @@ class ScoreApi(object):
         if 'user' in params:
             path_params['user'] = params['user']
 
-        query_params = {}
+        query_params = []
         if 'ids' in params:
-            query_params['ids'] = params['ids']
+            query_params.append(('ids', params['ids']))
 
         header_params = {}
 
@@ -942,7 +942,7 @@ class ScoreApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str group: Unique identifier of the group (required)
+        :param str group: Unique identifier of a Flat group  (required)
         :param str parent: Filter the score forked from the score id `parent`
         :return: list[ScoreDetails]
                  If the method is called asynchronously,
@@ -969,7 +969,7 @@ class ScoreApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
-        :param str group: Unique identifier of the group (required)
+        :param str group: Unique identifier of a Flat group  (required)
         :param str parent: Filter the score forked from the score id `parent`
         :return: list[ScoreDetails]
                  If the method is called asynchronously,
@@ -1002,9 +1002,9 @@ class ScoreApi(object):
         if 'group' in params:
             path_params['group'] = params['group']
 
-        query_params = {}
+        query_params = []
         if 'parent' in params:
-            query_params['parent'] = params['parent']
+            query_params.append(('parent', params['parent']))
 
         header_params = {}
 
@@ -1021,7 +1021,7 @@ class ScoreApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['OAuth2']
 
         return self.api_client.call_api('/groups/{group}/scores', 'GET',
                                         path_params,
@@ -1112,9 +1112,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1229,9 +1229,9 @@ class ScoreApi(object):
         if 'collaborator' in params:
             path_params['collaborator'] = params['collaborator']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1339,9 +1339,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1449,9 +1449,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1566,9 +1566,9 @@ class ScoreApi(object):
         if 'revision' in params:
             path_params['revision'] = params['revision']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1585,7 +1585,7 @@ class ScoreApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['OAuth2']
 
         return self.api_client.call_api('/scores/{score}/revisions/{revision}', 'GET',
                                         path_params,
@@ -1694,13 +1694,13 @@ class ScoreApi(object):
         if 'format' in params:
             path_params['format'] = params['format']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
         if 'only_cached' in params:
-            query_params['onlyCached'] = params['only_cached']
+            query_params.append(('onlyCached', params['only_cached']))
         if 'parts' in params:
-            query_params['parts'] = params['parts']
+            query_params.append(('parts', params['parts']))
 
         header_params = {}
 
@@ -1717,7 +1717,7 @@ class ScoreApi(object):
             select_header_content_type(['application/json'])
 
         # Authentication setting
-        auth_settings = []
+        auth_settings = ['OAuth2']
 
         return self.api_client.call_api('/scores/{score}/revisions/{revision}/{format}', 'GET',
                                         path_params,
@@ -1808,9 +1808,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -1837,6 +1837,112 @@ class ScoreApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type='list[ScoreRevision]',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def get_score_submissions(self, score, **kwargs):
+        """
+        List submissions related to the score
+        This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_score_submissions(score, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str score: Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`).  (required)
+        :return: list[AssignmentSubmission]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.get_score_submissions_with_http_info(score, **kwargs)
+        else:
+            (data) = self.get_score_submissions_with_http_info(score, **kwargs)
+            return data
+
+    def get_score_submissions_with_http_info(self, score, **kwargs):
+        """
+        List submissions related to the score
+        This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.get_score_submissions_with_http_info(score, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str score: Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`).  (required)
+        :return: list[AssignmentSubmission]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['score']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_score_submissions" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'score' is set
+        if ('score' not in params) or (params['score'] is None):
+            raise ValueError("Missing the required parameter `score` when calling `get_score_submissions`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'score' in params:
+            path_params['score'] = params['score']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['OAuth2']
+
+        return self.api_client.call_api('/scores/{score}/submissions', 'GET',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='list[AssignmentSubmission]',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),
@@ -1918,9 +2024,9 @@ class ScoreApi(object):
         if 'user' in params:
             path_params['user'] = params['user']
 
-        query_params = {}
+        query_params = []
         if 'parent' in params:
-            query_params['parent'] = params['parent']
+            query_params.append(('parent', params['parent']))
 
         header_params = {}
 
@@ -2033,9 +2139,9 @@ class ScoreApi(object):
         if 'comment' in params:
             path_params['comment'] = params['comment']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -2148,9 +2254,9 @@ class ScoreApi(object):
         if 'comment' in params:
             path_params['comment'] = params['comment']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -2263,9 +2369,9 @@ class ScoreApi(object):
         if 'score' in params:
             path_params['score'] = params['score']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 
@@ -2380,7 +2486,7 @@ class ScoreApi(object):
         if 'collaborator' in params:
             path_params['collaborator'] = params['collaborator']
 
-        query_params = {}
+        query_params = []
 
         header_params = {}
 
@@ -2498,9 +2604,9 @@ class ScoreApi(object):
         if 'comment' in params:
             path_params['comment'] = params['comment']
 
-        query_params = {}
+        query_params = []
         if 'sharing_key' in params:
-            query_params['sharingKey'] = params['sharing_key']
+            query_params.append(('sharingKey', params['sharing_key']))
 
         header_params = {}
 

@@ -1,5 +1,5 @@
 # Swagger Codegen Ignore
-README.md
 .gitignore
 .travis.yml
 git_push.sh
+setup.py

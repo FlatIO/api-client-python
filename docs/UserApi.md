@@ -16,7 +16,7 @@ List liked scores
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -69,7 +69,7 @@ Get a public profile of a Flat User.
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
@@ -120,7 +120,7 @@ Get the list of scores owned by the User
 
 ### Example 
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
