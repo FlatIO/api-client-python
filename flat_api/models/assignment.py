@@ -118,7 +118,7 @@ class Assignment(object):
         :param state: The state of this Assignment.
         :type: str
         """
-        allowed_values = ["active", "archived"]
+        allowed_values = ["draft", "active", "archived"]
         if state not in allowed_values:
             raise ValueError(
                 "Invalid value for `state` ({0}), must be one of {1}"

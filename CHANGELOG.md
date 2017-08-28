@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0
+
+* feat(user): Add profile theme and instruments played.
+* feat(edu): Add new cursor-based pagination for `GET /v2/organizations/users` and `GET /v2/organizations/invitations`.
+* feat(edu): Add new methods:
+  * `PUT /v2/organizations/users/{user}`: Admin endpoint to update managed accounts.
+    * `DELETE /v2/organizations/users/{user}`: Admin endpoint to delete or convert edu accounts to consumer accounts.
+    * feat(edu): Classes have a new state `inactive` that can be activated using the new method `POST /v2/classes/{class}/activate`.
+    * feat(edu): Assignments have a new state `draft` and can have a new attachment type `exercise`.
+    * feat(edu): Return Canvas LMS Instance domain in classes details
+    * feat(edu): Return Clever.com section information in classes details
+
 ## 0.3.0
 
 * feat(edu): Public release of the first education APIs:

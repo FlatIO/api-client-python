@@ -34,6 +34,7 @@ class MediaAttachment(object):
         'type': 'str',
         'score': 'str',
         'revision': 'str',
+        'correct': 'bool',
         'sharing_mode': 'MediaScoreSharingMode',
         'title': 'str',
         'description': 'str',
@@ -52,6 +53,7 @@ class MediaAttachment(object):
         'type': 'type',
         'score': 'score',
         'revision': 'revision',
+        'correct': 'correct',
         'sharing_mode': 'sharingMode',
         'title': 'title',
         'description': 'description',
@@ -66,7 +68,7 @@ class MediaAttachment(object):
         'author_url': 'authorUrl'
     }
 
-    def __init__(self, type=None, score=None, revision=None, sharing_mode=None, title=None, description=None, html=None, html_width=None, html_height=None, url=None, thumbnail_url=None, thumbnail_width=None, thumbnail_height=None, author_name=None, author_url=None):
+    def __init__(self, type=None, score=None, revision=None, correct=None, sharing_mode=None, title=None, description=None, html=None, html_width=None, html_height=None, url=None, thumbnail_url=None, thumbnail_width=None, thumbnail_height=None, author_name=None, author_url=None):
         """
         MediaAttachment - a model defined in Swagger
         """
@@ -74,6 +76,7 @@ class MediaAttachment(object):
         self._type = None
         self._score = None
         self._revision = None
+        self._correct = None
         self._sharing_mode = None
         self._title = None
         self._description = None
@@ -93,6 +96,8 @@ class MediaAttachment(object):
           self.score = score
         if revision is not None:
           self.revision = revision
+        if correct is not None:
+          self.correct = correct
         if sharing_mode is not None:
           self.sharing_mode = sharing_mode
         if title is not None:
@@ -138,7 +143,7 @@ class MediaAttachment(object):
         :param type: The type of this MediaAttachment.
         :type: str
         """
-        allowed_values = ["rich", "photo", "video", "link", "flat"]
+        allowed_values = ["rich", "photo", "video", "link", "flat", "exercise"]
         if type not in allowed_values:
             raise ValueError(
                 "Invalid value for `type` ({0}), must be one of {1}"
@@ -192,6 +197,29 @@ class MediaAttachment(object):
         """
 
         self._revision = revision
+
+    @property
+    def correct(self):
+        """
+        Gets the correct of this MediaAttachment.
+        If the attachment is an exercise question, this state will describe if it is correct or not.For exercise assignments only.
+
+        :return: The correct of this MediaAttachment.
+        :rtype: bool
+        """
+        return self._correct
+
+    @correct.setter
+    def correct(self, correct):
+        """
+        Sets the correct of this MediaAttachment.
+        If the attachment is an exercise question, this state will describe if it is correct or not.For exercise assignments only.
+
+        :param correct: The correct of this MediaAttachment.
+        :type: bool
+        """
+
+        self._correct = correct
 
     @property
     def sharing_mode(self):

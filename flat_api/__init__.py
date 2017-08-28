@@ -23,12 +23,12 @@ from .models.class_attachment_creation import ClassAttachmentCreation
 from .models.class_creation import ClassCreation
 from .models.class_details import ClassDetails
 from .models.class_details_canvas import ClassDetailsCanvas
+from .models.class_details_clever import ClassDetailsClever
 from .models.class_details_google_classroom import ClassDetailsGoogleClassroom
 from .models.class_details_google_drive import ClassDetailsGoogleDrive
 from .models.class_details_lti import ClassDetailsLti
 from .models.class_roles import ClassRoles
 from .models.class_state import ClassState
-from .models.class_stream_post_mode import ClassStreamPostMode
 from .models.class_update import ClassUpdate
 from .models.flat_error_response import FlatErrorResponse
 from .models.flat_locales import FlatLocales
@@ -68,9 +68,11 @@ from .models.score_rights import ScoreRights
 from .models.score_source import ScoreSource
 from .models.score_summary import ScoreSummary
 from .models.score_views_counts import ScoreViewsCounts
+from .models.user_admin_update import UserAdminUpdate
 from .models.user_basics import UserBasics
 from .models.user_creation import UserCreation
 from .models.user_details_admin_license import UserDetailsAdminLicense
+from .models.user_instruments import UserInstruments
 from .models.score_details import ScoreDetails
 from .models.user_public_summary import UserPublicSummary
 from .models.user_details_admin import UserDetailsAdmin

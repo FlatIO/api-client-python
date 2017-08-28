@@ -23,12 +23,12 @@ from .class_attachment_creation import ClassAttachmentCreation
 from .class_creation import ClassCreation
 from .class_details import ClassDetails
 from .class_details_canvas import ClassDetailsCanvas
+from .class_details_clever import ClassDetailsClever
 from .class_details_google_classroom import ClassDetailsGoogleClassroom
 from .class_details_google_drive import ClassDetailsGoogleDrive
 from .class_details_lti import ClassDetailsLti
 from .class_roles import ClassRoles
 from .class_state import ClassState
-from .class_stream_post_mode import ClassStreamPostMode
 from .class_update import ClassUpdate
 from .flat_error_response import FlatErrorResponse
 from .flat_locales import FlatLocales
@@ -68,9 +68,11 @@ from .score_rights import ScoreRights
 from .score_source import ScoreSource
 from .score_summary import ScoreSummary
 from .score_views_counts import ScoreViewsCounts
+from .user_admin_update import UserAdminUpdate
 from .user_basics import UserBasics
 from .user_creation import UserCreation
 from .user_details_admin_license import UserDetailsAdminLicense
+from .user_instruments import UserInstruments
 from .score_details import ScoreDetails
 from .user_public_summary import UserPublicSummary
 from .user_details_admin import UserDetailsAdmin

@@ -40,6 +40,112 @@ class ClassApi(object):
                 config.api_client = ApiClient()
             self.api_client = config.api_client
 
+    def activate_class(self, _class, **kwargs):
+        """
+        Activate the class
+        Mark the class as `active`. This is mainly used for classes synchronized from Clever that are initially with an `inactive` state and hidden in the UI. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.activate_class(_class, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str _class: Unique identifier of the class (required)
+        :return: ClassDetails
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.activate_class_with_http_info(_class, **kwargs)
+        else:
+            (data) = self.activate_class_with_http_info(_class, **kwargs)
+            return data
+
+    def activate_class_with_http_info(self, _class, **kwargs):
+        """
+        Activate the class
+        Mark the class as `active`. This is mainly used for classes synchronized from Clever that are initially with an `inactive` state and hidden in the UI. 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.activate_class_with_http_info(_class, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str _class: Unique identifier of the class (required)
+        :return: ClassDetails
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['_class']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method activate_class" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter '_class' is set
+        if ('_class' not in params) or (params['_class'] is None):
+            raise ValueError("Missing the required parameter `_class` when calling `activate_class`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if '_class' in params:
+            path_params['class'] = params['_class']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['OAuth2']
+
+        return self.api_client.call_api('/classes/{class}/activate', 'POST',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='ClassDetails',
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def add_class_user(self, _class, user, **kwargs):
         """
         Add a user to the class

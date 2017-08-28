@@ -26,6 +26,7 @@ class ClassState(object):
     allowed enum values
     """
     ACTIVE = "active"
+    INACTIVE = "inactive"
     ARCHIVED = "archived"
 
     """

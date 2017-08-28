@@ -461,7 +461,8 @@ class OrganizationApi(object):
             for asynchronous request. (optional)
         :param str role: Filter users by role
         :param int limit: This is the maximum number of objects that may be returned
-        :param int offset: This offsets the start of each page by the number specified
+        :param str next: An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
+        :param str previous: An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
         :return: list[OrganizationInvitation]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -488,13 +489,14 @@ class OrganizationApi(object):
             for asynchronous request. (optional)
         :param str role: Filter users by role
         :param int limit: This is the maximum number of objects that may be returned
-        :param int offset: This offsets the start of each page by the number specified
+        :param str next: An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
+        :param str previous: An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
         :return: list[OrganizationInvitation]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['role', 'limit', 'offset']
+        all_params = ['role', 'limit', 'next', 'previous']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -514,8 +516,6 @@ class OrganizationApi(object):
             raise ValueError("Invalid value for parameter `limit` when calling `list_organization_invitations`, must be a value less than or equal to `1000`")
         if 'limit' in params and params['limit'] < 1:
             raise ValueError("Invalid value for parameter `limit` when calling `list_organization_invitations`, must be a value greater than or equal to `1`")
-        if 'offset' in params and params['offset'] < 0:
-            raise ValueError("Invalid value for parameter `offset` when calling `list_organization_invitations`, must be a value greater than or equal to `0`")
 
         collection_formats = {}
 
@@ -526,8 +526,10 @@ class OrganizationApi(object):
             query_params.append(('role', params['role']))
         if 'limit' in params:
             query_params.append(('limit', params['limit']))
-        if 'offset' in params:
-            query_params.append(('offset', params['offset']))
+        if 'next' in params:
+            query_params.append(('next', params['next']))
+        if 'previous' in params:
+            query_params.append(('previous', params['previous']))
 
         header_params = {}
 
@@ -576,7 +578,8 @@ class OrganizationApi(object):
             for asynchronous request. (optional)
         :param str role: Filter users by role
         :param int limit: This is the maximum number of objects that may be returned
-        :param int offset: This offsets the start of each page by the number specified
+        :param str next: An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
+        :param str previous: An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
         :return: list[UserDetailsAdmin]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -603,13 +606,14 @@ class OrganizationApi(object):
             for asynchronous request. (optional)
         :param str role: Filter users by role
         :param int limit: This is the maximum number of objects that may be returned
-        :param int offset: This offsets the start of each page by the number specified
+        :param str next: An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
+        :param str previous: An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data. 
         :return: list[UserDetailsAdmin]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['role', 'limit', 'offset']
+        all_params = ['role', 'limit', 'next', 'previous']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -629,8 +633,6 @@ class OrganizationApi(object):
             raise ValueError("Invalid value for parameter `limit` when calling `list_organization_users`, must be a value less than or equal to `1000`")
         if 'limit' in params and params['limit'] < 1:
             raise ValueError("Invalid value for parameter `limit` when calling `list_organization_users`, must be a value greater than or equal to `1`")
-        if 'offset' in params and params['offset'] < 0:
-            raise ValueError("Invalid value for parameter `offset` when calling `list_organization_users`, must be a value greater than or equal to `0`")
 
         collection_formats = {}
 
@@ -641,8 +643,10 @@ class OrganizationApi(object):
             query_params.append(('role', params['role']))
         if 'limit' in params:
             query_params.append(('limit', params['limit']))
-        if 'offset' in params:
-            query_params.append(('offset', params['offset']))
+        if 'next' in params:
+            query_params.append(('next', params['next']))
+        if 'previous' in params:
+            query_params.append(('previous', params['previous']))
 
         header_params = {}
 
@@ -780,6 +784,116 @@ class OrganizationApi(object):
                                         _request_timeout=params.get('_request_timeout'),
                                         collection_formats=collection_formats)
 
+    def remove_organization_user(self, user, **kwargs):
+        """
+        Remove an account from Flat
+        This operation removes an account from Flat and its data, including: * The music scores created by this user (documents, history, comments, collaboration information) * Education related data (assignments and classroom information) 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_organization_user(user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user: Unique identifier of the Flat account  (required)
+        :param bool convert_to_individual: If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal. 
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.remove_organization_user_with_http_info(user, **kwargs)
+        else:
+            (data) = self.remove_organization_user_with_http_info(user, **kwargs)
+            return data
+
+    def remove_organization_user_with_http_info(self, user, **kwargs):
+        """
+        Remove an account from Flat
+        This operation removes an account from Flat and its data, including: * The music scores created by this user (documents, history, comments, collaboration information) * Education related data (assignments and classroom information) 
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.remove_organization_user_with_http_info(user, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user: Unique identifier of the Flat account  (required)
+        :param bool convert_to_individual: If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal. 
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user', 'convert_to_individual']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_organization_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user' is set
+        if ('user' not in params) or (params['user'] is None):
+            raise ValueError("Missing the required parameter `user` when calling `remove_organization_user`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'user' in params:
+            path_params['user'] = params['user']
+
+        query_params = []
+        if 'convert_to_individual' in params:
+            query_params.append(('convertToIndividual', params['convert_to_individual']))
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['OAuth2']
+
+        return self.api_client.call_api('/organizations/users/{user}', 'DELETE',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
     def revoke_lti_credentials(self, credentials, **kwargs):
         """
         Revoke LTI 1.x credentials
@@ -877,6 +991,117 @@ class OrganizationApi(object):
                                         post_params=form_params,
                                         files=local_var_files,
                                         response_type=None,
+                                        auth_settings=auth_settings,
+                                        callback=params.get('callback'),
+                                        _return_http_data_only=params.get('_return_http_data_only'),
+                                        _preload_content=params.get('_preload_content', True),
+                                        _request_timeout=params.get('_request_timeout'),
+                                        collection_formats=collection_formats)
+
+    def update_organization_user(self, user, body, **kwargs):
+        """
+        Update account information
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.update_organization_user(user, body, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user: Unique identifier of the Flat account  (required)
+        :param UserAdminUpdate body: (required)
+        :return: UserDetailsAdmin
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.update_organization_user_with_http_info(user, body, **kwargs)
+        else:
+            (data) = self.update_organization_user_with_http_info(user, body, **kwargs)
+            return data
+
+    def update_organization_user_with_http_info(self, user, body, **kwargs):
+        """
+        Update account information
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.update_organization_user_with_http_info(user, body, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str user: Unique identifier of the Flat account  (required)
+        :param UserAdminUpdate body: (required)
+        :return: UserDetailsAdmin
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user', 'body']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_organization_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user' is set
+        if ('user' not in params) or (params['user'] is None):
+            raise ValueError("Missing the required parameter `user` when calling `update_organization_user`")
+        # verify the required parameter 'body' is set
+        if ('body' not in params) or (params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `update_organization_user`")
+
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'user' in params:
+            path_params['user'] = params['user']
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['application/json'])
+
+        # Authentication setting
+        auth_settings = ['OAuth2']
+
+        return self.api_client.call_api('/organizations/users/{user}', 'PUT',
+                                        path_params,
+                                        query_params,
+                                        header_params,
+                                        body=body_params,
+                                        post_params=form_params,
+                                        files=local_var_files,
+                                        response_type='UserDetailsAdmin',
                                         auth_settings=auth_settings,
                                         callback=params.get('callback'),
                                         _return_http_data_only=params.get('_return_http_data_only'),

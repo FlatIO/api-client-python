@@ -47,6 +47,8 @@ class UserDetails(object):
         'followers_count': 'int',
         'following_count': 'int',
         'owned_public_scores_count': 'int',
+        'profile_theme': 'str',
+        'instruments': 'UserInstruments',
         'type': 'str',
         'private_profile': 'bool',
         'locale': 'FlatLocales'
@@ -69,12 +71,14 @@ class UserDetails(object):
         'followers_count': 'followersCount',
         'following_count': 'followingCount',
         'owned_public_scores_count': 'ownedPublicScoresCount',
+        'profile_theme': 'profileTheme',
+        'instruments': 'instruments',
         'type': 'type',
         'private_profile': 'privateProfile',
         'locale': 'locale'
     }
 
-    def __init__(self, id=None, username=None, name=None, printable_name=None, picture=None, is_power_user=None, organization=None, organization_role=None, class_role=None, html_url=None, bio=None, registration_date=None, liked_scores_count=None, followers_count=None, following_count=None, owned_public_scores_count=None, type=None, private_profile=None, locale=None):
+    def __init__(self, id=None, username=None, name=None, printable_name=None, picture=None, is_power_user=None, organization=None, organization_role=None, class_role=None, html_url=None, bio=None, registration_date=None, liked_scores_count=None, followers_count=None, following_count=None, owned_public_scores_count=None, profile_theme=None, instruments=None, type=None, private_profile=None, locale=None):
         """
         UserDetails - a model defined in Swagger
         """
@@ -95,6 +99,8 @@ class UserDetails(object):
         self._followers_count = None
         self._following_count = None
         self._owned_public_scores_count = None
+        self._profile_theme = None
+        self._instruments = None
         self._type = None
         self._private_profile = None
         self._locale = None
@@ -131,6 +137,10 @@ class UserDetails(object):
           self.following_count = following_count
         if owned_public_scores_count is not None:
           self.owned_public_scores_count = owned_public_scores_count
+        if profile_theme is not None:
+          self.profile_theme = profile_theme
+        if instruments is not None:
+          self.instruments = instruments
         if type is not None:
           self.type = type
         if private_profile is not None:
@@ -483,7 +493,7 @@ class UserDetails(object):
     def owned_public_scores_count(self):
         """
         Gets the owned_public_scores_count of this UserDetails.
-        Number of public score the user have
+        Number of public scores the user have
 
         :return: The owned_public_scores_count of this UserDetails.
         :rtype: int
@@ -494,13 +504,57 @@ class UserDetails(object):
     def owned_public_scores_count(self, owned_public_scores_count):
         """
         Sets the owned_public_scores_count of this UserDetails.
-        Number of public score the user have
+        Number of public scores the user have
 
         :param owned_public_scores_count: The owned_public_scores_count of this UserDetails.
         :type: int
         """
 
         self._owned_public_scores_count = owned_public_scores_count
+
+    @property
+    def profile_theme(self):
+        """
+        Gets the profile_theme of this UserDetails.
+        Theme (background) for the profile
+
+        :return: The profile_theme of this UserDetails.
+        :rtype: str
+        """
+        return self._profile_theme
+
+    @profile_theme.setter
+    def profile_theme(self, profile_theme):
+        """
+        Sets the profile_theme of this UserDetails.
+        Theme (background) for the profile
+
+        :param profile_theme: The profile_theme of this UserDetails.
+        :type: str
+        """
+
+        self._profile_theme = profile_theme
+
+    @property
+    def instruments(self):
+        """
+        Gets the instruments of this UserDetails.
+
+        :return: The instruments of this UserDetails.
+        :rtype: UserInstruments
+        """
+        return self._instruments
+
+    @instruments.setter
+    def instruments(self, instruments):
+        """
+        Sets the instruments of this UserDetails.
+
+        :param instruments: The instruments of this UserDetails.
+        :type: UserInstruments
+        """
+
+        self._instruments = instruments
 
     @property
     def type(self):

@@ -11,7 +11,9 @@ Method | HTTP request | Description
 [**list_organization_invitations**](OrganizationApi.md#list_organization_invitations) | **GET** /organizations/invitations | List the organization invitations
 [**list_organization_users**](OrganizationApi.md#list_organization_users) | **GET** /organizations/users | List the organization users
 [**remove_organization_invitation**](OrganizationApi.md#remove_organization_invitation) | **DELETE** /organizations/invitations/{invitation} | Remove an organization invitation
+[**remove_organization_user**](OrganizationApi.md#remove_organization_user) | **DELETE** /organizations/users/{user} | Remove an account from Flat
 [**revoke_lti_credentials**](OrganizationApi.md#revoke_lti_credentials) | **DELETE** /organizations/lti/credentials/{credentials} | Revoke LTI 1.x credentials
+[**update_organization_user**](OrganizationApi.md#update_organization_user) | **PUT** /organizations/users/{user} | Update account information
 
 
 # **create_lti_credentials**
@@ -211,7 +213,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_organization_invitations**
-> list[OrganizationInvitation] list_organization_invitations(role=role, limit=limit, offset=offset)
+> list[OrganizationInvitation] list_organization_invitations(role=role, limit=limit, next=next, previous=previous)
 
 List the organization invitations
 
@@ -229,12 +231,13 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi()
 role = 'role_example' # str | Filter users by role (optional)
-limit = 100 # int | This is the maximum number of objects that may be returned (optional) (default to 100)
-offset = 0 # int | This offsets the start of each page by the number specified (optional) (default to 0)
+limit = 50 # int | This is the maximum number of objects that may be returned (optional) (default to 50)
+next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
 try: 
     # List the organization invitations
-    api_response = api_instance.list_organization_invitations(role=role, limit=limit, offset=offset)
+    api_response = api_instance.list_organization_invitations(role=role, limit=limit, next=next, previous=previous)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->list_organization_invitations: %s\n" % e)
@@ -245,8 +248,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role** | **str**| Filter users by role | [optional] 
- **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 100]
- **offset** | **int**| This offsets the start of each page by the number specified | [optional] [default to 0]
+ **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 50]
+ **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
 
 ### Return type
 
@@ -264,7 +268,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_organization_users**
-> list[UserDetailsAdmin] list_organization_users(role=role, limit=limit, offset=offset)
+> list[UserDetailsAdmin] list_organization_users(role=role, limit=limit, next=next, previous=previous)
 
 List the organization users
 
@@ -282,12 +286,13 @@ flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi()
 role = 'role_example' # str | Filter users by role (optional)
-limit = 100 # int | This is the maximum number of objects that may be returned (optional) (default to 100)
-offset = 0 # int | This offsets the start of each page by the number specified (optional) (default to 0)
+limit = 50 # int | This is the maximum number of objects that may be returned (optional) (default to 50)
+next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
 try: 
     # List the organization users
-    api_response = api_instance.list_organization_users(role=role, limit=limit, offset=offset)
+    api_response = api_instance.list_organization_users(role=role, limit=limit, next=next, previous=previous)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->list_organization_users: %s\n" % e)
@@ -298,8 +303,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role** | **str**| Filter users by role | [optional] 
- **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 100]
- **offset** | **int**| This offsets the start of each page by the number specified | [optional] [default to 0]
+ **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 50]
+ **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
 
 ### Return type
 
@@ -364,6 +370,58 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **remove_organization_user**
+> remove_organization_user(user, convert_to_individual=convert_to_individual)
+
+Remove an account from Flat
+
+This operation removes an account from Flat and its data, including: * The music scores created by this user (documents, history, comments, collaboration information) * Education related data (assignments and classroom information) 
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.OrganizationApi()
+user = 'user_example' # str | Unique identifier of the Flat account 
+convert_to_individual = true # bool | If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal.  (optional)
+
+try: 
+    # Remove an account from Flat
+    api_instance.remove_organization_user(user, convert_to_individual=convert_to_individual)
+except ApiException as e:
+    print("Exception when calling OrganizationApi->remove_organization_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **str**| Unique identifier of the Flat account  | 
+ **convert_to_individual** | **bool**| If &#x60;true&#x60;, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal.  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **revoke_lti_credentials**
 > revoke_lti_credentials(credentials)
 
@@ -400,6 +458,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_organization_user**
+> UserDetailsAdmin update_organization_user(user, body)
+
+Update account information
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.OrganizationApi()
+user = 'user_example' # str | Unique identifier of the Flat account 
+body = flat_api.UserAdminUpdate() # UserAdminUpdate | 
+
+try: 
+    # Update account information
+    api_response = api_instance.update_organization_user(user, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OrganizationApi->update_organization_user: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **str**| Unique identifier of the Flat account  | 
+ **body** | [**UserAdminUpdate**](UserAdminUpdate.md)|  | 
+
+### Return type
+
+[**UserDetailsAdmin**](UserDetailsAdmin.md)
 
 ### Authorization
 

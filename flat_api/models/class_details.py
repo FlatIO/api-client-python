@@ -47,7 +47,8 @@ class ClassDetails(object):
         'google_classroom': 'ClassDetailsGoogleClassroom',
         'google_drive': 'ClassDetailsGoogleDrive',
         'lti': 'ClassDetailsLti',
-        'canvas': 'ClassDetailsCanvas'
+        'canvas': 'ClassDetailsCanvas',
+        'clever': 'ClassDetailsClever'
     }
 
     attribute_map = {
@@ -67,10 +68,11 @@ class ClassDetails(object):
         'google_classroom': 'googleClassroom',
         'google_drive': 'googleDrive',
         'lti': 'lti',
-        'canvas': 'canvas'
+        'canvas': 'canvas',
+        'clever': 'clever'
     }
 
-    def __init__(self, id=None, state=None, name=None, section=None, description=None, organization=None, owner=None, creation_date=None, enrollment_code=None, theme=None, assignments_count=None, students_group=None, teachers_group=None, google_classroom=None, google_drive=None, lti=None, canvas=None):
+    def __init__(self, id=None, state=None, name=None, section=None, description=None, organization=None, owner=None, creation_date=None, enrollment_code=None, theme=None, assignments_count=None, students_group=None, teachers_group=None, google_classroom=None, google_drive=None, lti=None, canvas=None, clever=None):
         """
         ClassDetails - a model defined in Swagger
         """
@@ -92,6 +94,7 @@ class ClassDetails(object):
         self._google_drive = None
         self._lti = None
         self._canvas = None
+        self._clever = None
 
         if id is not None:
           self.id = id
@@ -127,6 +130,8 @@ class ClassDetails(object):
           self.lti = lti
         if canvas is not None:
           self.canvas = canvas
+        if clever is not None:
+          self.clever = clever
 
     @property
     def id(self):
@@ -504,6 +509,27 @@ class ClassDetails(object):
         """
 
         self._canvas = canvas
+
+    @property
+    def clever(self):
+        """
+        Gets the clever of this ClassDetails.
+
+        :return: The clever of this ClassDetails.
+        :rtype: ClassDetailsClever
+        """
+        return self._clever
+
+    @clever.setter
+    def clever(self, clever):
+        """
+        Sets the clever of this ClassDetails.
+
+        :param clever: The clever of this ClassDetails.
+        :type: ClassDetailsClever
+        """
+
+        self._clever = clever
 
     def to_dict(self):
         """

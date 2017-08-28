@@ -78,7 +78,7 @@ class ClassAttachmentCreation(object):
         :param type: The type of this ClassAttachmentCreation.
         :type: str
         """
-        allowed_values = ["flat", "link"]
+        allowed_values = ["flat", "link", "exercise"]
         if type not in allowed_values:
             raise ValueError(
                 "Invalid value for `type` ({0}), must be one of {1}"

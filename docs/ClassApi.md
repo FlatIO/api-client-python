@@ -4,6 +4,7 @@ All URIs are relative to *https://api.flat.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**activate_class**](ClassApi.md#activate_class) | **POST** /classes/{class}/activate | Activate the class
 [**add_class_user**](ClassApi.md#add_class_user) | **PUT** /classes/{class}/users/{user} | Add a user to the class
 [**archive_class**](ClassApi.md#archive_class) | **POST** /classes/{class}/archive | Archive the class
 [**copy_assignment**](ClassApi.md#copy_assignment) | **POST** /classes/{class}/assignments/{assignment}/copy | Copy an assignment
@@ -23,6 +24,57 @@ Method | HTTP request | Description
 [**unarchive_class**](ClassApi.md#unarchive_class) | **DELETE** /classes/{class}/archive | Unarchive the class
 [**update_class**](ClassApi.md#update_class) | **PUT** /classes/{class} | Update the class
 
+
+# **activate_class**
+> ClassDetails activate_class(_class)
+
+Activate the class
+
+Mark the class as `active`. This is mainly used for classes synchronized from Clever that are initially with an `inactive` state and hidden in the UI. 
+
+### Example 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.ClassApi()
+_class = '_class_example' # str | Unique identifier of the class
+
+try: 
+    # Activate the class
+    api_response = api_instance.activate_class(_class)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ClassApi->activate_class: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_class** | **str**| Unique identifier of the class | 
+
+### Return type
+
+[**ClassDetails**](ClassDetails.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_class_user**
 > add_class_user(_class, user)

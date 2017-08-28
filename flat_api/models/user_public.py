@@ -46,7 +46,9 @@ class UserPublic(object):
         'liked_scores_count': 'int',
         'followers_count': 'int',
         'following_count': 'int',
-        'owned_public_scores_count': 'int'
+        'owned_public_scores_count': 'int',
+        'profile_theme': 'str',
+        'instruments': 'UserInstruments'
     }
 
     attribute_map = {
@@ -65,10 +67,12 @@ class UserPublic(object):
         'liked_scores_count': 'likedScoresCount',
         'followers_count': 'followersCount',
         'following_count': 'followingCount',
-        'owned_public_scores_count': 'ownedPublicScoresCount'
+        'owned_public_scores_count': 'ownedPublicScoresCount',
+        'profile_theme': 'profileTheme',
+        'instruments': 'instruments'
     }
 
-    def __init__(self, id=None, username=None, name=None, printable_name=None, picture=None, is_power_user=None, organization=None, organization_role=None, class_role=None, html_url=None, bio=None, registration_date=None, liked_scores_count=None, followers_count=None, following_count=None, owned_public_scores_count=None):
+    def __init__(self, id=None, username=None, name=None, printable_name=None, picture=None, is_power_user=None, organization=None, organization_role=None, class_role=None, html_url=None, bio=None, registration_date=None, liked_scores_count=None, followers_count=None, following_count=None, owned_public_scores_count=None, profile_theme=None, instruments=None):
         """
         UserPublic - a model defined in Swagger
         """
@@ -89,6 +93,8 @@ class UserPublic(object):
         self._followers_count = None
         self._following_count = None
         self._owned_public_scores_count = None
+        self._profile_theme = None
+        self._instruments = None
 
         if id is not None:
           self.id = id
@@ -122,6 +128,10 @@ class UserPublic(object):
           self.following_count = following_count
         if owned_public_scores_count is not None:
           self.owned_public_scores_count = owned_public_scores_count
+        if profile_theme is not None:
+          self.profile_theme = profile_theme
+        if instruments is not None:
+          self.instruments = instruments
 
     @property
     def id(self):
@@ -468,7 +478,7 @@ class UserPublic(object):
     def owned_public_scores_count(self):
         """
         Gets the owned_public_scores_count of this UserPublic.
-        Number of public score the user have
+        Number of public scores the user have
 
         :return: The owned_public_scores_count of this UserPublic.
         :rtype: int
@@ -479,13 +489,57 @@ class UserPublic(object):
     def owned_public_scores_count(self, owned_public_scores_count):
         """
         Sets the owned_public_scores_count of this UserPublic.
-        Number of public score the user have
+        Number of public scores the user have
 
         :param owned_public_scores_count: The owned_public_scores_count of this UserPublic.
         :type: int
         """
 
         self._owned_public_scores_count = owned_public_scores_count
+
+    @property
+    def profile_theme(self):
+        """
+        Gets the profile_theme of this UserPublic.
+        Theme (background) for the profile
+
+        :return: The profile_theme of this UserPublic.
+        :rtype: str
+        """
+        return self._profile_theme
+
+    @profile_theme.setter
+    def profile_theme(self, profile_theme):
+        """
+        Sets the profile_theme of this UserPublic.
+        Theme (background) for the profile
+
+        :param profile_theme: The profile_theme of this UserPublic.
+        :type: str
+        """
+
+        self._profile_theme = profile_theme
+
+    @property
+    def instruments(self):
+        """
+        Gets the instruments of this UserPublic.
+
+        :return: The instruments of this UserPublic.
+        :rtype: UserInstruments
+        """
+        return self._instruments
+
+    @instruments.setter
+    def instruments(self, instruments):
+        """
+        Sets the instruments of this UserPublic.
+
+        :param instruments: The instruments of this UserPublic.
+        :type: UserInstruments
+        """
+
+        self._instruments = instruments
 
     def to_dict(self):
         """

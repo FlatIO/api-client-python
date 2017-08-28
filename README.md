@@ -79,6 +79,7 @@ All URIs are relative to *https://api.flat.io/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountApi* | [**get_authenticated_user**](docs/AccountApi.md#get_authenticated_user) | **GET** /me | Get current user profile
+*ClassApi* | [**activate_class**](docs/ClassApi.md#activate_class) | **POST** /classes/{class}/activate | Activate the class
 *ClassApi* | [**add_class_user**](docs/ClassApi.md#add_class_user) | **PUT** /classes/{class}/users/{user} | Add a user to the class
 *ClassApi* | [**archive_class**](docs/ClassApi.md#archive_class) | **POST** /classes/{class}/archive | Archive the class
 *ClassApi* | [**copy_assignment**](docs/ClassApi.md#copy_assignment) | **POST** /classes/{class}/assignments/{assignment}/copy | Copy an assignment
@@ -107,7 +108,9 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**list_organization_invitations**](docs/OrganizationApi.md#list_organization_invitations) | **GET** /organizations/invitations | List the organization invitations
 *OrganizationApi* | [**list_organization_users**](docs/OrganizationApi.md#list_organization_users) | **GET** /organizations/users | List the organization users
 *OrganizationApi* | [**remove_organization_invitation**](docs/OrganizationApi.md#remove_organization_invitation) | **DELETE** /organizations/invitations/{invitation} | Remove an organization invitation
+*OrganizationApi* | [**remove_organization_user**](docs/OrganizationApi.md#remove_organization_user) | **DELETE** /organizations/users/{user} | Remove an account from Flat
 *OrganizationApi* | [**revoke_lti_credentials**](docs/OrganizationApi.md#revoke_lti_credentials) | **DELETE** /organizations/lti/credentials/{credentials} | Revoke LTI 1.x credentials
+*OrganizationApi* | [**update_organization_user**](docs/OrganizationApi.md#update_organization_user) | **PUT** /organizations/users/{user} | Update account information
 *ScoreApi* | [**add_score_collaborator**](docs/ScoreApi.md#add_score_collaborator) | **POST** /scores/{score}/collaborators | Add a new collaborator
 *ScoreApi* | [**create_score**](docs/ScoreApi.md#create_score) | **POST** /scores | Create a new score
 *ScoreApi* | [**create_score_revision**](docs/ScoreApi.md#create_score_revision) | **POST** /scores/{score}/revisions | Create a new revision
@@ -147,12 +150,12 @@ Class | Method | HTTP request | Description
  - [ClassCreation](docs/ClassCreation.md)
  - [ClassDetails](docs/ClassDetails.md)
  - [ClassDetailsCanvas](docs/ClassDetailsCanvas.md)
+ - [ClassDetailsClever](docs/ClassDetailsClever.md)
  - [ClassDetailsGoogleClassroom](docs/ClassDetailsGoogleClassroom.md)
  - [ClassDetailsGoogleDrive](docs/ClassDetailsGoogleDrive.md)
  - [ClassDetailsLti](docs/ClassDetailsLti.md)
  - [ClassRoles](docs/ClassRoles.md)
  - [ClassState](docs/ClassState.md)
- - [ClassStreamPostMode](docs/ClassStreamPostMode.md)
  - [ClassUpdate](docs/ClassUpdate.md)
  - [FlatErrorResponse](docs/FlatErrorResponse.md)
  - [FlatLocales](docs/FlatLocales.md)
@@ -181,7 +184,6 @@ Class | Method | HTTP request | Description
  - [ScoreCreation](docs/ScoreCreation.md)
  - [ScoreData](docs/ScoreData.md)
  - [ScoreDataEncoding](docs/ScoreDataEncoding.md)
- - [ScoreDetails](docs/ScoreDetails.md)
  - [ScoreFork](docs/ScoreFork.md)
  - [ScoreLikesCounts](docs/ScoreLikesCounts.md)
  - [ScoreModification](docs/ScoreModification.md)
@@ -193,13 +195,20 @@ Class | Method | HTTP request | Description
  - [ScoreSource](docs/ScoreSource.md)
  - [ScoreSummary](docs/ScoreSummary.md)
  - [ScoreViewsCounts](docs/ScoreViewsCounts.md)
+ - [UserAdminUpdate](docs/UserAdminUpdate.md)
  - [UserBasics](docs/UserBasics.md)
  - [UserCreation](docs/UserCreation.md)
- - [UserDetails](docs/UserDetails.md)
- - [UserDetailsAdmin](docs/UserDetailsAdmin.md)
  - [UserDetailsAdminLicense](docs/UserDetailsAdminLicense.md)
- - [UserPublic](docs/UserPublic.md)
+ - [UserInstruments](docs/UserInstruments.md)
+ - [ScoreDetails](docs/ScoreDetails.md)
  - [UserPublicSummary](docs/UserPublicSummary.md)
+ - [UserDetailsAdmin](docs/UserDetailsAdmin.md)
+ - [UserPublic](docs/UserPublic.md)
+ - [UserDetails](docs/UserDetails.md)
+
+
+## Documentation For Authorization
+
 
 ## OAuth2
 
@@ -226,3 +235,4 @@ Class | Method | HTTP request | Description
 ## Author
 
 developers@flat.io
+
