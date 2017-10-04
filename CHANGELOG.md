@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+* feat(scores): New metadata and update of `PUT /v2/scores/{score}`:
+  * Added metadata in API `subtitle`, `lyricist`, `composer`, `description`, `tags`, `creationType`, `license`, `licenseText`, `durationTime`, `numberMeasures`, `mainTempoQpm`, `publicationDate`.
+  * `PUT /v2/scores/{score}`: Remove `title` property, this one can be updated by saving a new revision of the score data.
+  * `PUT /v2/scores/{score}`: New settable properties: `description`, `tags`, `creationType`, `license`.
+
 ## 0.4.0
 
 * feat(user): Add profile theme and instruments played.
