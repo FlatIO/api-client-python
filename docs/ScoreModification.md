@@ -3,8 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**title** | **str** | The title of the score | [optional] 
 **privacy** | [**ScorePrivacy**](ScorePrivacy.md) |  | [optional] 
-**sharing_key** | **str** | When using the &#x60;privacy&#x60; mode &#x60;privateLink&#x60;, this property can be used to set a custom sharing key, otherwise a new key will be generated. | [optional] 
+**sharing_key** | [**ResourceSharingKey**](ResourceSharingKey.md) |  | [optional] 
 **description** | **str** | Description of the creation | [optional] 
 **tags** | **list[str]** | Tags describing the score | [optional] 
 **creation_type** | [**ScoreCreationType**](ScoreCreationType.md) |  | [optional] 

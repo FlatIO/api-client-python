@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get group information
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -23,13 +23,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.GroupApi()
+api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
 group = 'group_example' # str | Unique identifier of a Flat group 
 
-try: 
+try:
     # Get group information
     api_response = api_instance.get_group_details(group)
     pprint(api_response)
@@ -65,7 +66,7 @@ List group's scores
 
 Get the list of scores shared with a group. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -74,14 +75,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.GroupApi()
+api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
 group = 'group_example' # str | Unique identifier of a Flat group 
 parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
 
-try: 
+try:
     # List group's scores
     api_response = api_instance.get_group_scores(group, parent=parent)
     pprint(api_response)
@@ -116,7 +118,7 @@ Name | Type | Description  | Notes
 
 List group's users
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -125,13 +127,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.GroupApi()
+api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
 group = 'group_example' # str | Unique identifier of a Flat group 
 
-try: 
+try:
     # List group's users
     api_response = api_instance.list_group_users(group)
     pprint(api_response)

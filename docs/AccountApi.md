@@ -14,7 +14,7 @@ Get current user profile
 
 Get details about the current authenticated User. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -23,12 +23,13 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.AccountApi()
+api_instance = flat_api.AccountApi(flat_api.ApiClient(configuration))
 
-try: 
+try:
     # Get current user profile
     api_response = api_instance.get_authenticated_user()
     pprint(api_response)

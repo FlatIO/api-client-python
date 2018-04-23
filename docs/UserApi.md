@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 List liked scores
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -23,14 +23,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.UserApi()
+api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
 ids = true # bool | Return only the identifiers of the scores (optional)
 
-try: 
+try:
     # List liked scores
     api_response = api_instance.ger_user_likes(user, ids=ids)
     pprint(api_response)
@@ -67,7 +68,7 @@ Get a public user profile
 
 Get a public profile of a Flat User. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -76,13 +77,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.UserApi()
+api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | This route parameter is the unique identifier of the user. You can specify an email instead of an unique identifier. If you are executing this request authenticated, you can use `me` as a value instead of the current User unique identifier to work on the current authenticated user. 
 
-try: 
+try:
     # Get a public user profile
     api_response = api_instance.get_user(user)
     pprint(api_response)
@@ -116,9 +118,9 @@ Name | Type | Description  | Notes
 
 List user's scores
 
-Get the list of scores owned by the User 
+Get the list of public scores owned by a User.  **DEPRECATED**: Please note that the current behavior will be deprecrated on **2019-01-01**. This method will no longer list private and shared scores, but only public scores of a Flat account. If you want to access to private scores, please use the [Collections API](#tag/Collection) instead. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -127,14 +129,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.UserApi()
+api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
 parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
 
-try: 
+try:
     # List user's scores
     api_response = api_instance.get_user_scores(user, parent=parent)
     pprint(api_response)

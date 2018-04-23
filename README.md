@@ -98,6 +98,15 @@ Class | Method | HTTP request | Description
 *ClassApi* | [**list_classes**](docs/ClassApi.md#list_classes) | **GET** /classes | List the classes available for the current user
 *ClassApi* | [**unarchive_class**](docs/ClassApi.md#unarchive_class) | **DELETE** /classes/{class}/archive | Unarchive the class
 *ClassApi* | [**update_class**](docs/ClassApi.md#update_class) | **PUT** /classes/{class} | Update the class
+*CollectionApi* | [**add_score_to_collection**](docs/CollectionApi.md#add_score_to_collection) | **PUT** /collections/{collection}/scores/{score} | Add a score to the collection
+*CollectionApi* | [**create_collection**](docs/CollectionApi.md#create_collection) | **POST** /collections | Create a new collection
+*CollectionApi* | [**delete_collection**](docs/CollectionApi.md#delete_collection) | **DELETE** /collections/{collection} | Delete the collection
+*CollectionApi* | [**delete_score_from_collection**](docs/CollectionApi.md#delete_score_from_collection) | **DELETE** /collections/{collection}/scores/{score} | Delete a score from the collection
+*CollectionApi* | [**edit_collection**](docs/CollectionApi.md#edit_collection) | **PUT** /collections/{collection} | Update a collection&#39;s metadata
+*CollectionApi* | [**get_collection**](docs/CollectionApi.md#get_collection) | **GET** /collections/{collection} | Get collection details
+*CollectionApi* | [**list_collection_scores**](docs/CollectionApi.md#list_collection_scores) | **GET** /collections/{collection}/scores | List the scores contained in a collection
+*CollectionApi* | [**list_collections**](docs/CollectionApi.md#list_collections) | **GET** /collections | List the collections
+*CollectionApi* | [**untrash_collection**](docs/CollectionApi.md#untrash_collection) | **POST** /collections/{collection}/untrash | Untrash a collection
 *GroupApi* | [**get_group_details**](docs/GroupApi.md#get_group_details) | **GET** /groups/{group} | Get group information
 *GroupApi* | [**get_group_scores**](docs/GroupApi.md#get_group_scores) | **GET** /groups/{group}/scores | List group&#39;s scores
 *GroupApi* | [**list_group_users**](docs/GroupApi.md#list_group_users) | **GET** /groups/{group}/users | List group&#39;s users
@@ -112,10 +121,12 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**revoke_lti_credentials**](docs/OrganizationApi.md#revoke_lti_credentials) | **DELETE** /organizations/lti/credentials/{credentials} | Revoke LTI 1.x credentials
 *OrganizationApi* | [**update_organization_user**](docs/OrganizationApi.md#update_organization_user) | **PUT** /organizations/users/{user} | Update account information
 *ScoreApi* | [**add_score_collaborator**](docs/ScoreApi.md#add_score_collaborator) | **POST** /scores/{score}/collaborators | Add a new collaborator
+*ScoreApi* | [**add_score_track**](docs/ScoreApi.md#add_score_track) | **POST** /scores/{score}/tracks | Add a new video or audio track to the score
 *ScoreApi* | [**create_score**](docs/ScoreApi.md#create_score) | **POST** /scores | Create a new score
 *ScoreApi* | [**create_score_revision**](docs/ScoreApi.md#create_score_revision) | **POST** /scores/{score}/revisions | Create a new revision
 *ScoreApi* | [**delete_score**](docs/ScoreApi.md#delete_score) | **DELETE** /scores/{score} | Delete a score
 *ScoreApi* | [**delete_score_comment**](docs/ScoreApi.md#delete_score_comment) | **DELETE** /scores/{score}/comments/{comment} | Delete a comment
+*ScoreApi* | [**delete_score_track**](docs/ScoreApi.md#delete_score_track) | **DELETE** /scores/{score}/tracks/{track} | Remove an audio or video track linked to the score
 *ScoreApi* | [**edit_score**](docs/ScoreApi.md#edit_score) | **PUT** /scores/{score} | Edit a score&#39;s metadata
 *ScoreApi* | [**fork_score**](docs/ScoreApi.md#fork_score) | **POST** /scores/{score}/fork | Fork a score
 *ScoreApi* | [**ger_user_likes**](docs/ScoreApi.md#ger_user_likes) | **GET** /users/{user}/likes | List liked scores
@@ -128,12 +139,16 @@ Class | Method | HTTP request | Description
 *ScoreApi* | [**get_score_revision_data**](docs/ScoreApi.md#get_score_revision_data) | **GET** /scores/{score}/revisions/{revision}/{format} | Get a score revision data
 *ScoreApi* | [**get_score_revisions**](docs/ScoreApi.md#get_score_revisions) | **GET** /scores/{score}/revisions | List the revisions
 *ScoreApi* | [**get_score_submissions**](docs/ScoreApi.md#get_score_submissions) | **GET** /scores/{score}/submissions | List submissions related to the score
+*ScoreApi* | [**get_score_track**](docs/ScoreApi.md#get_score_track) | **GET** /scores/{score}/tracks/{track} | Retrieve the details of an audio or video track linked to a score
 *ScoreApi* | [**get_user_scores**](docs/ScoreApi.md#get_user_scores) | **GET** /users/{user}/scores | List user&#39;s scores
+*ScoreApi* | [**list_score_tracks**](docs/ScoreApi.md#list_score_tracks) | **GET** /scores/{score}/tracks | List the audio or video tracks linked to a score
 *ScoreApi* | [**mark_score_comment_resolved**](docs/ScoreApi.md#mark_score_comment_resolved) | **PUT** /scores/{score}/comments/{comment}/resolved | Mark the comment as resolved
 *ScoreApi* | [**mark_score_comment_unresolved**](docs/ScoreApi.md#mark_score_comment_unresolved) | **DELETE** /scores/{score}/comments/{comment}/resolved | Mark the comment as unresolved
 *ScoreApi* | [**post_score_comment**](docs/ScoreApi.md#post_score_comment) | **POST** /scores/{score}/comments | Post a new comment
 *ScoreApi* | [**remove_score_collaborator**](docs/ScoreApi.md#remove_score_collaborator) | **DELETE** /scores/{score}/collaborators/{collaborator} | Delete a collaborator
+*ScoreApi* | [**untrash_score**](docs/ScoreApi.md#untrash_score) | **POST** /scores/{score}/untrash | Untrash a score
 *ScoreApi* | [**update_score_comment**](docs/ScoreApi.md#update_score_comment) | **PUT** /scores/{score}/comments/{comment} | Update an existing comment
+*ScoreApi* | [**update_score_track**](docs/ScoreApi.md#update_score_track) | **PUT** /scores/{score}/tracks/{track} | Update an audio or video track linked to a score
 *UserApi* | [**ger_user_likes**](docs/UserApi.md#ger_user_likes) | **GET** /users/{user}/likes | List liked scores
 *UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /users/{user} | Get a public user profile
 *UserApi* | [**get_user_scores**](docs/UserApi.md#get_user_scores) | **GET** /users/{user}/scores | List user&#39;s scores
@@ -157,6 +172,13 @@ Class | Method | HTTP request | Description
  - [ClassRoles](docs/ClassRoles.md)
  - [ClassState](docs/ClassState.md)
  - [ClassUpdate](docs/ClassUpdate.md)
+ - [Collection](docs/Collection.md)
+ - [CollectionCapabilities](docs/CollectionCapabilities.md)
+ - [CollectionCreation](docs/CollectionCreation.md)
+ - [CollectionModification](docs/CollectionModification.md)
+ - [CollectionPrivacy](docs/CollectionPrivacy.md)
+ - [CollectionTitle](docs/CollectionTitle.md)
+ - [CollectionType](docs/CollectionType.md)
  - [FlatErrorResponse](docs/FlatErrorResponse.md)
  - [FlatLocales](docs/FlatLocales.md)
  - [GoogleClassroomCoursework](docs/GoogleClassroomCoursework.md)
@@ -174,8 +196,9 @@ Class | Method | HTTP request | Description
  - [OrganizationInvitation](docs/OrganizationInvitation.md)
  - [OrganizationInvitationCreation](docs/OrganizationInvitationCreation.md)
  - [OrganizationRoles](docs/OrganizationRoles.md)
- - [ScoreCollaborator](docs/ScoreCollaborator.md)
- - [ScoreCollaboratorCreation](docs/ScoreCollaboratorCreation.md)
+ - [ResourceCollaboratorCreation](docs/ResourceCollaboratorCreation.md)
+ - [ResourceRights](docs/ResourceRights.md)
+ - [ResourceSharingKey](docs/ResourceSharingKey.md)
  - [ScoreComment](docs/ScoreComment.md)
  - [ScoreCommentContext](docs/ScoreCommentContext.md)
  - [ScoreCommentCreation](docs/ScoreCommentCreation.md)
@@ -193,15 +216,21 @@ Class | Method | HTTP request | Description
  - [ScoreRevision](docs/ScoreRevision.md)
  - [ScoreRevisionCreation](docs/ScoreRevisionCreation.md)
  - [ScoreRevisionStatistics](docs/ScoreRevisionStatistics.md)
- - [ScoreRights](docs/ScoreRights.md)
  - [ScoreSource](docs/ScoreSource.md)
  - [ScoreSummary](docs/ScoreSummary.md)
+ - [ScoreTrack](docs/ScoreTrack.md)
+ - [ScoreTrackCreation](docs/ScoreTrackCreation.md)
+ - [ScoreTrackPoint](docs/ScoreTrackPoint.md)
+ - [ScoreTrackState](docs/ScoreTrackState.md)
+ - [ScoreTrackType](docs/ScoreTrackType.md)
+ - [ScoreTrackUpdate](docs/ScoreTrackUpdate.md)
  - [ScoreViewsCounts](docs/ScoreViewsCounts.md)
  - [UserAdminUpdate](docs/UserAdminUpdate.md)
  - [UserBasics](docs/UserBasics.md)
  - [UserCreation](docs/UserCreation.md)
  - [UserDetailsAdminLicense](docs/UserDetailsAdminLicense.md)
  - [UserInstruments](docs/UserInstruments.md)
+ - [ResourceCollaborator](docs/ResourceCollaborator.md)
  - [ScoreDetails](docs/ScoreDetails.md)
  - [UserPublicSummary](docs/UserPublicSummary.md)
  - [UserDetailsAdmin](docs/UserDetailsAdmin.md)
@@ -217,12 +246,15 @@ Class | Method | HTTP request | Description
 - **Type**: OAuth
 - **Flow**: accessCode
 - **Authorization URL**: https://flat.io/auth/oauth
-- **Scopes**:
- - **account.public_profile**: Provides access to the basic person's public profile. Education profiles may be anonymized with this scope, you can request the scope `education_profile` to access to the a basic education account profile.
- - **account.education_profile**: Provides access to the basic person's education profile and public organization information.
- - **scores.readonly**: Allows read-only access to all a user's scores. You won't need this scope to read public scores.
- - **scores.social**: Allow to post comments and like scores
- - **scores**: Full, permissive scope to access all of a user's scores.
+- **Scopes**: 
+ - **account.public_profile**: Provides access to the basic person's public profile. Education profiles may be anonymized with this scope, you can request the scope `education_profile` to access to the a basic education account profile. 
+ - **account.education_profile**: Provides access to the basic person's education profile and public organization information. 
+ - **scores.readonly**: Allows read-only access to all a user's scores. You won't need this scope to read public scores. 
+ - **scores.social**: Allow to post comments and like scores 
+ - **scores**: Full, permissive scope to access all of a user's scores. 
+ - **collections.readonly**: Allow read-only access to a user's collections.
+ - **collections.add_scores**: Allow to add scores to a user's collections.
+ - **collections**: Full, permissive scope to access all of a user's collections.
  - **edu.classes**: Full, permissive scope to manage the classes.
  - **edu.classes.readonly**: Read-only access to the classes.
  - **edu.assignments**: Read-write access to the assignments and submissions.

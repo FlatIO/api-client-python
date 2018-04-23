@@ -32,7 +32,7 @@ Activate the class
 
 Mark the class as `active`. This is mainly used for classes synchronized from Clever that are initially with an `inactive` state and hidden in the UI. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -41,13 +41,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 
-try: 
+try:
     # Activate the class
     api_response = api_instance.activate_class(_class)
     pprint(api_response)
@@ -83,7 +84,7 @@ Add a user to the class
 
 This method can be used by a teacher of the class to enroll another Flat user into the class.  Only users that are part of your Organization can be enrolled in a class of this same Organization.  When enrolling a user in the class, Flat will automatically add this user to the corresponding Class group, based on this role in the Organization. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -92,14 +93,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try: 
+try:
     # Add a user to the class
     api_instance.add_class_user(_class, user)
 except ApiException as e:
@@ -135,7 +137,7 @@ Archive the class
 
 Mark the class as `archived`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -144,13 +146,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 
-try: 
+try:
     # Archive the class
     api_response = api_instance.archive_class(_class)
     pprint(api_response)
@@ -186,7 +189,7 @@ Copy an assignment
 
 Copy an assignment to a specified class.  If the original assignment has a due date in the past, this new assingment will be created without a due date.  If the new class is synchronized with an external app (e.g. Google Classroom), the copied assignment will also be posted on the external app. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -195,15 +198,16 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 body = flat_api.AssignmentCopy() # AssignmentCopy | 
 
-try: 
+try:
     # Copy an assignment
     api_response = api_instance.copy_assignment(_class, assignment, body)
     pprint(api_response)
@@ -241,7 +245,7 @@ Assignment creation
 
 Use this method as a teacher to create and post a new assignment to a class.  If the class is synchronized with Google Classroom, the assignment will be automatically posted to your Classroom course. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -250,14 +254,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 body = flat_api.AssignmentCreation() # AssignmentCreation |  (optional)
 
-try: 
+try:
     # Assignment creation
     api_response = api_instance.create_assignment(_class, body=body)
     pprint(api_response)
@@ -294,7 +299,7 @@ Create a new class
 
 Classrooms on Flat allow you to create activities with assignments and post content to a specific group.  When creating a class, Flat automatically creates two groups: one for the teachers of the course, one for the students. The creator of this class is automatically added to the teachers group.  If the classsroom is synchronized with another application like Google Classroom, some of the meta information will automatically be updated.  You can add users to this class using `POST /classes/{class}/users/{user}`, they will automatically added to the group based on their role on Flat. Users can also enroll themselves to this class using `POST /classes/enroll/{enrollmentCode}` and the `enrollmentCode` returned in the `ClassDetails` response. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -303,13 +308,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 body = flat_api.ClassCreation() # ClassCreation | 
 
-try: 
+try:
     # Create a new class
     api_response = api_instance.create_class(body)
     pprint(api_response)
@@ -345,7 +351,7 @@ Create or edit a submission
 
 Use this method as a student to create, update and submit a submission related to an assignment. Students can only set `attachments`, `studentComment` and `submit`.  Teachers can use `PUT /classes/{class}/assignments/{assignment}/submissions/{submission}` to update a submission by id. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -354,15 +360,16 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
-try: 
+try:
     # Create or edit a submission
     api_response = api_instance.create_submission(_class, assignment, body)
     pprint(api_response)
@@ -400,7 +407,7 @@ Remove a user from the class
 
 This method can be used by a teacher to remove a user from the class, or by a student to leave the classroom.  Warning: Removing a user from the class will remove the associated resources, including the submissions and feedback related to these submissions. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -409,14 +416,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try: 
+try:
     # Remove a user from the class
     api_instance.delete_class_user(_class, user)
 except ApiException as e:
@@ -452,7 +460,7 @@ Edit a submission
 
 Use this method as a teacher to update the different submission and give feedback. Teachers can only set `returnFeedback` 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -461,16 +469,17 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
-try: 
+try:
     # Edit a submission
     api_response = api_instance.edit_submission(_class, assignment, submission, body)
     pprint(api_response)
@@ -509,7 +518,7 @@ Join a class
 
 Use this method to join a class using an enrollment code given one of the teacher of this class. This code is also available in the `ClassDetails` returned to the teachers when creating the class or listing / fetching a specific class.  Flat will automatically add the user to the corresponding class group based on this role in the organization. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -518,13 +527,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 enrollment_code = 'enrollment_code_example' # str | The enrollment code, available to the teacher in `ClassDetails` 
 
-try: 
+try:
     # Join a class
     api_response = api_instance.enroll_class(enrollment_code)
     pprint(api_response)
@@ -558,7 +568,7 @@ Name | Type | Description  | Notes
 
 Get the details of a single class
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -567,13 +577,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 
-try: 
+try:
     # Get the details of a single class
     api_response = api_instance.get_class(_class)
     pprint(api_response)
@@ -609,7 +620,7 @@ List submissions related to the score
 
 This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -618,13 +629,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 
-try: 
+try:
     # List submissions related to the score
     api_response = api_instance.get_score_submissions(score)
     pprint(api_response)
@@ -658,7 +670,7 @@ Name | Type | Description  | Notes
 
 Get a student submission
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -667,15 +679,16 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 
-try: 
+try:
     # Get a student submission
     api_response = api_instance.get_submission(_class, assignment, submission)
     pprint(api_response)
@@ -711,7 +724,7 @@ Name | Type | Description  | Notes
 
 List the students' submissions
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -720,14 +733,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try: 
+try:
     # List the students' submissions
     api_response = api_instance.get_submissions(_class, assignment)
     pprint(api_response)
@@ -762,7 +776,7 @@ Name | Type | Description  | Notes
 
 Assignments listing
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -771,13 +785,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 
-try: 
+try:
     # Assignments listing
     api_response = api_instance.list_assignments(_class)
     pprint(api_response)
@@ -813,7 +828,7 @@ List the submissions for a student
 
 Use this method as a teacher to list all the assignment submissions sent by a student of the class 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -822,14 +837,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try: 
+try:
     # List the submissions for a student
     api_response = api_instance.list_class_student_submissions(_class, user)
     pprint(api_response)
@@ -864,7 +880,7 @@ Name | Type | Description  | Notes
 
 List the classes available for the current user
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -873,13 +889,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 state = 'active' # str | Filter the classes by state (optional) (default to active)
 
-try: 
+try:
     # List the classes available for the current user
     api_response = api_instance.list_classes(state=state)
     pprint(api_response)
@@ -915,7 +932,7 @@ Unarchive the class
 
 Mark the class as `active`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -924,13 +941,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 
-try: 
+try:
     # Unarchive the class
     api_response = api_instance.unarchive_class(_class)
     pprint(api_response)
@@ -966,7 +984,7 @@ Update the class
 
 Update the meta information of the class 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -975,14 +993,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.ClassApi()
+api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 body = flat_api.ClassUpdate() # ClassUpdate | Details of the Class (optional)
 
-try: 
+try:
     # Update the class
     api_response = api_instance.update_class(_class, body=body)
     pprint(api_response)

@@ -23,7 +23,7 @@ Create a new couple of LTI 1.x credentials
 
 Flat for Education is a Certified LTI Provider. You can use these API methods to automate the creation of LTI credentials. You can read more about our LTI implementation, supported components and LTI Endpoints in our [Developer Documentation](https://flat.io/developers/docs/lti/). 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -32,13 +32,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 body = flat_api.LtiCredentialsCreation() # LtiCredentialsCreation | 
 
-try: 
+try:
     # Create a new couple of LTI 1.x credentials
     api_response = api_instance.create_lti_credentials(body)
     pprint(api_response)
@@ -74,7 +75,7 @@ Create a new invitation to join the organization
 
 This method creates and sends invitation for teachers and admins.  Invitations can only be used by new Flat users or users who are not part of the organization yet.  If the email of the user is already associated to a user of your organization, the API will simply update the role of the existing user and won't send an invitation. In this case, the property `usedBy` will be directly filled with the uniquer identifier of the corresponding user. 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -83,13 +84,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 body = flat_api.OrganizationInvitationCreation() # OrganizationInvitationCreation |  (optional)
 
-try: 
+try:
     # Create a new invitation to join the organization
     api_response = api_instance.create_organization_invitation(body=body)
     pprint(api_response)
@@ -123,7 +125,7 @@ Name | Type | Description  | Notes
 
 Create a new user account
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -132,13 +134,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 body = flat_api.UserCreation() # UserCreation |  (optional)
 
-try: 
+try:
     # Create a new user account
     api_response = api_instance.create_organization_user(body=body)
     pprint(api_response)
@@ -172,7 +175,7 @@ Name | Type | Description  | Notes
 
 List LTI 1.x credentials
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -181,12 +184,13 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 
-try: 
+try:
     # List LTI 1.x credentials
     api_response = api_instance.list_lti_credentials()
     pprint(api_response)
@@ -217,7 +221,7 @@ This endpoint does not need any parameter.
 
 List the organization invitations
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -226,16 +230,17 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 role = 'role_example' # str | Filter users by role (optional)
 limit = 50 # int | This is the maximum number of objects that may be returned (optional) (default to 50)
 next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
-try: 
+try:
     # List the organization invitations
     api_response = api_instance.list_organization_invitations(role=role, limit=limit, next=next, previous=previous)
     pprint(api_response)
@@ -272,7 +277,7 @@ Name | Type | Description  | Notes
 
 List the organization users
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -281,16 +286,17 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 role = 'role_example' # str | Filter users by role (optional)
 limit = 50 # int | This is the maximum number of objects that may be returned (optional) (default to 50)
 next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
-try: 
+try:
     # List the organization users
     api_response = api_instance.list_organization_users(role=role, limit=limit, next=next, previous=previous)
     pprint(api_response)
@@ -327,7 +333,7 @@ Name | Type | Description  | Notes
 
 Remove an organization invitation
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -336,13 +342,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 invitation = 'invitation_example' # str | Unique identifier of the invitation
 
-try: 
+try:
     # Remove an organization invitation
     api_instance.remove_organization_invitation(invitation)
 except ApiException as e:
@@ -377,7 +384,7 @@ Remove an account from Flat
 
 This operation removes an account from Flat and its data, including: * The music scores created by this user (documents, history, comments, collaboration information) * Education related data (assignments and classroom information) 
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -386,14 +393,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of the Flat account 
 convert_to_individual = true # bool | If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal.  (optional)
 
-try: 
+try:
     # Remove an account from Flat
     api_instance.remove_organization_user(user, convert_to_individual=convert_to_individual)
 except ApiException as e:
@@ -427,7 +435,7 @@ void (empty response body)
 
 Revoke LTI 1.x credentials
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -436,13 +444,14 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 credentials = 'credentials_example' # str | Credentials unique identifier 
 
-try: 
+try:
     # Revoke LTI 1.x credentials
     api_instance.revoke_lti_credentials(credentials)
 except ApiException as e:
@@ -475,7 +484,7 @@ void (empty response body)
 
 Update account information
 
-### Example 
+### Example
 ```python
 from __future__ import print_function
 import time
@@ -484,14 +493,15 @@ from flat_api.rest import ApiException
 from pprint import pprint
 
 # Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
-api_instance = flat_api.OrganizationApi()
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of the Flat account 
 body = flat_api.UserAdminUpdate() # UserAdminUpdate | 
 
-try: 
+try:
     # Update account information
     api_response = api_instance.update_organization_user(user, body)
     pprint(api_response)
