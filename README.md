@@ -58,10 +58,13 @@ import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
 
-# Configure OAuth2 access token for authorization: OAuth2
-flat_api.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration = flat_api.Configuration()
+# Configure your personal access token or OAuth2 access token
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+flat_api_client = flat_api.ApiClient(configuration)
+
 # create an instance of the API class
-api_instance = flat_api.AccountApi()
+api_instance = flat_api.AccountApi(flat_api_client)
 
 try:
     # Get current user profile
