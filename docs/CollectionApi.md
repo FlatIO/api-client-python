@@ -23,6 +23,8 @@ Add a score to the collection
 This operation will add a score to a collection. The default behavior will make the score available across multiple collections. You must have the capability `canAddScores` on the provided `collection` to perform the action. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -66,19 +68,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_collection**
-> Collection create_collection(body)
+> Collection create_collection(collection_creation)
 
 Create a new collection
 
 This method will create a new collection and add it to your `root` collection. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -92,11 +96,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-body = flat_api.CollectionCreation() # CollectionCreation | 
+collection_creation = flat_api.CollectionCreation() # CollectionCreation | 
 
 try:
     # Create a new collection
-    api_response = api_instance.create_collection(body)
+    api_response = api_instance.create_collection(collection_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionApi->create_collection: %s\n" % e)
@@ -106,7 +110,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CollectionCreation**](CollectionCreation.md)|  | 
+ **collection_creation** | [**CollectionCreation**](CollectionCreation.md)|  | 
 
 ### Return type
 
@@ -131,6 +135,8 @@ Delete the collection
 This method will schedule the deletion of the collection. Until deleted, the collection will be available in the `trash`. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -169,7 +175,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -182,6 +188,8 @@ Delete a score from the collection
 This method will delete a score from the collection. Unlike [`DELETE /scores/{score}`](#operation/deleteScore), this score will not remove the score from your account, but only from the collection. This can be used to *move* a score from one collection to another, or simply remove a score from one collection when this one is contained in multiple collections. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -222,17 +230,19 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_collection**
-> Collection edit_collection(collection, body=body)
+> Collection edit_collection(collection, collection_modification=collection_modification)
 
 Update a collection's metadata
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -247,11 +257,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
 collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-body = flat_api.CollectionModification() # CollectionModification |  (optional)
+collection_modification = flat_api.CollectionModification() # CollectionModification |  (optional)
 
 try:
     # Update a collection's metadata
-    api_response = api_instance.edit_collection(collection, body=body)
+    api_response = api_instance.edit_collection(collection, collection_modification=collection_modification)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionApi->edit_collection: %s\n" % e)
@@ -262,7 +272,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
- **body** | [**CollectionModification**](CollectionModification.md)|  | [optional] 
+ **collection_modification** | [**CollectionModification**](CollectionModification.md)|  | [optional] 
 
 ### Return type
 
@@ -285,6 +295,8 @@ Name | Type | Description  | Notes
 Get collection details
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -326,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -339,6 +351,8 @@ List the scores contained in a collection
 Use this method to list the scores contained in a collection. If no sort option is provided, the scores are sorted by `modificationDate` `desc`. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -390,7 +404,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -403,6 +417,8 @@ List the collections
 Use this method to list the user's collections contained in `parent` (by default in the `root` collection). If no sort option is provided, the collections are sorted by `creationDate` `desc`.  Note that this method will not include the `parent` collection in the listing. For example, if you need the details of the `root` collection, you can use `GET /v2/collections/root`. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -416,7 +432,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-parent = 'root' # str | List the collection contained in this `parent` collection.  This option doesn't provide a complete multi-level collection support. When sharing a collection with someone, this one will have as `parent` `sharedWithMe`.  (optional) (default to root)
+parent = 'root' # str | List the collection contained in this `parent` collection.  This option doesn't provide a complete multi-level collection support. When sharing a collection with someone, this one will have as `parent` `sharedWithMe`.  (optional) (default to 'root')
 sort = 'sort_example' # str | Sort (optional)
 direction = 'direction_example' # str | Sort direction (optional)
 limit = 25 # int | This is the maximum number of objects that may be returned (optional) (default to 25)
@@ -435,7 +451,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **str**| List the collection contained in this &#x60;parent&#x60; collection.  This option doesn&#39;t provide a complete multi-level collection support. When sharing a collection with someone, this one will have as &#x60;parent&#x60; &#x60;sharedWithMe&#x60;.  | [optional] [default to root]
+ **parent** | **str**| List the collection contained in this &#x60;parent&#x60; collection.  This option doesn&#39;t provide a complete multi-level collection support. When sharing a collection with someone, this one will have as &#x60;parent&#x60; &#x60;sharedWithMe&#x60;.  | [optional] [default to &#39;root&#39;]
  **sort** | **str**| Sort | [optional] 
  **direction** | **str**| Sort direction | [optional] 
  **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 25]
@@ -452,7 +468,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -465,6 +481,8 @@ Untrash a collection
 This method will restore the collection by removing it from the `trash` and add it back to the `root` collection. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -503,7 +521,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

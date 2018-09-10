@@ -36,13 +36,15 @@ Method | HTTP request | Description
 
 
 # **add_score_collaborator**
-> ResourceCollaborator add_score_collaborator(score, body)
+> ResourceCollaborator add_score_collaborator(score, resource_collaborator_creation)
 
 Add a new collaborator
 
 Share a score with a single user or a group. This API call allows to add, invite and update the collaborators of a resource. - To add an existing Flat user to the resource, specify its unique identifier in the `user` property. - To invite an external user to the resource, specify its email in the `userEmail` property. - To add a Flat group to the resource, specify its unique identifier in the `group` property. - To update an existing collaborator, process the same request with different rights. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -57,11 +59,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ResourceCollaboratorCreation() # ResourceCollaboratorCreation | 
+resource_collaborator_creation = flat_api.ResourceCollaboratorCreation() # ResourceCollaboratorCreation | 
 
 try:
     # Add a new collaborator
-    api_response = api_instance.add_score_collaborator(score, body)
+    api_response = api_instance.add_score_collaborator(score, resource_collaborator_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->add_score_collaborator: %s\n" % e)
@@ -72,7 +74,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ResourceCollaboratorCreation**](ResourceCollaboratorCreation.md)|  | 
+ **resource_collaborator_creation** | [**ResourceCollaboratorCreation**](ResourceCollaboratorCreation.md)|  | 
 
 ### Return type
 
@@ -90,13 +92,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_score_track**
-> ScoreTrack add_score_track(score, body)
+> ScoreTrack add_score_track(score, score_track_creation)
 
 Add a new video or audio track to the score
 
 Use this method to add new track to the score. This track can then be played on flat.io or in an embedded score. This API method support medias hosted on SoundCloud, YouTube and Vimeo. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -111,11 +115,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ScoreTrackCreation() # ScoreTrackCreation | 
+score_track_creation = flat_api.ScoreTrackCreation() # ScoreTrackCreation | 
 
 try:
     # Add a new video or audio track to the score
-    api_response = api_instance.add_score_track(score, body)
+    api_response = api_instance.add_score_track(score, score_track_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->add_score_track: %s\n" % e)
@@ -126,7 +130,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ScoreTrackCreation**](ScoreTrackCreation.md)|  | 
+ **score_track_creation** | [**ScoreTrackCreation**](ScoreTrackCreation.md)|  | 
 
 ### Return type
 
@@ -144,13 +148,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_score**
-> ScoreDetails create_score(body)
+> ScoreDetails create_score(score_creation)
 
 Create a new score
 
-Use this API method to **create a new music score in the current User account**. You will need a MusicXML 3 (`vnd.recordare.musicxml` or `vnd.recordare.musicxml+xml`) or a MIDI (`audio/midi`) file to create the new Flat document.  This API call will automatically create the first revision of the document, the score can be modified by the using our web application or by uploading a new revision of this file (`POST /v2/scores/{score}/revisions/{revision}`).  The currently authenticated user will be granted owner of the file and will be able to add other collaborators (users and groups).  If no `collection` is specified, the API will create the score in the most appropriate collection. This can be the `root` collection or a different collection based on the user's settings or API authentication method. If a `collection` is specified and this one has more public privacy settings than the score (e.g. `public` vs `private` for the score), the privacy settings of the created score will be adjusted to the collection ones. You can check the adjusted privacy settings in the returned score `privacy`, and optionally adjust these settings if needed using `PUT /scores/{score}`. 
+Use this API method to **create a new music score in the current User account**. You will need a MusicXML 3 (`vnd.recordare.musicxml` or `vnd.recordare.musicxml+xml`), a MIDI (`audio/midi`), Guitar Pro (GP3, GP4, GP5, GPX, GP), PowerTab or TuxGuitar file to create the new Flat document.  This API call will automatically create the first revision of the document, the score can be modified by the using our web application or by uploading a new revision of this file (`POST /v2/scores/{score}/revisions/{revision}`).  The currently authenticated user will be granted owner of the file and will be able to add other collaborators (users and groups).  If no `collection` is specified, the API will create the score in the most appropriate collection. This can be the `root` collection or a different collection based on the user's settings or API authentication method. If a `collection` is specified and this one has more public privacy settings than the score (e.g. `public` vs `private` for the score), the privacy settings of the created score will be adjusted to the collection ones. You can check the adjusted privacy settings in the returned score `privacy`, and optionally adjust these settings if needed using `PUT /scores/{score}`. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -164,11 +170,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
-body = flat_api.ScoreCreation() # ScoreCreation | 
+score_creation = flat_api.ScoreCreation() # ScoreCreation | 
 
 try:
     # Create a new score
-    api_response = api_instance.create_score(body)
+    api_response = api_instance.create_score(score_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->create_score: %s\n" % e)
@@ -178,7 +184,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ScoreCreation**](ScoreCreation.md)|  | 
+ **score_creation** | [**ScoreCreation**](ScoreCreation.md)|  | 
 
 ### Return type
 
@@ -196,13 +202,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_score_revision**
-> ScoreRevision create_score_revision(score, body)
+> ScoreRevision create_score_revision(score, score_revision_creation)
 
 Create a new revision
 
 Update a score by uploading a new revision for this one. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -217,11 +225,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ScoreRevisionCreation() # ScoreRevisionCreation | 
+score_revision_creation = flat_api.ScoreRevisionCreation() # ScoreRevisionCreation | 
 
 try:
     # Create a new revision
-    api_response = api_instance.create_score_revision(score, body)
+    api_response = api_instance.create_score_revision(score, score_revision_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->create_score_revision: %s\n" % e)
@@ -232,7 +240,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ScoreRevisionCreation**](ScoreRevisionCreation.md)|  | 
+ **score_revision_creation** | [**ScoreRevisionCreation**](ScoreRevisionCreation.md)|  | 
 
 ### Return type
 
@@ -257,6 +265,8 @@ Delete a score
 This method can be used by the owner/admin (`aclAdmin` rights) of a score as well as regular collaborators.  When called by an owner/admin, it will schedule the deletion of the score, its revisions, and complete history. The score won't be accessible anymore after calling this method and the user's quota will directly be updated.  When called by a regular collaborator (`aclRead` / `aclWrite`), the score will be unshared (i.e. removed from the account & own collections). 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -295,7 +305,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -306,6 +316,8 @@ void (empty response body)
 Delete a comment
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -348,7 +360,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -359,6 +371,8 @@ void (empty response body)
 Remove an audio or video track linked to the score
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -399,19 +413,21 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_score**
-> ScoreDetails edit_score(score, body=body)
+> ScoreDetails edit_score(score, score_modification=score_modification)
 
 Edit a score's metadata
 
 This API method allows you to change the metadata of a score document (e.g. its `title` or `privacy`), all the properties are optional.  To edit the file itself, create a new revision using the appropriate method (`POST /v2/scores/{score}/revisions/{revision}`).  When editing the `title` of the score, the API metadata are updated directly when calling this method, unlike the data itself. The title in the score data will be \"lazy\" updated at the next score save with the editor or our internal save. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -426,11 +442,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ScoreModification() # ScoreModification |  (optional)
+score_modification = flat_api.ScoreModification() # ScoreModification |  (optional)
 
 try:
     # Edit a score's metadata
-    api_response = api_instance.edit_score(score, body=body)
+    api_response = api_instance.edit_score(score, score_modification=score_modification)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->edit_score: %s\n" % e)
@@ -441,7 +457,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ScoreModification**](ScoreModification.md)|  | [optional] 
+ **score_modification** | [**ScoreModification**](ScoreModification.md)|  | [optional] 
 
 ### Return type
 
@@ -459,13 +475,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fork_score**
-> ScoreDetails fork_score(score, body, sharing_key=sharing_key)
+> ScoreDetails fork_score(score, score_fork, sharing_key=sharing_key)
 
 Fork a score
 
 This API call will make a copy of the last revision of the specified score and create a new score. The copy of the score will have a privacy set to `private`.  When using a [Flat for Education](https://flat.io/edu) account, the inline and contextualized comments will be accessible in the child document. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -480,12 +498,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ScoreFork() # ScoreFork | 
+score_fork = flat_api.ScoreFork() # ScoreFork | 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try:
     # Fork a score
-    api_response = api_instance.fork_score(score, body, sharing_key=sharing_key)
+    api_response = api_instance.fork_score(score, score_fork, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->fork_score: %s\n" % e)
@@ -496,7 +514,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ScoreFork**](ScoreFork.md)|  | 
+ **score_fork** | [**ScoreFork**](ScoreFork.md)|  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
@@ -520,6 +538,8 @@ Name | Type | Description  | Notes
 List liked scores
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -534,7 +554,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
-ids = true # bool | Return only the identifiers of the scores (optional)
+ids = True # bool | Return only the identifiers of the scores (optional)
 
 try:
     # List liked scores
@@ -561,7 +581,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -574,6 +594,8 @@ List group's scores
 Get the list of scores shared with a group. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -615,7 +637,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -628,6 +650,8 @@ Get a score's metadata
 Get the details of a score identified by the `score` parameter in the URL. The currently authenticated user must have at least a read access to the document to use this API call. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -669,7 +693,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -682,6 +706,8 @@ Get a collaborator
 Get the information about a collaborator (User or Group). 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -725,7 +751,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -738,6 +764,8 @@ List the collaborators
 This API call will list the different collaborators of a score and their rights on the document. The returned list will at least contain the owner of the document.  Collaborators can be a single user (the object `user` will be populated) or a group (the object `group` will be populated). 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -779,7 +807,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -792,6 +820,8 @@ List comments
 This method lists the different comments added on a music score (documents and inline) sorted by their post dates.
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -839,7 +869,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -852,6 +882,8 @@ Get a score revision
 When creating a score or saving a new version of a score, a revision is created in our storage. This method allows you to get a specific revision metadata. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -895,19 +927,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_revision_data**
-> str get_score_revision_data(score, revision, format, sharing_key=sharing_key, parts=parts, only_cached=only_cached)
+> file get_score_revision_data(score, revision, format, sharing_key=sharing_key, parts=parts, only_cached=only_cached)
 
 Get a score revision data
 
 Retrieve the file corresponding to a score revision (the following formats are available: Flat JSON/Adagio JSON `json`, MusicXML `mxl`/`xml`, MP3 `mp3`, WAV `wav`, MIDI `midi`, or a tumbnail of the first page `thumbnail.png`). 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -926,7 +960,7 @@ revision = 'revision_example' # str | Unique identifier of a score revision. You
 format = 'format_example' # str | The format of the file you will retrieve
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 parts = 'parts_example' # str | An optional a set of parts to be exported. This parameter must be specified with a list of integers. For example \"1,2,5\".  (optional)
-only_cached = true # bool | Only return files already generated and cached in Flat's production cache. If the file is not availabe, a 404 will be returned  (optional)
+only_cached = True # bool | Only return files already generated and cached in Flat's production cache. If the file is not availabe, a 404 will be returned  (optional)
 
 try:
     # Get a score revision data
@@ -949,7 +983,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+**file**
 
 ### Authorization
 
@@ -957,7 +991,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json, application/vnd.recordare.musicxml+xml, application/vnd.recordare.musicxml, audio/mp3, audio/wav, audio/midi, image/png
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -970,6 +1004,8 @@ List the revisions
 When creating a score or saving a new version of a score, a revision is created in our storage. This method allows you to list all of them, sorted by last modification.  Depending the plan of the account, this list can be trunked to the few last revisions. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1011,7 +1047,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1024,6 +1060,8 @@ List submissions related to the score
 This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1063,7 +1101,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1074,6 +1112,8 @@ Name | Type | Description  | Notes
 Retrieve the details of an audio or video track linked to a score
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1117,7 +1157,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1130,6 +1170,8 @@ List user's scores
 Get the list of public scores owned by a User.  **DEPRECATED**: Please note that the current behavior will be deprecrated on **2019-01-01**. This method will no longer list private and shared scores, but only public scores of a Flat account. If you want to access to private scores, please use the [Collections API](#tag/Collection) instead. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1171,7 +1213,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1182,6 +1224,8 @@ Name | Type | Description  | Notes
 List the audio or video tracks linked to a score
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1223,7 +1267,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1234,6 +1278,8 @@ Name | Type | Description  | Notes
 Mark the comment as resolved
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1276,7 +1322,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1287,6 +1333,8 @@ void (empty response body)
 Mark the comment as unresolved
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1329,19 +1377,21 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_score_comment**
-> ScoreComment post_score_comment(score, body, sharing_key=sharing_key)
+> ScoreComment post_score_comment(score, score_comment_creation, sharing_key=sharing_key)
 
 Post a new comment
 
 Post a document or a contextualized comment on a document.  Please note that this method includes an anti-spam system for public scores. We don't guarantee that your comments will be accepted and displayed to end-user. Comments are be blocked by returning a `403` HTTP error and hidden from other users when the `spam` property is `true`. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1356,12 +1406,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-body = flat_api.ScoreCommentCreation() # ScoreCommentCreation | 
+score_comment_creation = flat_api.ScoreCommentCreation() # ScoreCommentCreation | 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try:
     # Post a new comment
-    api_response = api_instance.post_score_comment(score, body, sharing_key=sharing_key)
+    api_response = api_instance.post_score_comment(score, score_comment_creation, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->post_score_comment: %s\n" % e)
@@ -1372,7 +1422,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **body** | [**ScoreCommentCreation**](ScoreCommentCreation.md)|  | 
+ **score_comment_creation** | [**ScoreCommentCreation**](ScoreCommentCreation.md)|  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
@@ -1398,6 +1448,8 @@ Delete a collaborator
 Remove the specified collaborator from the score 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1438,7 +1490,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1485,17 +1537,19 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_score_comment**
-> ScoreComment update_score_comment(score, comment, body, sharing_key=sharing_key)
+> ScoreComment update_score_comment(score, comment, score_comment_update, sharing_key=sharing_key)
 
 Update an existing comment
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1511,12 +1565,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 comment = 'comment_example' # str | Unique identifier of a sheet music comment 
-body = flat_api.ScoreCommentUpdate() # ScoreCommentUpdate | 
+score_comment_update = flat_api.ScoreCommentUpdate() # ScoreCommentUpdate | 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try:
     # Update an existing comment
-    api_response = api_instance.update_score_comment(score, comment, body, sharing_key=sharing_key)
+    api_response = api_instance.update_score_comment(score, comment, score_comment_update, sharing_key=sharing_key)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->update_score_comment: %s\n" % e)
@@ -1528,7 +1582,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **comment** | **str**| Unique identifier of a sheet music comment  | 
- **body** | [**ScoreCommentUpdate**](ScoreCommentUpdate.md)|  | 
+ **score_comment_update** | [**ScoreCommentUpdate**](ScoreCommentUpdate.md)|  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
@@ -1547,11 +1601,13 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_score_track**
-> ScoreTrack update_score_track(score, track, body)
+> ScoreTrack update_score_track(score, track, score_track_update)
 
 Update an audio or video track linked to a score
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -1567,11 +1623,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ScoreApi(flat_api.ApiClient(configuration))
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 track = 'track_example' # str | Unique identifier of a score audio track 
-body = flat_api.ScoreTrackUpdate() # ScoreTrackUpdate | 
+score_track_update = flat_api.ScoreTrackUpdate() # ScoreTrackUpdate | 
 
 try:
     # Update an audio or video track linked to a score
-    api_response = api_instance.update_score_track(score, track, body)
+    api_response = api_instance.update_score_track(score, track, score_track_update)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ScoreApi->update_score_track: %s\n" % e)
@@ -1583,7 +1639,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **track** | **str**| Unique identifier of a score audio track  | 
- **body** | [**ScoreTrackUpdate**](ScoreTrackUpdate.md)|  | 
+ **score_track_update** | [**ScoreTrackUpdate**](ScoreTrackUpdate.md)|  | 
 
 ### Return type
 

@@ -15,6 +15,8 @@ Method | HTTP request | Description
 Get group information
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -54,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -67,6 +69,8 @@ List group's scores
 Get the list of scores shared with a group. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -119,6 +123,8 @@ Name | Type | Description  | Notes
 List group's users
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -158,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
