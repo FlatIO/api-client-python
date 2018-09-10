@@ -33,6 +33,8 @@ Activate the class
 Mark the class as `active`. This is mainly used for classes synchronized from Clever that are initially with an `inactive` state and hidden in the UI. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -72,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -85,6 +87,8 @@ Add a user to the class
 This method can be used by a teacher of the class to enroll another Flat user into the class.  Only users that are part of your Organization can be enrolled in a class of this same Organization.  When enrolling a user in the class, Flat will automatically add this user to the corresponding Class group, based on this role in the Organization. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -125,7 +129,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -138,6 +142,8 @@ Archive the class
 Mark the class as `archived`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -177,19 +183,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **copy_assignment**
-> Assignment copy_assignment(_class, assignment, body)
+> Assignment copy_assignment(_class, assignment, assignment_copy)
 
 Copy an assignment
 
 Copy an assignment to a specified class.  If the original assignment has a due date in the past, this new assingment will be created without a due date.  If the new class is synchronized with an external app (e.g. Google Classroom), the copied assignment will also be posted on the external app. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -205,11 +213,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
-body = flat_api.AssignmentCopy() # AssignmentCopy | 
+assignment_copy = flat_api.AssignmentCopy() # AssignmentCopy | 
 
 try:
     # Copy an assignment
-    api_response = api_instance.copy_assignment(_class, assignment, body)
+    api_response = api_instance.copy_assignment(_class, assignment, assignment_copy)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->copy_assignment: %s\n" % e)
@@ -221,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_class** | **str**| Unique identifier of the class | 
  **assignment** | **str**| Unique identifier of the assignment | 
- **body** | [**AssignmentCopy**](AssignmentCopy.md)|  | 
+ **assignment_copy** | [**AssignmentCopy**](AssignmentCopy.md)|  | 
 
 ### Return type
 
@@ -239,13 +247,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_assignment**
-> Assignment create_assignment(_class, body=body)
+> Assignment create_assignment(_class, assignment_creation=assignment_creation)
 
 Assignment creation
 
 Use this method as a teacher to create and post a new assignment to a class.  If the class is synchronized with Google Classroom, the assignment will be automatically posted to your Classroom course. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -260,11 +270,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
-body = flat_api.AssignmentCreation() # AssignmentCreation |  (optional)
+assignment_creation = flat_api.AssignmentCreation() # AssignmentCreation |  (optional)
 
 try:
     # Assignment creation
-    api_response = api_instance.create_assignment(_class, body=body)
+    api_response = api_instance.create_assignment(_class, assignment_creation=assignment_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->create_assignment: %s\n" % e)
@@ -275,7 +285,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_class** | **str**| Unique identifier of the class | 
- **body** | [**AssignmentCreation**](AssignmentCreation.md)|  | [optional] 
+ **assignment_creation** | [**AssignmentCreation**](AssignmentCreation.md)|  | [optional] 
 
 ### Return type
 
@@ -293,13 +303,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_class**
-> ClassDetails create_class(body)
+> ClassDetails create_class(class_creation)
 
 Create a new class
 
 Classrooms on Flat allow you to create activities with assignments and post content to a specific group.  When creating a class, Flat automatically creates two groups: one for the teachers of the course, one for the students. The creator of this class is automatically added to the teachers group.  If the classsroom is synchronized with another application like Google Classroom, some of the meta information will automatically be updated.  You can add users to this class using `POST /classes/{class}/users/{user}`, they will automatically added to the group based on their role on Flat. Users can also enroll themselves to this class using `POST /classes/enroll/{enrollmentCode}` and the `enrollmentCode` returned in the `ClassDetails` response. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -313,11 +325,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-body = flat_api.ClassCreation() # ClassCreation | 
+class_creation = flat_api.ClassCreation() # ClassCreation | 
 
 try:
     # Create a new class
-    api_response = api_instance.create_class(body)
+    api_response = api_instance.create_class(class_creation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->create_class: %s\n" % e)
@@ -327,7 +339,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**ClassCreation**](ClassCreation.md)|  | 
+ **class_creation** | [**ClassCreation**](ClassCreation.md)|  | 
 
 ### Return type
 
@@ -345,13 +357,15 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_submission**
-> AssignmentSubmission create_submission(_class, assignment, body)
+> AssignmentSubmission create_submission(_class, assignment, assignment_submission_update)
 
 Create or edit a submission
 
 Use this method as a student to create, update and submit a submission related to an assignment. Students can only set `attachments`, `studentComment` and `submit`.  Teachers can use `PUT /classes/{class}/assignments/{assignment}/submissions/{submission}` to update a submission by id. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -367,11 +381,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
-body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
+assignment_submission_update = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
 try:
     # Create or edit a submission
-    api_response = api_instance.create_submission(_class, assignment, body)
+    api_response = api_instance.create_submission(_class, assignment, assignment_submission_update)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->create_submission: %s\n" % e)
@@ -383,7 +397,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_class** | **str**| Unique identifier of the class | 
  **assignment** | **str**| Unique identifier of the assignment | 
- **body** | [**AssignmentSubmissionUpdate**](AssignmentSubmissionUpdate.md)|  | 
+ **assignment_submission_update** | [**AssignmentSubmissionUpdate**](AssignmentSubmissionUpdate.md)|  | 
 
 ### Return type
 
@@ -408,6 +422,8 @@ Remove a user from the class
 This method can be used by a teacher to remove a user from the class, or by a student to leave the classroom.  Warning: Removing a user from the class will remove the associated resources, including the submissions and feedback related to these submissions. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -448,19 +464,21 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_submission**
-> AssignmentSubmission edit_submission(_class, assignment, submission, body)
+> AssignmentSubmission edit_submission(_class, assignment, submission, assignment_submission_update)
 
 Edit a submission
 
 Use this method as a teacher to update the different submission and give feedback. Teachers can only set `returnFeedback` 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -477,11 +495,11 @@ api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
-body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
+assignment_submission_update = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
 try:
     # Edit a submission
-    api_response = api_instance.edit_submission(_class, assignment, submission, body)
+    api_response = api_instance.edit_submission(_class, assignment, submission, assignment_submission_update)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->edit_submission: %s\n" % e)
@@ -494,7 +512,7 @@ Name | Type | Description  | Notes
  **_class** | **str**| Unique identifier of the class | 
  **assignment** | **str**| Unique identifier of the assignment | 
  **submission** | **str**| Unique identifier of the submission | 
- **body** | [**AssignmentSubmissionUpdate**](AssignmentSubmissionUpdate.md)|  | 
+ **assignment_submission_update** | [**AssignmentSubmissionUpdate**](AssignmentSubmissionUpdate.md)|  | 
 
 ### Return type
 
@@ -519,6 +537,8 @@ Join a class
 Use this method to join a class using an enrollment code given one of the teacher of this class. This code is also available in the `ClassDetails` returned to the teachers when creating the class or listing / fetching a specific class.  Flat will automatically add the user to the corresponding class group based on this role in the organization. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -558,7 +578,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -569,6 +589,8 @@ Name | Type | Description  | Notes
 Get the details of a single class
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -608,7 +630,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -621,6 +643,8 @@ List submissions related to the score
 This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -660,7 +684,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -671,6 +695,8 @@ Name | Type | Description  | Notes
 Get a student submission
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -714,7 +740,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -725,6 +751,8 @@ Name | Type | Description  | Notes
 List the students' submissions
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -766,7 +794,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -777,6 +805,8 @@ Name | Type | Description  | Notes
 Assignments listing
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -816,7 +846,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -829,6 +859,8 @@ List the submissions for a student
 Use this method as a teacher to list all the assignment submissions sent by a student of the class 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -870,7 +902,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -881,6 +913,8 @@ Name | Type | Description  | Notes
 List the classes available for the current user
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -894,7 +928,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-state = 'active' # str | Filter the classes by state (optional) (default to active)
+state = 'active' # str | Filter the classes by state (optional) (default to 'active')
 
 try:
     # List the classes available for the current user
@@ -908,7 +942,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **state** | **str**| Filter the classes by state | [optional] [default to active]
+ **state** | **str**| Filter the classes by state | [optional] [default to &#39;active&#39;]
 
 ### Return type
 
@@ -920,7 +954,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -933,6 +967,8 @@ Unarchive the class
 Mark the class as `active`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated. 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -972,19 +1008,21 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_class**
-> ClassDetails update_class(_class, body=body)
+> ClassDetails update_class(_class, class_update=class_update)
 
 Update the class
 
 Update the meta information of the class 
 
 ### Example
+
+* OAuth Authentication (OAuth2): 
 ```python
 from __future__ import print_function
 import time
@@ -999,11 +1037,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
 _class = '_class_example' # str | Unique identifier of the class
-body = flat_api.ClassUpdate() # ClassUpdate | Details of the Class (optional)
+class_update = flat_api.ClassUpdate() # ClassUpdate | Details of the Class (optional)
 
 try:
     # Update the class
-    api_response = api_instance.update_class(_class, body=body)
+    api_response = api_instance.update_class(_class, class_update=class_update)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ClassApi->update_class: %s\n" % e)
@@ -1014,7 +1052,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_class** | **str**| Unique identifier of the class | 
- **body** | [**ClassUpdate**](ClassUpdate.md)| Details of the Class | [optional] 
+ **class_update** | [**ClassUpdate**](ClassUpdate.md)| Details of the Class | [optional] 
 
 ### Return type
 

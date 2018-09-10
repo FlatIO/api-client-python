@@ -3,12 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique identifier of the score | [optional] 
-**sharing_key** | **str** | The private sharing key of the score (available when the &#x60;privacy&#x60; mode is set to &#x60;privateLink&#x60;) | [optional] 
-**title** | **str** | The title of the score | [optional] 
-**privacy** | [**ScorePrivacy**](ScorePrivacy.md) |  | [optional] 
-**user** | [**UserPublicSummary**](UserPublicSummary.md) |  | [optional] 
-**html_url** | **str** | The url where the score can be viewed in a web browser | [optional] 
 **subtitle** | **str** | Subtitle of the score | [optional] 
 **lyricist** | **str** | Lyricist of the score | [optional] 
 **composer** | **str** | Composer of the score | [optional] 
@@ -32,6 +26,7 @@ Name | Type | Description | Notes
 **likes** | [**ScoreLikesCounts**](ScoreLikesCounts.md) |  | [optional] 
 **comments** | [**ScoreCommentsCounts**](ScoreCommentsCounts.md) |  | [optional] 
 **views** | [**ScoreViewsCounts**](ScoreViewsCounts.md) |  | [optional] 
+**collections** | **list[str]** | The List of parent collections, which includes all the collections this score is included. Please note that you might not have access to all of them. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
