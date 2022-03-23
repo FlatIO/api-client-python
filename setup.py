@@ -12,7 +12,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "flat_api"
-VERSION = "0.7.0"
+VERSION = "0.8.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -39,8 +39,9 @@ setup(
     url="https://github.com/FlatIO/api-client-python",
     keywords=["Flat API", "MusicXML", "Music Notation", "MIDI"],
     long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
     install_requires=REQUIRES,
-    packages=find_packages(),
+    packages=find_packages(exclude=['test']),
     include_package_data=True,
     license="Apache",
     classifiers=[
