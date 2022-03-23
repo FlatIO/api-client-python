@@ -1,9 +1,27 @@
 # Changelog
 
-## 0.7.0 (API v2.17.0)
+## 0.8.0 (API v2.17.0)
 
 * Updated API from v2.6.0 to v2.17.0
 * Use flatten schema to fix inherance model issues
+
+## 0.7.0 (API v2.7.0)
+
+### Client
+
+* feat: Add/fix support for python for 3.6 & 3.7
+
+### API v2.7.0
+
+* update(spec): specify `produces` and `consumes` on endpoints instead of globally
+* feat(scores): now support Guitar Pro (GP3, GP4, GP5, GPX, GP), PowerTab, TuxGuitar and MuseScore files in POST /scores
+* feat(scores): add support for `filename` when importing scores
+* feat(collections): `parent` collection can now be a collection id when listing collections
+* feat(collections): includes parent collections when listing scores
+* feat(collections): add `creationDate` property in collection details
+* feat(comments): add `staffUuid` for contextualized comments, which will completely replace `staffIdx` in the future
+* feat(rights): now return a `isCollaborator` boolean property with the Score or Collection rights
+* update(account): added new locales supported
 
 ## 0.6.0 (API v2.6.0)
 
