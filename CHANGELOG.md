@@ -3,7 +3,7 @@
 ## 0.8.0 (API v2.17.0)
 
 * Updated API from v2.6.0 to v2.17.0
-* Use flatten schema to fix inherance model issues
+* Use flatten schema to fix inheritance model issues
 
 ## 0.7.0 (API v2.7.0)
 
