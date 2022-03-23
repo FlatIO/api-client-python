@@ -16,10 +16,13 @@ Name | Type | Description | Notes
 **assignments_count** | **float** | The number of assignments created in the class | [optional] 
 **students_group** | [**GroupDetails**](GroupDetails.md) |  | [optional] 
 **teachers_group** | [**GroupDetails**](GroupDetails.md) |  | [optional] 
+**issues** | [**ClassDetailsIssues**](ClassDetailsIssues.md) |  | [optional] 
 **google_classroom** | [**ClassDetailsGoogleClassroom**](ClassDetailsGoogleClassroom.md) |  | [optional] 
 **google_drive** | [**ClassDetailsGoogleDrive**](ClassDetailsGoogleDrive.md) |  | [optional] 
+**microsoft_graph** | [**ClassDetailsMicrosoftGraph**](ClassDetailsMicrosoftGraph.md) |  | [optional] 
 **lti** | [**ClassDetailsLti**](ClassDetailsLti.md) |  | [optional] 
 **canvas** | [**ClassDetailsCanvas**](ClassDetailsCanvas.md) |  | [optional] 
+**mfc** | [**ClassDetailsMfc**](ClassDetailsMfc.md) |  | [optional] 
 **clever** | [**ClassDetailsClever**](ClassDetailsClever.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

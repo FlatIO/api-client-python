@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **get_authenticated_user**
-> UserDetails get_authenticated_user()
+> UserDetails get_authenticated_user(only_id=only_id)
 
 Get current user profile
 
@@ -30,17 +30,21 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.AccountApi(flat_api.ApiClient(configuration))
+only_id = False # bool | Only return the user id (optional) (default to False)
 
 try:
     # Get current user profile
-    api_response = api_instance.get_authenticated_user()
+    api_response = api_instance.get_authenticated_user(only_id=only_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->get_authenticated_user: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **only_id** | **bool**| Only return the user id | [optional] [default to False]
 
 ### Return type
 

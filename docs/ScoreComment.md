@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **mentions** | **list[str]** | The list of user identifier mentioned on the score | [optional] 
 **resolved** | **bool** | For inline comments, the comment can be marked as resolved and will be hidden in the future responses  | [optional] 
 **resolved_by** | **str** | If the user is marked as resolved, this will contain the unique identifier of the User who marked this comment as resolved  | [optional] 
+**moderation** | [**ScoreCommentModeration**](ScoreCommentModeration.md) |  | [optional] 
 **spam** | **bool** | &#x60;true  if the message has been detected as spam and hidden from other users  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

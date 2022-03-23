@@ -9,4 +9,5 @@ from flat_api.api.collection_api import CollectionApi
 from flat_api.api.group_api import GroupApi
 from flat_api.api.organization_api import OrganizationApi
 from flat_api.api.score_api import ScoreApi
+from flat_api.api.task_api import TaskApi
 from flat_api.api.user_api import UserApi
