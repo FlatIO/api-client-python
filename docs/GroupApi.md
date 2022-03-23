@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_group_users**
-> list[UserPublic] list_group_users(group)
+> list[UserPublic] list_group_users(group, source=source)
 
 List group's users
 
@@ -139,10 +139,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
 group = 'group_example' # str | Unique identifier of a Flat group 
+source = 'source_example' # str | Filter the users by their source  (optional)
 
 try:
     # List group's users
-    api_response = api_instance.list_group_users(group)
+    api_response = api_instance.list_group_users(group, source=source)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling GroupApi->list_group_users: %s\n" % e)
@@ -153,6 +154,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group** | **str**| Unique identifier of a Flat group  | 
+ **source** | **str**| Filter the users by their source  | [optional] 
 
 ### Return type
 

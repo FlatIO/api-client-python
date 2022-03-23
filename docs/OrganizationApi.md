@@ -4,9 +4,12 @@ All URIs are relative to *https://api.flat.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**count_orga_users**](OrganizationApi.md#count_orga_users) | **GET** /organizations/users/count | Count the organization users using the provided filters
 [**create_lti_credentials**](OrganizationApi.md#create_lti_credentials) | **POST** /organizations/lti/credentials | Create a new couple of LTI 1.x credentials
 [**create_organization_invitation**](OrganizationApi.md#create_organization_invitation) | **POST** /organizations/invitations | Create a new invitation to join the organization
 [**create_organization_user**](OrganizationApi.md#create_organization_user) | **POST** /organizations/users | Create a new user account
+[**create_organization_user_access_token**](OrganizationApi.md#create_organization_user_access_token) | **POST** /organizations/users/{user}/accessToken | Create a delegated API access token for an organization user
+[**create_organization_user_signin_link**](OrganizationApi.md#create_organization_user_signin_link) | **POST** /organizations/users/{user}/signinLink | Create a sign in link for an organization user
 [**list_lti_credentials**](OrganizationApi.md#list_lti_credentials) | **GET** /organizations/lti/credentials | List LTI 1.x credentials
 [**list_organization_invitations**](OrganizationApi.md#list_organization_invitations) | **GET** /organizations/invitations | List the organization invitations
 [**list_organization_users**](OrganizationApi.md#list_organization_users) | **GET** /organizations/users | List the organization users
@@ -16,8 +19,66 @@ Method | HTTP request | Description
 [**update_organization_user**](OrganizationApi.md#update_organization_user) | **PUT** /organizations/users/{user} | Update account information
 
 
+# **count_orga_users**
+> int[UserDetailsAdmin] count_orga_users(role=role, q=q, group=group, no_active_license=no_active_license)
+
+Count the organization users using the provided filters
+
+### Example
+
+* OAuth Authentication (OAuth2): 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
+role = ['role_example'] # list[str] | Filter users by role (optional)
+q = 'q_example' # str | The query to search (optional)
+group = ['group_example'] # list[str] | Filter users by group (optional)
+no_active_license = True # bool | Filter users who don't have an active license (optional)
+
+try:
+    # Count the organization users using the provided filters
+    api_response = api_instance.count_orga_users(role=role, q=q, group=group, no_active_license=no_active_license)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OrganizationApi->count_orga_users: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **role** | [**list[str]**](str.md)| Filter users by role | [optional] 
+ **q** | **str**| The query to search | [optional] 
+ **group** | [**list[str]**](str.md)| Filter users by group | [optional] 
+ **no_active_license** | **bool**| Filter users who don&#39;t have an active license | [optional] 
+
+### Return type
+
+[**int[UserDetailsAdmin]**](UserDetailsAdmin.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_lti_credentials**
-> LtiCredentials create_lti_credentials(lti_credentials_creation)
+> LtiCredentials create_lti_credentials(body)
 
 Create a new couple of LTI 1.x credentials
 
@@ -39,11 +100,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
-lti_credentials_creation = flat_api.LtiCredentialsCreation() # LtiCredentialsCreation | 
+body = flat_api.LtiCredentialsCreation() # LtiCredentialsCreation | 
 
 try:
     # Create a new couple of LTI 1.x credentials
-    api_response = api_instance.create_lti_credentials(lti_credentials_creation)
+    api_response = api_instance.create_lti_credentials(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->create_lti_credentials: %s\n" % e)
@@ -53,7 +114,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **lti_credentials_creation** | [**LtiCredentialsCreation**](LtiCredentialsCreation.md)|  | 
+ **body** | [**LtiCredentialsCreation**](LtiCredentialsCreation.md)|  | 
 
 ### Return type
 
@@ -71,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_organization_invitation**
-> OrganizationInvitation create_organization_invitation(organization_invitation_creation=organization_invitation_creation)
+> OrganizationInvitation create_organization_invitation(body=body)
 
 Create a new invitation to join the organization
 
@@ -93,11 +154,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
-organization_invitation_creation = flat_api.OrganizationInvitationCreation() # OrganizationInvitationCreation |  (optional)
+body = flat_api.OrganizationInvitationCreation() # OrganizationInvitationCreation |  (optional)
 
 try:
     # Create a new invitation to join the organization
-    api_response = api_instance.create_organization_invitation(organization_invitation_creation=organization_invitation_creation)
+    api_response = api_instance.create_organization_invitation(body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->create_organization_invitation: %s\n" % e)
@@ -107,7 +168,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organization_invitation_creation** | [**OrganizationInvitationCreation**](OrganizationInvitationCreation.md)|  | [optional] 
+ **body** | [**OrganizationInvitationCreation**](OrganizationInvitationCreation.md)|  | [optional] 
 
 ### Return type
 
@@ -125,7 +186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_organization_user**
-> UserDetailsAdmin create_organization_user(user_creation=user_creation)
+> UserDetailsAdmin create_organization_user(body=body)
 
 Create a new user account
 
@@ -145,11 +206,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
-user_creation = flat_api.UserCreation() # UserCreation |  (optional)
+body = flat_api.UserCreation() # UserCreation |  (optional)
 
 try:
     # Create a new user account
-    api_response = api_instance.create_organization_user(user_creation=user_creation)
+    api_response = api_instance.create_organization_user(body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->create_organization_user: %s\n" % e)
@@ -159,11 +220,121 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_creation** | [**UserCreation**](UserCreation.md)|  | [optional] 
+ **body** | [**UserCreation**](UserCreation.md)|  | [optional] 
 
 ### Return type
 
 [**UserDetailsAdmin**](UserDetailsAdmin.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_organization_user_access_token**
+> ApiAccessToken create_organization_user_access_token(user, organization_user_access_token_creation=organization_user_access_token_creation)
+
+Create a delegated API access token for an organization user
+
+This operation will create an API access token for a chosen organization user. This token will be valid for a limited time and can be used to access the API as the organization user. 
+
+### Example
+
+* OAuth Authentication (OAuth2): 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
+user = 'user_example' # str | Unique identifier of the Flat account 
+organization_user_access_token_creation = flat_api.OrganizationUserAccessTokenCreation() # OrganizationUserAccessTokenCreation |  (optional)
+
+try:
+    # Create a delegated API access token for an organization user
+    api_response = api_instance.create_organization_user_access_token(user, organization_user_access_token_creation=organization_user_access_token_creation)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OrganizationApi->create_organization_user_access_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **str**| Unique identifier of the Flat account  | 
+ **organization_user_access_token_creation** | [**OrganizationUserAccessTokenCreation**](OrganizationUserAccessTokenCreation.md)|  | [optional] 
+
+### Return type
+
+[**ApiAccessToken**](ApiAccessToken.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_organization_user_signin_link**
+> OrganizationUserSigninLink create_organization_user_signin_link(user, organization_user_signin_link_creation=organization_user_signin_link_creation)
+
+Create a sign in link for an organization user
+
+### Example
+
+* OAuth Authentication (OAuth2): 
+```python
+from __future__ import print_function
+import time
+import flat_api
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: OAuth2
+configuration = flat_api.Configuration()
+configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# create an instance of the API class
+api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
+user = 'user_example' # str | Unique identifier of the Flat account 
+organization_user_signin_link_creation = flat_api.OrganizationUserSigninLinkCreation() # OrganizationUserSigninLinkCreation |  (optional)
+
+try:
+    # Create a sign in link for an organization user
+    api_response = api_instance.create_organization_user_signin_link(user, organization_user_signin_link_creation=organization_user_signin_link_creation)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling OrganizationApi->create_organization_user_signin_link: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **str**| Unique identifier of the Flat account  | 
+ **organization_user_signin_link_creation** | [**OrganizationUserSigninLinkCreation**](OrganizationUserSigninLinkCreation.md)|  | [optional] 
+
+### Return type
+
+[**OrganizationUserSigninLink**](OrganizationUserSigninLink.md)
 
 ### Authorization
 
@@ -283,7 +454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_organization_users**
-> list[UserDetailsAdmin] list_organization_users(role=role, limit=limit, next=next, previous=previous)
+> list[UserDetailsAdmin] list_organization_users(sort=sort, direction=direction, next=next, previous=previous, role=role, q=q, group=group, no_active_license=no_active_license, license_expiration_date=license_expiration_date, only_ids=only_ids, limit=limit)
 
 List the organization users
 
@@ -303,14 +474,21 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
-role = 'role_example' # str | Filter users by role (optional)
-limit = 50 # int | This is the maximum number of objects that may be returned (optional) (default to 50)
+sort = ['sort_example'] # list[str] | The order to sort the user list (optional)
+direction = 'direction_example' # str | Sort direction (optional)
 next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+role = ['role_example'] # list[str] | Filter users by role (optional)
+q = 'q_example' # str | The query to search (optional)
+group = ['group_example'] # list[str] | Filter users by group (optional)
+no_active_license = True # bool | Filter users who don't have an active license (optional)
+license_expiration_date = ['license_expiration_date_example'] # list[str] | Filter users by license expiration date or `active` / `notActive` (optional)
+only_ids = True # bool | Return only user ids (optional)
+limit = 25 # int | This is the maximum number of objects that may be returned (optional) (default to 25)
 
 try:
     # List the organization users
-    api_response = api_instance.list_organization_users(role=role, limit=limit, next=next, previous=previous)
+    api_response = api_instance.list_organization_users(sort=sort, direction=direction, next=next, previous=previous, role=role, q=q, group=group, no_active_license=no_active_license, license_expiration_date=license_expiration_date, only_ids=only_ids, limit=limit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->list_organization_users: %s\n" % e)
@@ -320,10 +498,17 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role** | **str**| Filter users by role | [optional] 
- **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 50]
+ **sort** | **list[str]**| The order to sort the user list | [optional] 
+ **direction** | **str**| Sort direction | [optional] 
  **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
  **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **role** | [**list[str]**](str.md)| Filter users by role | [optional] 
+ **q** | **str**| The query to search | [optional] 
+ **group** | [**list[str]**](str.md)| Filter users by group | [optional] 
+ **no_active_license** | **bool**| Filter users who don&#39;t have an active license | [optional] 
+ **license_expiration_date** | [**list[str]**](str.md)| Filter users by license expiration date or &#x60;active&#x60; / &#x60;notActive&#x60; | [optional] 
+ **only_ids** | **bool**| Return only user ids | [optional] 
+ **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 25]
 
 ### Return type
 
@@ -498,7 +683,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_organization_user**
-> UserDetailsAdmin update_organization_user(user, user_admin_update)
+> UserDetailsAdmin update_organization_user(user, body)
 
 Update account information
 
@@ -519,11 +704,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # create an instance of the API class
 api_instance = flat_api.OrganizationApi(flat_api.ApiClient(configuration))
 user = 'user_example' # str | Unique identifier of the Flat account 
-user_admin_update = flat_api.UserAdminUpdate() # UserAdminUpdate | 
+body = flat_api.UserAdminUpdate() # UserAdminUpdate | 
 
 try:
     # Update account information
-    api_response = api_instance.update_organization_user(user, user_admin_update)
+    api_response = api_instance.update_organization_user(user, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling OrganizationApi->update_organization_user: %s\n" % e)
@@ -534,7 +719,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user** | **str**| Unique identifier of the Flat account  | 
- **user_admin_update** | [**UserAdminUpdate**](UserAdminUpdate.md)|  | 
+ **body** | [**UserAdminUpdate**](UserAdminUpdate.md)|  | 
 
 ### Return type
 

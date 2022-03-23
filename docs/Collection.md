@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **type** | [**CollectionType**](CollectionType.md) |  | [optional] 
 **privacy** | [**CollectionPrivacy**](CollectionPrivacy.md) |  | [optional] 
 **sharing_key** | **str** | The private sharing key of the collection (available when the &#x60;privacy&#x60; mode is set to &#x60;privateLink&#x60;) | [optional] 
-**app** | **str** | If this directory is dedicated to an app, the unique idenfier of this app | [optional] 
+**app** | [**CollectionApp**](CollectionApp.md) |  | [optional] 
 **creation_date** | **datetime** | The date when the collection was created | [optional] 
 **user** | [**UserPublicSummary**](UserPublicSummary.md) |  | [optional] 
 **rights** | [**ResourceRights**](ResourceRights.md) |  | [optional] 

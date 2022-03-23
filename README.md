@@ -49,7 +49,7 @@ import flat_api
 
 ## Getting Started
 
-Please follow the installation procedure above and then run the following:
+Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
 from __future__ import print_function
@@ -58,17 +58,17 @@ import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
 
+# Configure OAuth2 access token for authorization: OAuth2
 configuration = flat_api.Configuration()
-# Configure your personal access token or OAuth2 access token
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
-flat_api_client = flat_api.ApiClient(configuration)
 
 # create an instance of the API class
-api_instance = flat_api.AccountApi(flat_api_client)
+api_instance = flat_api.AccountApi(flat_api.ApiClient(configuration))
+only_id = False # bool | Only return the user id (optional) (default to False)
 
 try:
     # Get current user profile
-    api_response = api_instance.get_authenticated_user()
+    api_response = api_instance.get_authenticated_user(only_id=only_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AccountApi->get_authenticated_user: %s\n" % e)
@@ -84,23 +84,34 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**get_authenticated_user**](docs/AccountApi.md#get_authenticated_user) | **GET** /me | Get current user profile
 *ClassApi* | [**activate_class**](docs/ClassApi.md#activate_class) | **POST** /classes/{class}/activate | Activate the class
 *ClassApi* | [**add_class_user**](docs/ClassApi.md#add_class_user) | **PUT** /classes/{class}/users/{user} | Add a user to the class
+*ClassApi* | [**archive_assignment**](docs/ClassApi.md#archive_assignment) | **POST** /classes/{class}/assignments/{assignment}/archive | Archive the assignment
 *ClassApi* | [**archive_class**](docs/ClassApi.md#archive_class) | **POST** /classes/{class}/archive | Archive the class
 *ClassApi* | [**copy_assignment**](docs/ClassApi.md#copy_assignment) | **POST** /classes/{class}/assignments/{assignment}/copy | Copy an assignment
 *ClassApi* | [**create_assignment**](docs/ClassApi.md#create_assignment) | **POST** /classes/{class}/assignments | Assignment creation
 *ClassApi* | [**create_class**](docs/ClassApi.md#create_class) | **POST** /classes | Create a new class
 *ClassApi* | [**create_submission**](docs/ClassApi.md#create_submission) | **PUT** /classes/{class}/assignments/{assignment}/submissions | Create or edit a submission
 *ClassApi* | [**delete_class_user**](docs/ClassApi.md#delete_class_user) | **DELETE** /classes/{class}/users/{user} | Remove a user from the class
+*ClassApi* | [**delete_submission**](docs/ClassApi.md#delete_submission) | **DELETE** /classes/{class}/assignments/{assignment}/submissions/{submission} | Delete a submission
+*ClassApi* | [**delete_submission_comment**](docs/ClassApi.md#delete_submission_comment) | **DELETE** /classes/{class}/assignments/{assignment}/submissions/{submission}/comments/{comment} | Delete a feedback comment to a submission
 *ClassApi* | [**edit_submission**](docs/ClassApi.md#edit_submission) | **PUT** /classes/{class}/assignments/{assignment}/submissions/{submission} | Edit a submission
 *ClassApi* | [**enroll_class**](docs/ClassApi.md#enroll_class) | **POST** /classes/enroll/{enrollmentCode} | Join a class
+*ClassApi* | [**export_submissions_reviews_as_csv**](docs/ClassApi.md#export_submissions_reviews_as_csv) | **GET** /classes/{class}/assignments/{assignment}/submissions/csv | CSV Grades exports
+*ClassApi* | [**export_submissions_reviews_as_excel**](docs/ClassApi.md#export_submissions_reviews_as_excel) | **GET** /classes/{class}/assignments/{assignment}/submissions/excel | Excel Grades exports
+*ClassApi* | [**fork_score**](docs/ClassApi.md#fork_score) | **POST** /scores/{score}/fork | Fork a score
 *ClassApi* | [**get_class**](docs/ClassApi.md#get_class) | **GET** /classes/{class} | Get the details of a single class
 *ClassApi* | [**get_score_submissions**](docs/ClassApi.md#get_score_submissions) | **GET** /scores/{score}/submissions | List submissions related to the score
 *ClassApi* | [**get_submission**](docs/ClassApi.md#get_submission) | **GET** /classes/{class}/assignments/{assignment}/submissions/{submission} | Get a student submission
+*ClassApi* | [**get_submission_comments**](docs/ClassApi.md#get_submission_comments) | **GET** /classes/{class}/assignments/{assignment}/submissions/{submission}/comments | List the feedback comments of a submission
+*ClassApi* | [**get_submission_history**](docs/ClassApi.md#get_submission_history) | **GET** /classes/{class}/assignments/{assignment}/submissions/{submission}/history | Get the history of the submission
 *ClassApi* | [**get_submissions**](docs/ClassApi.md#get_submissions) | **GET** /classes/{class}/assignments/{assignment}/submissions | List the students&#39; submissions
 *ClassApi* | [**list_assignments**](docs/ClassApi.md#list_assignments) | **GET** /classes/{class}/assignments | Assignments listing
 *ClassApi* | [**list_class_student_submissions**](docs/ClassApi.md#list_class_student_submissions) | **GET** /classes/{class}/students/{user}/submissions | List the submissions for a student
 *ClassApi* | [**list_classes**](docs/ClassApi.md#list_classes) | **GET** /classes | List the classes available for the current user
+*ClassApi* | [**post_submission_comment**](docs/ClassApi.md#post_submission_comment) | **POST** /classes/{class}/assignments/{assignment}/submissions/{submission}/comments | Add a feedback comment to a submission
+*ClassApi* | [**unarchive_assignment**](docs/ClassApi.md#unarchive_assignment) | **DELETE** /classes/{class}/assignments/{assignment}/archive | Unarchive the assignment.
 *ClassApi* | [**unarchive_class**](docs/ClassApi.md#unarchive_class) | **DELETE** /classes/{class}/archive | Unarchive the class
 *ClassApi* | [**update_class**](docs/ClassApi.md#update_class) | **PUT** /classes/{class} | Update the class
+*ClassApi* | [**update_submission_comment**](docs/ClassApi.md#update_submission_comment) | **PUT** /classes/{class}/assignments/{assignment}/submissions/{submission}/comments/{comment} | Update a feedback comment to a submission
 *CollectionApi* | [**add_score_to_collection**](docs/CollectionApi.md#add_score_to_collection) | **PUT** /collections/{collection}/scores/{score} | Add a score to the collection
 *CollectionApi* | [**create_collection**](docs/CollectionApi.md#create_collection) | **POST** /collections | Create a new collection
 *CollectionApi* | [**delete_collection**](docs/CollectionApi.md#delete_collection) | **DELETE** /collections/{collection} | Delete the collection
@@ -113,9 +124,12 @@ Class | Method | HTTP request | Description
 *GroupApi* | [**get_group_details**](docs/GroupApi.md#get_group_details) | **GET** /groups/{group} | Get group information
 *GroupApi* | [**get_group_scores**](docs/GroupApi.md#get_group_scores) | **GET** /groups/{group}/scores | List group&#39;s scores
 *GroupApi* | [**list_group_users**](docs/GroupApi.md#list_group_users) | **GET** /groups/{group}/users | List group&#39;s users
+*OrganizationApi* | [**count_orga_users**](docs/OrganizationApi.md#count_orga_users) | **GET** /organizations/users/count | Count the organization users using the provided filters
 *OrganizationApi* | [**create_lti_credentials**](docs/OrganizationApi.md#create_lti_credentials) | **POST** /organizations/lti/credentials | Create a new couple of LTI 1.x credentials
 *OrganizationApi* | [**create_organization_invitation**](docs/OrganizationApi.md#create_organization_invitation) | **POST** /organizations/invitations | Create a new invitation to join the organization
 *OrganizationApi* | [**create_organization_user**](docs/OrganizationApi.md#create_organization_user) | **POST** /organizations/users | Create a new user account
+*OrganizationApi* | [**create_organization_user_access_token**](docs/OrganizationApi.md#create_organization_user_access_token) | **POST** /organizations/users/{user}/accessToken | Create a delegated API access token for an organization user
+*OrganizationApi* | [**create_organization_user_signin_link**](docs/OrganizationApi.md#create_organization_user_signin_link) | **POST** /organizations/users/{user}/signinLink | Create a sign in link for an organization user
 *OrganizationApi* | [**list_lti_credentials**](docs/OrganizationApi.md#list_lti_credentials) | **GET** /organizations/lti/credentials | List LTI 1.x credentials
 *OrganizationApi* | [**list_organization_invitations**](docs/OrganizationApi.md#list_organization_invitations) | **GET** /organizations/invitations | List the organization invitations
 *OrganizationApi* | [**list_organization_users**](docs/OrganizationApi.md#list_organization_users) | **GET** /organizations/users | List the organization users
@@ -125,6 +139,7 @@ Class | Method | HTTP request | Description
 *OrganizationApi* | [**update_organization_user**](docs/OrganizationApi.md#update_organization_user) | **PUT** /organizations/users/{user} | Update account information
 *ScoreApi* | [**add_score_collaborator**](docs/ScoreApi.md#add_score_collaborator) | **POST** /scores/{score}/collaborators | Add a new collaborator
 *ScoreApi* | [**add_score_track**](docs/ScoreApi.md#add_score_track) | **POST** /scores/{score}/tracks | Add a new video or audio track to the score
+*ScoreApi* | [**create_export_task**](docs/ScoreApi.md#create_export_task) | **POST** /scores/{score}/revisions/{revision}/{format}/task | Create a new score export task
 *ScoreApi* | [**create_score**](docs/ScoreApi.md#create_score) | **POST** /scores | Create a new score
 *ScoreApi* | [**create_score_revision**](docs/ScoreApi.md#create_score_revision) | **POST** /scores/{score}/revisions | Create a new revision
 *ScoreApi* | [**delete_score**](docs/ScoreApi.md#delete_score) | **DELETE** /scores/{score} | Delete a score
@@ -152,6 +167,7 @@ Class | Method | HTTP request | Description
 *ScoreApi* | [**untrash_score**](docs/ScoreApi.md#untrash_score) | **POST** /scores/{score}/untrash | Untrash a score
 *ScoreApi* | [**update_score_comment**](docs/ScoreApi.md#update_score_comment) | **PUT** /scores/{score}/comments/{comment} | Update an existing comment
 *ScoreApi* | [**update_score_track**](docs/ScoreApi.md#update_score_track) | **PUT** /scores/{score}/tracks/{track} | Update an audio or video track linked to a score
+*TaskApi* | [**get_task**](docs/TaskApi.md#get_task) | **GET** /tasks/{task} | Get a task details
 *UserApi* | [**ger_user_likes**](docs/UserApi.md#ger_user_likes) | **GET** /users/{user}/likes | List liked scores
 *UserApi* | [**get_user**](docs/UserApi.md#get_user) | **GET** /users/{user} | Get a public user profile
 *UserApi* | [**get_user_scores**](docs/UserApi.md#get_user_scores) | **GET** /users/{user}/scores | List user&#39;s scores
@@ -159,11 +175,25 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ApiAccessToken](docs/ApiAccessToken.md)
+ - [AppScopes](docs/AppScopes.md)
  - [Assignment](docs/Assignment.md)
+ - [AssignmentCanvas](docs/AssignmentCanvas.md)
  - [AssignmentCopy](docs/AssignmentCopy.md)
  - [AssignmentCreation](docs/AssignmentCreation.md)
+ - [AssignmentCreationGoogleClassroom](docs/AssignmentCreationGoogleClassroom.md)
+ - [AssignmentCreationMicrosoftGraph](docs/AssignmentCreationMicrosoftGraph.md)
+ - [AssignmentLti](docs/AssignmentLti.md)
+ - [AssignmentMfc](docs/AssignmentMfc.md)
  - [AssignmentSubmission](docs/AssignmentSubmission.md)
+ - [AssignmentSubmissionComment](docs/AssignmentSubmissionComment.md)
+ - [AssignmentSubmissionCommentCreation](docs/AssignmentSubmissionCommentCreation.md)
+ - [AssignmentSubmissionHistory](docs/AssignmentSubmissionHistory.md)
+ - [AssignmentSubmissionHistoryAttachment](docs/AssignmentSubmissionHistoryAttachment.md)
+ - [AssignmentSubmissionState](docs/AssignmentSubmissionState.md)
  - [AssignmentSubmissionUpdate](docs/AssignmentSubmissionUpdate.md)
+ - [AssignmentSubmissionUpdateComments](docs/AssignmentSubmissionUpdateComments.md)
+ - [AssignmentType](docs/AssignmentType.md)
  - [ClassAttachmentCreation](docs/ClassAttachmentCreation.md)
  - [ClassCreation](docs/ClassCreation.md)
  - [ClassDetails](docs/ClassDetails.md)
@@ -171,11 +201,16 @@ Class | Method | HTTP request | Description
  - [ClassDetailsClever](docs/ClassDetailsClever.md)
  - [ClassDetailsGoogleClassroom](docs/ClassDetailsGoogleClassroom.md)
  - [ClassDetailsGoogleDrive](docs/ClassDetailsGoogleDrive.md)
+ - [ClassDetailsIssues](docs/ClassDetailsIssues.md)
+ - [ClassDetailsIssuesSync](docs/ClassDetailsIssuesSync.md)
  - [ClassDetailsLti](docs/ClassDetailsLti.md)
+ - [ClassDetailsMfc](docs/ClassDetailsMfc.md)
+ - [ClassDetailsMicrosoftGraph](docs/ClassDetailsMicrosoftGraph.md)
  - [ClassRoles](docs/ClassRoles.md)
  - [ClassState](docs/ClassState.md)
  - [ClassUpdate](docs/ClassUpdate.md)
  - [Collection](docs/Collection.md)
+ - [CollectionApp](docs/CollectionApp.md)
  - [CollectionCapabilities](docs/CollectionCapabilities.md)
  - [CollectionCreation](docs/CollectionCreation.md)
  - [CollectionModification](docs/CollectionModification.md)
@@ -195,31 +230,40 @@ Class | Method | HTTP request | Description
  - [LtiCredentialsCreation](docs/LtiCredentialsCreation.md)
  - [MediaAttachment](docs/MediaAttachment.md)
  - [MediaScoreSharingMode](docs/MediaScoreSharingMode.md)
+ - [MicrosoftGraphAssignment](docs/MicrosoftGraphAssignment.md)
+ - [MicrosoftGraphSubmission](docs/MicrosoftGraphSubmission.md)
  - [OrganizationInvitation](docs/OrganizationInvitation.md)
  - [OrganizationInvitationCreation](docs/OrganizationInvitationCreation.md)
  - [OrganizationRoles](docs/OrganizationRoles.md)
+ - [OrganizationUserAccessTokenCreation](docs/OrganizationUserAccessTokenCreation.md)
+ - [OrganizationUserSigninLink](docs/OrganizationUserSigninLink.md)
+ - [OrganizationUserSigninLinkCreation](docs/OrganizationUserSigninLinkCreation.md)
  - [ResourceCollaborator](docs/ResourceCollaborator.md)
  - [ResourceCollaboratorCreation](docs/ResourceCollaboratorCreation.md)
  - [ResourceRights](docs/ResourceRights.md)
  - [ScoreComment](docs/ScoreComment.md)
  - [ScoreCommentContext](docs/ScoreCommentContext.md)
  - [ScoreCommentCreation](docs/ScoreCommentCreation.md)
+ - [ScoreCommentModeration](docs/ScoreCommentModeration.md)
  - [ScoreCommentUpdate](docs/ScoreCommentUpdate.md)
  - [ScoreCommentsCounts](docs/ScoreCommentsCounts.md)
  - [ScoreCreation](docs/ScoreCreation.md)
+ - [ScoreCreationBuilderData](docs/ScoreCreationBuilderData.md)
+ - [ScoreCreationBuilderDataLayoutData](docs/ScoreCreationBuilderDataLayoutData.md)
+ - [ScoreCreationBuilderDataScoreData](docs/ScoreCreationBuilderDataScoreData.md)
+ - [ScoreCreationBuilderDataScoreDataInstruments](docs/ScoreCreationBuilderDataScoreDataInstruments.md)
  - [ScoreCreationType](docs/ScoreCreationType.md)
- - [ScoreDataEncoding](docs/ScoreDataEncoding.md)
  - [ScoreDetails](docs/ScoreDetails.md)
  - [ScoreFork](docs/ScoreFork.md)
  - [ScoreLicense](docs/ScoreLicense.md)
  - [ScoreLikesCounts](docs/ScoreLikesCounts.md)
  - [ScoreModification](docs/ScoreModification.md)
+ - [ScorePlaysCounts](docs/ScorePlaysCounts.md)
  - [ScorePrivacy](docs/ScorePrivacy.md)
  - [ScoreRevision](docs/ScoreRevision.md)
  - [ScoreRevisionCreation](docs/ScoreRevisionCreation.md)
  - [ScoreRevisionStatistics](docs/ScoreRevisionStatistics.md)
  - [ScoreSource](docs/ScoreSource.md)
- - [ScoreSummary](docs/ScoreSummary.md)
  - [ScoreTrack](docs/ScoreTrack.md)
  - [ScoreTrackCreation](docs/ScoreTrackCreation.md)
  - [ScoreTrackPoint](docs/ScoreTrackPoint.md)
@@ -227,12 +271,14 @@ Class | Method | HTTP request | Description
  - [ScoreTrackType](docs/ScoreTrackType.md)
  - [ScoreTrackUpdate](docs/ScoreTrackUpdate.md)
  - [ScoreViewsCounts](docs/ScoreViewsCounts.md)
+ - [Task](docs/Task.md)
+ - [TaskExportOptions](docs/TaskExportOptions.md)
+ - [TaskProgress](docs/TaskProgress.md)
  - [UserAdminUpdate](docs/UserAdminUpdate.md)
- - [UserBasics](docs/UserBasics.md)
  - [UserCreation](docs/UserCreation.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDetailsAdmin](docs/UserDetailsAdmin.md)
- - [UserInstruments](docs/UserInstruments.md)
+ - [UserDetailsAdminLicense](docs/UserDetailsAdminLicense.md)
  - [UserPublic](docs/UserPublic.md)
  - [UserPublicSummary](docs/UserPublicSummary.md)
 
@@ -264,3 +310,11 @@ Class | Method | HTTP request | Description
  - **edu.admin.lti.readonly**: Read-only access to the LTI Credentials of an organization.
  - **edu.admin.users**: Access and manage the users and invitations of the organization.
  - **edu.admin.users.readonly**: Read-only access to the users and invitations of the organization.
+ - **tasks.readonly**: Read-only access to export tasks created by this account.
+
+
+## Author
+
+developers@flat.io
+
+

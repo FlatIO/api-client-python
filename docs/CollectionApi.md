@@ -38,7 +38,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
@@ -54,7 +54,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_collection**
-> Collection create_collection(collection_creation)
+> Collection create_collection(body)
 
 Create a new collection
 
@@ -96,11 +96,11 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection_creation = flat_api.CollectionCreation() # CollectionCreation | 
+body = flat_api.CollectionCreation() # CollectionCreation | 
 
 try:
     # Create a new collection
-    api_response = api_instance.create_collection(collection_creation)
+    api_response = api_instance.create_collection(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionApi->create_collection: %s\n" % e)
@@ -110,7 +110,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection_creation** | [**CollectionCreation**](CollectionCreation.md)|  | 
+ **body** | [**CollectionCreation**](CollectionCreation.md)|  | 
 
 ### Return type
 
@@ -150,7 +150,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 
 try:
     # Delete the collection
@@ -163,7 +163,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
 
 ### Return type
 
@@ -181,7 +181,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_score_from_collection**
-> delete_score_from_collection(collection, score)
+> delete_score_from_collection(collection, score, sharing_key=sharing_key)
 
 Delete a score from the collection
 
@@ -203,12 +203,13 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try:
     # Delete a score from the collection
-    api_instance.delete_score_from_collection(collection, score)
+    api_instance.delete_score_from_collection(collection, score, sharing_key=sharing_key)
 except ApiException as e:
     print("Exception when calling CollectionApi->delete_score_from_collection: %s\n" % e)
 ```
@@ -217,8 +218,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -236,7 +238,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_collection**
-> Collection edit_collection(collection, collection_modification=collection_modification)
+> Collection edit_collection(collection, body=body)
 
 Update a collection's metadata
 
@@ -256,12 +258,12 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-collection_modification = flat_api.CollectionModification() # CollectionModification |  (optional)
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+body = flat_api.CollectionModification() # CollectionModification |  (optional)
 
 try:
     # Update a collection's metadata
-    api_response = api_instance.edit_collection(collection, collection_modification=collection_modification)
+    api_response = api_instance.edit_collection(collection, body=body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionApi->edit_collection: %s\n" % e)
@@ -271,8 +273,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
- **collection_modification** | [**CollectionModification**](CollectionModification.md)|  | [optional] 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **body** | [**CollectionModification**](CollectionModification.md)|  | [optional] 
 
 ### Return type
 
@@ -310,7 +312,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
 try:
@@ -325,7 +327,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
@@ -348,7 +350,7 @@ Name | Type | Description  | Notes
 
 List the scores contained in a collection
 
-Use this method to list the scores contained in a collection. If no sort option is provided, the scores are sorted by `modificationDate` `desc`. 
+Use this method to list the scores contained in a collection. If no sort option is provided, the scores are sorted by `modificationDate` `desc`.  For example, to list the scores contained in your app collection, you can use `GET /v2/collections/app/scores`. 
 
 ### Example
 
@@ -366,7 +368,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 sort = 'sort_example' # str | Sort (optional)
 direction = 'direction_example' # str | Sort direction (optional)
@@ -386,7 +388,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
  **sort** | **str**| Sort | [optional] 
  **direction** | **str**| Sort direction | [optional] 
@@ -414,7 +416,7 @@ Name | Type | Description  | Notes
 
 List the collections
 
-Use this method to list the user's collections contained in `parent` (by default in the `root` collection). If no sort option is provided, the collections are sorted by `creationDate` `desc`.  Note that this method will not include the `parent` collection in the listing. For example, if you need the details of the `root` collection, you can use `GET /v2/collections/root`. 
+Use this method to list the user's collections contained in `parent` (by default in the `root` collection). If no sort option is provided, the collections are sorted by `creationDate` `desc`.  Note that this method will not include the `parent` collection in the listing. For example, if you need the details of the `root` collection, you can use `GET /v2/collections/root`.  To fetch your app collection details, you can use `GET /v2/collections/app`. 
 
 ### Example
 
@@ -496,7 +498,7 @@ configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # create an instance of the API class
 api_instance = flat_api.CollectionApi(flat_api.ApiClient(configuration))
-collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 
 try:
     # Untrash a collection
@@ -509,7 +511,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
 
 ### Return type
 

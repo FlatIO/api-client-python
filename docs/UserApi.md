@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 Get a public user profile
 
-Get a public profile of a Flat User. 
+Get a profile of a Flat or Flat for Education User. 
 
 ### Example
 
