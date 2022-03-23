@@ -1,5 +1,6 @@
 # ScoreRevision
 
+A score revision metadata
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

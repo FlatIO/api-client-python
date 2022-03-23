@@ -1,5 +1,6 @@
 # AssignmentCreation
 
+Assignment creation details
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

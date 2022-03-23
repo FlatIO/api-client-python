@@ -1,5 +1,6 @@
 # ScoreComment
 
+Comment added on a sheet music
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

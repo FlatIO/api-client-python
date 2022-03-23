@@ -1,5 +1,6 @@
 # LicenseMode
 
+Mode of the license
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # MediaScoreSharingMode
 
+The sharing mode of the score for classes post and assignments
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

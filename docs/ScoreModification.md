@@ -1,5 +1,6 @@
 # ScoreModification
 
+Edit the score metadata
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

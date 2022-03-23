@@ -1,5 +1,6 @@
 # TaskExportOptions
 
+Options for the requested export 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

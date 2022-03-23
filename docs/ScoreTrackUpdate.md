@@ -1,5 +1,6 @@
 # ScoreTrackUpdate
 
+Update an existing track. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # AssignmentCanvas
 
+A Canvas LMS assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

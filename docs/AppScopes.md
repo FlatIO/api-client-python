@@ -1,5 +1,6 @@
 # AppScopes
 
+Available scopes
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

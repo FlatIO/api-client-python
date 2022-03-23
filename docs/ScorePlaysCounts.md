@@ -1,5 +1,6 @@
 # ScorePlaysCounts
 
+A computed version of the total, weekly, and monthly number of plays of the score 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

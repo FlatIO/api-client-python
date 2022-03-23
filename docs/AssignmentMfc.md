@@ -1,5 +1,6 @@
 # AssignmentMfc
 
+A MusicFirst Classroom assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

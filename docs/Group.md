@@ -1,5 +1,6 @@
 # Group
 
+A group of users
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

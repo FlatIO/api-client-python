@@ -1,5 +1,6 @@
 # ClassDetailsMfc
 
+Meta information provided by Canvs LMS
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

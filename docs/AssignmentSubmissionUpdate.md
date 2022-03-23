@@ -1,5 +1,6 @@
 # AssignmentSubmissionUpdate
 
+Assignment Submission creation
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

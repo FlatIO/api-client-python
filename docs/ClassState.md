@@ -1,5 +1,6 @@
 # ClassState
 
+The state of a classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

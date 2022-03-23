@@ -1,5 +1,6 @@
 # AssignmentSubmissionHistory
 
+History item of the submission
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

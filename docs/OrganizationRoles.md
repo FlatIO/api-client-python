@@ -1,5 +1,6 @@
 # OrganizationRoles
 
+User's Organization Role (for Edu users only)
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

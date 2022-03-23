@@ -1,5 +1,6 @@
 # ResourceRights
 
+The rights of the current user on a score or collection
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

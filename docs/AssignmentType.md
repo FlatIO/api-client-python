@@ -1,5 +1,6 @@
 # AssignmentType
 
+Type of the assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

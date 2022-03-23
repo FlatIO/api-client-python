@@ -1,5 +1,6 @@
 # ScoreCreationBuilderDataLayoutData
 
+Control the appearance of the score. If missing, default values are used.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

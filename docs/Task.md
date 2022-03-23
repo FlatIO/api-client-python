@@ -1,5 +1,6 @@
 # Task
 
+An asynchronous task
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

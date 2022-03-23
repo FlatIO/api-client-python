@@ -1,5 +1,6 @@
 # ClassUpdate
 
+Update of a classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

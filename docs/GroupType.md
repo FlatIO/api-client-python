@@ -1,5 +1,6 @@
 # GroupType
 
+The type of the group
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

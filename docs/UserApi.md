@@ -16,29 +16,43 @@ List liked scores
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
-user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.UserApi(api_client)
+    user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
 ids = True # bool | Return only the identifiers of the scores (optional)
 
-try:
-    # List liked scores
-    api_response = api_instance.ger_user_likes(user, ids=ids)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->ger_user_likes: %s\n" % e)
+    try:
+        # List liked scores
+        api_response = api_instance.ger_user_likes(user, ids=ids)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserApi->ger_user_likes: %s\n" % e)
 ```
 
 ### Parameters
@@ -61,6 +75,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of liked scores |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user**
@@ -72,28 +92,42 @@ Get a profile of a Flat or Flat for Education User.
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
-user = 'user_example' # str | This route parameter is the unique identifier of the user. You can specify an email instead of an unique identifier. If you are executing this request authenticated, you can use `me` as a value instead of the current User unique identifier to work on the current authenticated user. 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.UserApi(api_client)
+    user = 'user_example' # str | This route parameter is the unique identifier of the user. You can specify an email instead of an unique identifier. If you are executing this request authenticated, you can use `me` as a value instead of the current User unique identifier to work on the current authenticated user. 
 
-try:
-    # Get a public user profile
-    api_response = api_instance.get_user(user)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->get_user: %s\n" % e)
+    try:
+        # Get a public user profile
+        api_response = api_instance.get_user(user)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserApi->get_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -115,6 +149,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The user public details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_user_scores**
@@ -126,29 +166,43 @@ Get the list of public scores owned by a User.  **DEPRECATED**: Please note that
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.UserApi(flat_api.ApiClient(configuration))
-user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.UserApi(api_client)
+    user = 'user_example' # str | Unique identifier of a Flat user. If you authenticated, you can use `me` to refer to the current user. 
 parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
 
-try:
-    # List user's scores
-    api_response = api_instance.get_user_scores(user, parent=parent)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling UserApi->get_user_scores: %s\n" % e)
+    try:
+        # List user's scores
+        api_response = api_instance.get_user_scores(user, parent=parent)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling UserApi->get_user_scores: %s\n" % e)
 ```
 
 ### Parameters
@@ -170,6 +224,12 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The user scores |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

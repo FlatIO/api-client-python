@@ -1,5 +1,6 @@
 # CollectionModification
 
+Edit the collection metadata
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

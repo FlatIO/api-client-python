@@ -1,5 +1,6 @@
 # ClassDetailsIssuesSync
 
+A sync issue
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

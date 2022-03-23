@@ -1,5 +1,6 @@
 # ResourceCollaboratorCreation
 
+Add a collaborator to a resource.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

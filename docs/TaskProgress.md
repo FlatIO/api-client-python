@@ -1,5 +1,6 @@
 # TaskProgress
 
+Details about the task progression
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

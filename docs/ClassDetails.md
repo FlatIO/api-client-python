@@ -1,5 +1,6 @@
 # ClassDetails
 
+A classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

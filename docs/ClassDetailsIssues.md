@@ -1,5 +1,6 @@
 # ClassDetailsIssues
 
+Detected issues for this class
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

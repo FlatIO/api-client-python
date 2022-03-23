@@ -1,5 +1,6 @@
 # FlatErrorResponse
 
+An API Error response
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

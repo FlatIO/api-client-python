@@ -1,5 +1,6 @@
 # MicrosoftGraphSubmission
 
+A Microsoft Teams submission
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

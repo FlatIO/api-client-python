@@ -1,5 +1,6 @@
 # ClassDetailsLti
 
+Meta information provided by the LTI consumer
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

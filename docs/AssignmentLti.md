@@ -1,5 +1,6 @@
 # AssignmentLti
 
+An LTI assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

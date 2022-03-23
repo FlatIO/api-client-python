@@ -1,5 +1,6 @@
 # ClassRoles
 
+User's Class Role (for Edu users only)
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # ClassDetailsGoogleDrive
 
+Google Drive course-related information provided by Google Classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

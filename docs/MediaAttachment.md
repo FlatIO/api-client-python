@@ -1,5 +1,6 @@
 # MediaAttachment
 
+Media attachment. The API will automatically resolve the details, oEmbed, and media available if possible and return them in this object 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

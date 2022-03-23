@@ -1,5 +1,6 @@
 # MicrosoftGraphAssignment
 
+A Microsoft Teams asignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

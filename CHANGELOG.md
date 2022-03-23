@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1 (API v2.17.0)
+
+* Fixes binary responses for MIDI export
+
 ## 0.8.0 (API v2.17.0)
 
 * Updated API from v2.6.0 to v2.17.0

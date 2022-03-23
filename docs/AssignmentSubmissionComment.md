@@ -1,5 +1,6 @@
 # AssignmentSubmissionComment
 
+Feedback comment added to an assignment submission
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

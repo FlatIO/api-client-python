@@ -1,5 +1,6 @@
 # UserDetailsAdminLicense
 
+Current active license of the user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

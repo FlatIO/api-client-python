@@ -1,5 +1,6 @@
 # ScoreTrackPoint
 
+A track synchronization point
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # ScoreTrackType
 
+The type of an audio track
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
