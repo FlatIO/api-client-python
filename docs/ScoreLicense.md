@@ -1,5 +1,6 @@
 # ScoreLicense
 
+License of the creation. Read more about the Creative Commons licenses on https://creativecommons.org/licenses/ 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

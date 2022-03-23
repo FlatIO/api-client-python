@@ -1,5 +1,6 @@
 # UserAdminUpdate
 
+User update as an organization admin
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

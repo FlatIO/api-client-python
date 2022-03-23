@@ -1,5 +1,6 @@
 # ScoreTrack
 
+An audio track for a score
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

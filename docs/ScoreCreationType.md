@@ -1,5 +1,6 @@
 # ScoreCreationType
 
+The type of creation (an orginal, an arrangement)
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

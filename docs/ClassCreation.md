@@ -1,5 +1,6 @@
 # ClassCreation
 
+Creation of a classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

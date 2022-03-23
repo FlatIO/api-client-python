@@ -1,5 +1,6 @@
 # CollectionApp
 
+For App collections, the details of the app that created the collection
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

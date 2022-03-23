@@ -1,5 +1,6 @@
 # ScoreTrackCreation
 
+Creation of a new track. This one must contain the URL of the track or the corresponding file 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

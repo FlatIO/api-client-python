@@ -1,5 +1,6 @@
 # ScoreCommentsCounts
 
+A computed version of the total, unique, weekly and monthly number of comments added on the documents (this doesn't include inline comments). 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

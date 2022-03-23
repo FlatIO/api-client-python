@@ -1,5 +1,6 @@
 # ScoreTrackState
 
+State of the track
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

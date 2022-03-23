@@ -1,5 +1,6 @@
 # AssignmentCopy
 
+Assignment copy operation
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

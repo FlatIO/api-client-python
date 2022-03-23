@@ -1,5 +1,6 @@
 # OrganizationInvitation
 
+Details of an invitation to join an organization
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

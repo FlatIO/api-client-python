@@ -1,5 +1,6 @@
 # ScoreCommentUpdate
 
+Update of a comment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

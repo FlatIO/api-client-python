@@ -1,5 +1,6 @@
 # FlatLocales
 
+The user language
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

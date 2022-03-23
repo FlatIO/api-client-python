@@ -1,5 +1,6 @@
 # ScoreCommentCreation
 
+Creation of a comment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

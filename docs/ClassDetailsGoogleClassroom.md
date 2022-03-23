@@ -1,5 +1,6 @@
 # ClassDetailsGoogleClassroom
 
+Google Classroom course-related information
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

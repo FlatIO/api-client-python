@@ -1,5 +1,6 @@
 # ScoreRevisionCreation
 
+A new created revision
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

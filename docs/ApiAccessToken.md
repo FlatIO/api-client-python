@@ -1,5 +1,6 @@
 # ApiAccessToken
 
+An API access token
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

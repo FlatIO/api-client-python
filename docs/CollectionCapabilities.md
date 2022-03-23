@@ -1,5 +1,6 @@
 # CollectionCapabilities
 
+Capabilities the current user has on this collection. Each capability corresponds to a fine-grained action that a user may take.
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

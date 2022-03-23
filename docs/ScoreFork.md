@@ -1,5 +1,6 @@
 # ScoreFork
 
+Options to fork the score
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

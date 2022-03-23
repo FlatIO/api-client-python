@@ -1,5 +1,6 @@
 # CollectionType
 
+Type of the collection. The type will influence the capabilitied available on the collections and how this collection is/can be populated. 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

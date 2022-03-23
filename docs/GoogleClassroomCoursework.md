@@ -1,5 +1,6 @@
 # GoogleClassroomCoursework
 
+A coursework on Google Classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

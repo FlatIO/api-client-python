@@ -1,5 +1,6 @@
 # AssignmentCreationMicrosoftGraph
 
+Microsoft Graph options for this assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

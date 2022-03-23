@@ -1,5 +1,6 @@
 # OrganizationInvitationCreation
 
+The parameters to create an organization invitation
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

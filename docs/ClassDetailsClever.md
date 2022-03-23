@@ -1,5 +1,6 @@
 # ClassDetailsClever
 
+Clever.com section-related information
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

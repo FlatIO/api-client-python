@@ -1,5 +1,6 @@
 # GoogleClassroomSubmission
 
+A coursework submission on Google Classroom
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # ScoreViewsCounts
 
+A computed version of the total, weekly, and monthly number of views of the score 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

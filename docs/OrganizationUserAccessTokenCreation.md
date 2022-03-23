@@ -1,5 +1,6 @@
 # OrganizationUserAccessTokenCreation
 
+Creation of a delegated API access token for an organization user
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # AssignmentCreationGoogleClassroom
 
+Google Classroom options for this assignment
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

@@ -1,5 +1,6 @@
 # UserCreation
 
+User creation
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

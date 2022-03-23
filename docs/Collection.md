@@ -1,5 +1,6 @@
 # Collection
 
+Collection of scores
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

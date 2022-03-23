@@ -1,5 +1,6 @@
 # AssignmentSubmissionState
 
+State of the submission
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

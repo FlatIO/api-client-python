@@ -45,28 +45,42 @@ Mark the class as `active`. This is mainly used for classes synchronized from Cl
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 
-try:
-    # Activate the class
-    api_response = api_instance.activate_class(_class)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->activate_class: %s\n" % e)
+    try:
+        # Activate the class
+        api_response = api_instance.activate_class(_class)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->activate_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -88,6 +102,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **add_class_user**
@@ -99,28 +119,42 @@ This method can be used by a teacher of the class to enroll another Flat user in
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try:
-    # Add a user to the class
-    api_instance.add_class_user(_class, user)
-except ApiException as e:
-    print("Exception when calling ClassApi->add_class_user: %s\n" % e)
+    try:
+        # Add a user to the class
+        api_instance.add_class_user(_class, user)
+    except ApiException as e:
+        print("Exception when calling ClassApi->add_class_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -143,6 +177,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | The user has been added to the class |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **archive_assignment**
@@ -154,29 +194,43 @@ Archive the assignment
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try:
-    # Archive the assignment
-    api_response = api_instance.archive_assignment(_class, assignment)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->archive_assignment: %s\n" % e)
+    try:
+        # Archive the assignment
+        api_response = api_instance.archive_assignment(_class, assignment)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->archive_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -199,6 +253,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The assignment details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **archive_class**
@@ -210,28 +270,42 @@ Mark the class as `archived`. When this course is synchronized with another app,
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 
-try:
-    # Archive the class
-    api_response = api_instance.archive_class(_class)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->archive_class: %s\n" % e)
+    try:
+        # Archive the class
+        api_response = api_instance.archive_class(_class)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->archive_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -253,6 +327,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **copy_assignment**
@@ -264,30 +344,44 @@ Copy an assignment to a specified class.  If the original assignment has a due d
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 body = flat_api.AssignmentCopy() # AssignmentCopy | 
 
-try:
-    # Copy an assignment
-    api_response = api_instance.copy_assignment(_class, assignment, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->copy_assignment: %s\n" % e)
+    try:
+        # Copy an assignment
+        api_response = api_instance.copy_assignment(_class, assignment, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->copy_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -311,6 +405,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The new created assingment |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_assignment**
@@ -322,29 +422,43 @@ Use this method as a teacher to create and post a new assignment to a class.  If
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 body = flat_api.AssignmentCreation() # AssignmentCreation |  (optional)
 
-try:
-    # Assignment creation
-    api_response = api_instance.create_assignment(_class, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->create_assignment: %s\n" % e)
+    try:
+        # Assignment creation
+        api_response = api_instance.create_assignment(_class, body=body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->create_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -367,6 +481,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The assignment has been created |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_class**
@@ -378,28 +498,42 @@ Classrooms on Flat allow you to create activities with assignments and post cont
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-body = flat_api.ClassCreation() # ClassCreation | 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    body = flat_api.ClassCreation() # ClassCreation | 
 
-try:
-    # Create a new class
-    api_response = api_instance.create_class(body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->create_class: %s\n" % e)
+    try:
+        # Create a new class
+        api_response = api_instance.create_class(body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->create_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -421,6 +555,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The new class details |  -  |
+**402** | Account overquota |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_submission**
@@ -432,30 +573,44 @@ Use this method as a student to create, update and submit a submission related t
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
-try:
-    # Create or edit a submission
-    api_response = api_instance.create_submission(_class, assignment, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->create_submission: %s\n" % e)
+    try:
+        # Create or edit a submission
+        api_response = api_instance.create_submission(_class, assignment, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->create_submission: %s\n" % e)
 ```
 
 ### Parameters
@@ -479,6 +634,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The submission |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_class_user**
@@ -490,28 +651,42 @@ This method can be used by a teacher to remove a user from the class, or by a st
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try:
-    # Remove a user from the class
-    api_instance.delete_class_user(_class, user)
-except ApiException as e:
-    print("Exception when calling ClassApi->delete_class_user: %s\n" % e)
+    try:
+        # Remove a user from the class
+        api_instance.delete_class_user(_class, user)
+    except ApiException as e:
+        print("Exception when calling ClassApi->delete_class_user: %s\n" % e)
 ```
 
 ### Parameters
@@ -534,6 +709,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | The user has been removed from the class |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_submission**
@@ -545,29 +726,43 @@ Use this method as a teacher to delete a submission and allow student to start o
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 
-try:
-    # Delete a submission
-    api_instance.delete_submission(_class, assignment, submission)
-except ApiException as e:
-    print("Exception when calling ClassApi->delete_submission: %s\n" % e)
+    try:
+        # Delete a submission
+        api_instance.delete_submission(_class, assignment, submission)
+    except ApiException as e:
+        print("Exception when calling ClassApi->delete_submission: %s\n" % e)
 ```
 
 ### Parameters
@@ -591,6 +786,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | The submission has been deleted |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_submission_comment**
@@ -600,30 +801,44 @@ Delete a feedback comment to a submission
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 comment = 'comment_example' # str | Unique identifier of the comment
 
-try:
-    # Delete a feedback comment to a submission
-    api_instance.delete_submission_comment(_class, assignment, submission, comment)
-except ApiException as e:
-    print("Exception when calling ClassApi->delete_submission_comment: %s\n" % e)
+    try:
+        # Delete a feedback comment to a submission
+        api_instance.delete_submission_comment(_class, assignment, submission, comment)
+    except ApiException as e:
+        print("Exception when calling ClassApi->delete_submission_comment: %s\n" % e)
 ```
 
 ### Parameters
@@ -648,6 +863,12 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | The comment has been deleted |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_submission**
@@ -659,31 +880,45 @@ Use this method as a teacher to update the different submission and give feedbac
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 body = flat_api.AssignmentSubmissionUpdate() # AssignmentSubmissionUpdate | 
 
-try:
-    # Edit a submission
-    api_response = api_instance.edit_submission(_class, assignment, submission, body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->edit_submission: %s\n" % e)
+    try:
+        # Edit a submission
+        api_response = api_instance.edit_submission(_class, assignment, submission, body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->edit_submission: %s\n" % e)
 ```
 
 ### Parameters
@@ -708,6 +943,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The submission |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **enroll_class**
@@ -719,28 +960,42 @@ Use this method to join a class using an enrollment code given one of the teache
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-enrollment_code = 'enrollment_code_example' # str | The enrollment code, available to the teacher in `ClassDetails` 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    enrollment_code = 'enrollment_code_example' # str | The enrollment code, available to the teacher in `ClassDetails` 
 
-try:
-    # Join a class
-    api_response = api_instance.enroll_class(enrollment_code)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->enroll_class: %s\n" % e)
+    try:
+        # Join a class
+        api_response = api_instance.enroll_class(enrollment_code)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->enroll_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -762,6 +1017,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The new class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **export_submissions_reviews_as_csv**
@@ -773,29 +1034,43 @@ Export list of submissions grades to a CSV file
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try:
-    # CSV Grades exports
-    api_response = api_instance.export_submissions_reviews_as_csv(_class, assignment)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->export_submissions_reviews_as_csv: %s\n" % e)
+    try:
+        # CSV Grades exports
+        api_response = api_instance.export_submissions_reviews_as_csv(_class, assignment)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->export_submissions_reviews_as_csv: %s\n" % e)
 ```
 
 ### Parameters
@@ -818,6 +1093,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/csv
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of submissions |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **export_submissions_reviews_as_excel**
@@ -829,29 +1110,43 @@ Export list of submissions grades to an Excel file
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try:
-    # Excel Grades exports
-    api_response = api_instance.export_submissions_reviews_as_excel(_class, assignment)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->export_submissions_reviews_as_excel: %s\n" % e)
+    try:
+        # Excel Grades exports
+        api_response = api_instance.export_submissions_reviews_as_excel(_class, assignment)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->export_submissions_reviews_as_excel: %s\n" % e)
 ```
 
 ### Parameters
@@ -874,6 +1169,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of submissions |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **fork_score**
@@ -885,30 +1186,44 @@ This API call will make a copy of the last revision of the specified score and c
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 body = flat_api.ScoreFork() # ScoreFork | 
 sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
-try:
-    # Fork a score
-    api_response = api_instance.fork_score(score, body, sharing_key=sharing_key)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->fork_score: %s\n" % e)
+    try:
+        # Fork a score
+        api_response = api_instance.fork_score(score, body, sharing_key=sharing_key)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->fork_score: %s\n" % e)
 ```
 
 ### Parameters
@@ -932,6 +1247,15 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Score details |  -  |
+**402** | Account overquota |  -  |
+**403** | Not granted to access to this score |  -  |
+**404** | Score not found |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_class**
@@ -941,28 +1265,42 @@ Get the details of a single class
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 
-try:
-    # Get the details of a single class
-    api_response = api_instance.get_class(_class)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_class: %s\n" % e)
+    try:
+        # Get the details of a single class
+        api_response = api_instance.get_class(_class)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -984,6 +1322,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The new class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_score_submissions**
@@ -995,28 +1339,42 @@ This API call will list the different assignments submissions where the score is
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
 
-try:
-    # List submissions related to the score
-    api_response = api_instance.get_score_submissions(score)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_score_submissions: %s\n" % e)
+    try:
+        # List submissions related to the score
+        api_response = api_instance.get_score_submissions(score)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_score_submissions: %s\n" % e)
 ```
 
 ### Parameters
@@ -1038,6 +1396,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of submissions |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_submission**
@@ -1047,30 +1411,44 @@ Get a student submission
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 
-try:
-    # Get a student submission
-    api_response = api_instance.get_submission(_class, assignment, submission)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_submission: %s\n" % e)
+    try:
+        # Get a student submission
+        api_response = api_instance.get_submission(_class, assignment, submission)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_submission: %s\n" % e)
 ```
 
 ### Parameters
@@ -1094,6 +1472,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A submission |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_submission_comments**
@@ -1103,30 +1487,44 @@ List the feedback comments of a submission
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 
-try:
-    # List the feedback comments of a submission
-    api_response = api_instance.get_submission_comments(_class, assignment, submission)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_submission_comments: %s\n" % e)
+    try:
+        # List the feedback comments of a submission
+        api_response = api_instance.get_submission_comments(_class, assignment, submission)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_submission_comments: %s\n" % e)
 ```
 
 ### Parameters
@@ -1150,6 +1548,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The comments of the score |  -  |
+**403** | Not granted to access to this submission |  -  |
+**404** | Submission not found |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_submission_history**
@@ -1161,30 +1567,44 @@ For teachers only. Returns a detailed history of the submission. This currently 
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 
-try:
-    # Get the history of the submission
-    api_response = api_instance.get_submission_history(_class, assignment, submission)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_submission_history: %s\n" % e)
+    try:
+        # Get the history of the submission
+        api_response = api_instance.get_submission_history(_class, assignment, submission)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_submission_history: %s\n" % e)
 ```
 
 ### Parameters
@@ -1208,6 +1628,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The history of the submission |  -  |
+**403** | Not granted to access to this submission |  -  |
+**404** | Submission not found |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_submissions**
@@ -1217,29 +1645,43 @@ List the students' submissions
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try:
-    # List the students' submissions
-    api_response = api_instance.get_submissions(_class, assignment)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->get_submissions: %s\n" % e)
+    try:
+        # List the students' submissions
+        api_response = api_instance.get_submissions(_class, assignment)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->get_submissions: %s\n" % e)
 ```
 
 ### Parameters
@@ -1262,6 +1704,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The submissions |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_assignments**
@@ -1271,28 +1719,42 @@ Assignments listing
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 
-try:
-    # Assignments listing
-    api_response = api_instance.list_assignments(_class)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->list_assignments: %s\n" % e)
+    try:
+        # Assignments listing
+        api_response = api_instance.list_assignments(_class)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->list_assignments: %s\n" % e)
 ```
 
 ### Parameters
@@ -1314,6 +1776,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of assignments for the class |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_class_student_submissions**
@@ -1325,29 +1793,43 @@ Use this method as a teacher to list all the assignment submissions sent by a st
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 user = 'user_example' # str | Unique identifier of the user
 
-try:
-    # List the submissions for a student
-    api_response = api_instance.list_class_student_submissions(_class, user)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->list_class_student_submissions: %s\n" % e)
+    try:
+        # List the submissions for a student
+        api_response = api_instance.list_class_student_submissions(_class, user)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->list_class_student_submissions: %s\n" % e)
 ```
 
 ### Parameters
@@ -1370,6 +1852,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of submissions |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_classes**
@@ -1379,28 +1867,42 @@ List the classes available for the current user
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-state = 'active' # str | Filter the classes by state (optional) (default to 'active')
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    state = 'active' # str | Filter the classes by state (optional) (default to 'active')
 
-try:
-    # List the classes available for the current user
-    api_response = api_instance.list_classes(state=state)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->list_classes: %s\n" % e)
+    try:
+        # List the classes available for the current user
+        api_response = api_instance.list_classes(state=state)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->list_classes: %s\n" % e)
 ```
 
 ### Parameters
@@ -1422,6 +1924,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of classes |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **post_submission_comment**
@@ -1431,31 +1939,45 @@ Add a feedback comment to a submission
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 assignment_submission_comment_creation = flat_api.AssignmentSubmissionCommentCreation() # AssignmentSubmissionCommentCreation | 
 
-try:
-    # Add a feedback comment to a submission
-    api_response = api_instance.post_submission_comment(_class, assignment, submission, assignment_submission_comment_creation)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->post_submission_comment: %s\n" % e)
+    try:
+        # Add a feedback comment to a submission
+        api_response = api_instance.post_submission_comment(_class, assignment, submission, assignment_submission_comment_creation)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->post_submission_comment: %s\n" % e)
 ```
 
 ### Parameters
@@ -1480,6 +2002,14 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The comment |  -  |
+**403** | Not granted to access to this submission |  -  |
+**404** | Submission not found |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unarchive_assignment**
@@ -1491,29 +2021,43 @@ Mark the assignment as `active`.
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 
-try:
-    # Unarchive the assignment.
-    api_response = api_instance.unarchive_assignment(_class, assignment)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->unarchive_assignment: %s\n" % e)
+    try:
+        # Unarchive the assignment.
+        api_response = api_instance.unarchive_assignment(_class, assignment)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->unarchive_assignment: %s\n" % e)
 ```
 
 ### Parameters
@@ -1536,6 +2080,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The assignment details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **unarchive_class**
@@ -1547,28 +2097,42 @@ Mark the class as `active`. When this course is synchronized with another app, l
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 
-try:
-    # Unarchive the class
-    api_response = api_instance.unarchive_class(_class)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->unarchive_class: %s\n" % e)
+    try:
+        # Unarchive the class
+        api_response = api_instance.unarchive_class(_class)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->unarchive_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -1590,6 +2154,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_class**
@@ -1601,29 +2171,43 @@ Update the meta information of the class
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 body = flat_api.ClassUpdate() # ClassUpdate | Details of the Class (optional)
 
-try:
-    # Update the class
-    api_response = api_instance.update_class(_class, body=body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->update_class: %s\n" % e)
+    try:
+        # Update the class
+        api_response = api_instance.update_class(_class, body=body)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->update_class: %s\n" % e)
 ```
 
 ### Parameters
@@ -1646,6 +2230,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The new class details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_submission_comment**
@@ -1655,32 +2245,46 @@ Update a feedback comment to a submission
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.ClassApi(flat_api.ApiClient(configuration))
-_class = '_class_example' # str | Unique identifier of the class
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.ClassApi(api_client)
+    _class = '_class_example' # str | Unique identifier of the class
 assignment = 'assignment_example' # str | Unique identifier of the assignment
 submission = 'submission_example' # str | Unique identifier of the submission
 comment = 'comment_example' # str | Unique identifier of the comment
 assignment_submission_comment_creation = flat_api.AssignmentSubmissionCommentCreation() # AssignmentSubmissionCommentCreation | 
 
-try:
-    # Update a feedback comment to a submission
-    api_response = api_instance.update_submission_comment(_class, assignment, submission, comment, assignment_submission_comment_creation)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ClassApi->update_submission_comment: %s\n" % e)
+    try:
+        # Update a feedback comment to a submission
+        api_response = api_instance.update_submission_comment(_class, assignment, submission, comment, assignment_submission_comment_creation)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling ClassApi->update_submission_comment: %s\n" % e)
 ```
 
 ### Parameters
@@ -1705,6 +2309,14 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The comment |  -  |
+**403** | Not granted to access to this submission |  -  |
+**404** | Submission not found |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

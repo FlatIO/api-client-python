@@ -1,5 +1,6 @@
 # AssignmentSubmission
 
+Assignment Submission
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

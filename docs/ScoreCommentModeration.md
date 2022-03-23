@@ -1,5 +1,6 @@
 # ScoreCommentModeration
 
+Information about the comment being moderated
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

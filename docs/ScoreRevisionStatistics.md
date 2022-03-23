@@ -1,5 +1,6 @@
 # ScoreRevisionStatistics
 
+The statistics related to the score revision (additions and deletions) 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

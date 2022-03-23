@@ -1,5 +1,6 @@
 # LtiCredentials
 
+A couple of LTI 1.x OAuth credentials
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

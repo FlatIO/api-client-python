@@ -16,28 +16,42 @@ Get group information
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
-group = 'group_example' # str | Unique identifier of a Flat group 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.GroupApi(api_client)
+    group = 'group_example' # str | Unique identifier of a Flat group 
 
-try:
-    # Get group information
-    api_response = api_instance.get_group_details(group)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupApi->get_group_details: %s\n" % e)
+    try:
+        # Get group information
+        api_response = api_instance.get_group_details(group)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupApi->get_group_details: %s\n" % e)
 ```
 
 ### Parameters
@@ -59,6 +73,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The group details |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_group_scores**
@@ -70,29 +90,43 @@ Get the list of scores shared with a group.
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
-group = 'group_example' # str | Unique identifier of a Flat group 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.GroupApi(api_client)
+    group = 'group_example' # str | Unique identifier of a Flat group 
 parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
 
-try:
-    # List group's scores
-    api_response = api_instance.get_group_scores(group, parent=parent)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupApi->get_group_scores: %s\n" % e)
+    try:
+        # List group's scores
+        api_response = api_instance.get_group_scores(group, parent=parent)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupApi->get_group_scores: %s\n" % e)
 ```
 
 ### Parameters
@@ -115,6 +149,12 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The group&#39;s scores |  -  |
+**0** | Error |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_group_users**
@@ -124,29 +164,43 @@ List group's users
 
 ### Example
 
-* OAuth Authentication (OAuth2): 
+* OAuth Authentication (OAuth2):
 ```python
 from __future__ import print_function
 import time
 import flat_api
 from flat_api.rest import ApiException
 from pprint import pprint
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
 
 # Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration()
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
 configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
-# create an instance of the API class
-api_instance = flat_api.GroupApi(flat_api.ApiClient(configuration))
-group = 'group_example' # str | Unique identifier of a Flat group 
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.GroupApi(api_client)
+    group = 'group_example' # str | Unique identifier of a Flat group 
 source = 'source_example' # str | Filter the users by their source  (optional)
 
-try:
-    # List group's users
-    api_response = api_instance.list_group_users(group, source=source)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling GroupApi->list_group_users: %s\n" % e)
+    try:
+        # List group's users
+        api_response = api_instance.list_group_users(group, source=source)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling GroupApi->list_group_users: %s\n" % e)
 ```
 
 ### Parameters
@@ -168,6 +222,12 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of users member of the group |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
