@@ -41,7 +41,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     install_requires=REQUIRES,
-    packages=find_packages(exclude=['test']),
+    packages=find_packages(exclude=["*test.*", "*test"]),
     include_package_data=True,
     license="Apache",
     classifiers=[
