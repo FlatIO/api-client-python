@@ -1,12 +1,10 @@
-# coding: utf-8
-
 # flake8: noqa
 
 # import all models into this package
 # if you have many models here with many references from one model to another this may
 # raise a RecursionError
 # to avoid this, import only the models that you directly need like:
-# from flat_api.model.pet import Pet
+# from from flat_api.model.pet import Pet
 # or import this package, but before doing it, use:
 # import sys
 # sys.setrecursionlimit(n)
@@ -16,36 +14,57 @@ from flat_api.model.app_scopes import AppScopes
 from flat_api.model.assignment import Assignment
 from flat_api.model.assignment_copy import AssignmentCopy
 from flat_api.model.assignment_copy_response import AssignmentCopyResponse
+from flat_api.model.assignment_copy_response_capabilities import AssignmentCopyResponseCapabilities
+from flat_api.model.assignment_copy_response_capabilities_can_publish_in_class_error import AssignmentCopyResponseCapabilitiesCanPublishInClassError
 from flat_api.model.assignment_submission import AssignmentSubmission
 from flat_api.model.assignment_submission_comment import AssignmentSubmissionComment
 from flat_api.model.assignment_submission_comment_creation import AssignmentSubmissionCommentCreation
 from flat_api.model.assignment_submission_history import AssignmentSubmissionHistory
+from flat_api.model.assignment_submission_history_attachment import AssignmentSubmissionHistoryAttachment
 from flat_api.model.assignment_submission_history_state import AssignmentSubmissionHistoryState
 from flat_api.model.assignment_submission_state import AssignmentSubmissionState
 from flat_api.model.assignment_submission_update import AssignmentSubmissionUpdate
+from flat_api.model.assignment_submission_update_comments import AssignmentSubmissionUpdateComments
 from flat_api.model.assignment_type import AssignmentType
 from flat_api.model.assignment_update import AssignmentUpdate
 from flat_api.model.class_assignment import ClassAssignment
+from flat_api.model.class_assignment_canvas import ClassAssignmentCanvas
+from flat_api.model.class_assignment_lti import ClassAssignmentLti
+from flat_api.model.class_assignment_mfc import ClassAssignmentMfc
 from flat_api.model.class_assignment_update import ClassAssignmentUpdate
+from flat_api.model.class_assignment_update_google_classroom import ClassAssignmentUpdateGoogleClassroom
+from flat_api.model.class_assignment_update_microsoft_graph import ClassAssignmentUpdateMicrosoftGraph
 from flat_api.model.class_attachment_creation import ClassAttachmentCreation
 from flat_api.model.class_creation import ClassCreation
 from flat_api.model.class_details import ClassDetails
+from flat_api.model.class_details_canvas import ClassDetailsCanvas
+from flat_api.model.class_details_clever import ClassDetailsClever
+from flat_api.model.class_details_google_classroom import ClassDetailsGoogleClassroom
+from flat_api.model.class_details_google_drive import ClassDetailsGoogleDrive
+from flat_api.model.class_details_issues import ClassDetailsIssues
+from flat_api.model.class_details_issues_sync_inner import ClassDetailsIssuesSyncInner
+from flat_api.model.class_details_lti import ClassDetailsLti
+from flat_api.model.class_details_mfc import ClassDetailsMfc
+from flat_api.model.class_details_microsoft_graph import ClassDetailsMicrosoftGraph
 from flat_api.model.class_grade_level import ClassGradeLevel
 from flat_api.model.class_roles import ClassRoles
 from flat_api.model.class_state import ClassState
 from flat_api.model.class_update import ClassUpdate
 from flat_api.model.collection import Collection
 from flat_api.model.collection_app import CollectionApp
+from flat_api.model.collection_capabilities import CollectionCapabilities
 from flat_api.model.collection_creation import CollectionCreation
 from flat_api.model.collection_modification import CollectionModification
 from flat_api.model.collection_privacy import CollectionPrivacy
 from flat_api.model.collection_type import CollectionType
 from flat_api.model.edu_library import EduLibrary
 from flat_api.model.edu_resource import EduResource
+from flat_api.model.edu_resource_capabilities import EduResourceCapabilities
 from flat_api.model.edu_resource_copy import EduResourceCopy
 from flat_api.model.edu_resource_creation import EduResourceCreation
 from flat_api.model.edu_resource_move import EduResourceMove
 from flat_api.model.edu_resource_privacy import EduResourcePrivacy
+from flat_api.model.edu_resource_resource import EduResourceResource
 from flat_api.model.edu_resource_type import EduResourceType
 from flat_api.model.edu_resource_update import EduResourceUpdate
 from flat_api.model.edu_resource_use_in_class import EduResourceUseInClass
@@ -76,9 +95,14 @@ from flat_api.model.resource_rights import ResourceRights
 from flat_api.model.score_comment import ScoreComment
 from flat_api.model.score_comment_context import ScoreCommentContext
 from flat_api.model.score_comment_creation import ScoreCommentCreation
+from flat_api.model.score_comment_moderation import ScoreCommentModeration
 from flat_api.model.score_comment_update import ScoreCommentUpdate
 from flat_api.model.score_comments_counts import ScoreCommentsCounts
 from flat_api.model.score_creation import ScoreCreation
+from flat_api.model.score_creation_builder_data import ScoreCreationBuilderData
+from flat_api.model.score_creation_builder_data_layout_data import ScoreCreationBuilderDataLayoutData
+from flat_api.model.score_creation_builder_data_score_data import ScoreCreationBuilderDataScoreData
+from flat_api.model.score_creation_builder_data_score_data_instruments_inner import ScoreCreationBuilderDataScoreDataInstrumentsInner
 from flat_api.model.score_creation_type import ScoreCreationType
 from flat_api.model.score_details import ScoreDetails
 from flat_api.model.score_fork import ScoreFork
@@ -100,12 +124,15 @@ from flat_api.model.score_track_update import ScoreTrackUpdate
 from flat_api.model.score_views_counts import ScoreViewsCounts
 from flat_api.model.task import Task
 from flat_api.model.task_export_options import TaskExportOptions
+from flat_api.model.task_progress import TaskProgress
+from flat_api.model.task_result import TaskResult
 from flat_api.model.user_admin_update import UserAdminUpdate
 from flat_api.model.user_azure_details import UserAzureDetails
 from flat_api.model.user_community_profile_links import UserCommunityProfileLinks
 from flat_api.model.user_creation import UserCreation
 from flat_api.model.user_details import UserDetails
 from flat_api.model.user_details_admin import UserDetailsAdmin
+from flat_api.model.user_details_admin_license import UserDetailsAdminLicense
 from flat_api.model.user_public import UserPublic
 from flat_api.model.user_public_summary import UserPublicSummary
 from flat_api.model.user_signin_link import UserSigninLink
