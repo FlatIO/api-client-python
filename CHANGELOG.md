@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0 (API v2.18.0)
+
+* Updated API from v2.17.0 to v2.18.0
+* Generated with OpenAPI Generator Python 7.0.0-20220526.055920-1
+
 ## 0.8.1 (API v2.17.0)
 
 * Fixes binary responses for MIDI export
