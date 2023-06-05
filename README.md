@@ -1,6 +1,6 @@
 # Python Client for the Flat REST API
 
-[![Python package](https://github.com/FlatIO/api-client-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/FlatIO/api-client-python/actions/workflows/python-package.yml)
+[![Python package](https://github.com/FlatIO/api-client-python/actions/workflows/python.yml/badge.svg)](https://github.com/FlatIO/api-client-python/actions/workflows/python.yml)
 
 The Flat API allows you to easily extend the abilities of the [Flat Platform](https://flat.io), with a wide range of use cases including the following:
 - Creating and importing new music scores using MusicXML or MIDI files
