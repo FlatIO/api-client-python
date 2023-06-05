@@ -12,7 +12,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "flat_api"
-VERSION = "0.8.0"
+VERSION = "0.8.1"
 # To install the library, run the following
 #
 # python setup.py install
