@@ -77,7 +77,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'flat_api/0.9.0'
+        self.user_agent = 'flat_api/1.0.0'
 
     def __enter__(self):
         return self
