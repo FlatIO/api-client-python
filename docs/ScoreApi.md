@@ -349,6 +349,7 @@ import flat_api
 from flat_api.api import score_api
 from flat_api.model.score_creation import ScoreCreation
 from flat_api.model.score_details import ScoreDetails
+from flat_api.model.score_privacy import ScorePrivacy
 from flat_api.model.flat_error_response import FlatErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.flat.io/v2
@@ -375,42 +376,9 @@ with flat_api.ApiClient(configuration) as api_client:
     body = ScoreCreation(
         title="title_example",
         privacy=ScorePrivacy("private"),
-        collection="collection_example",
-        google_drive_folder="google_drive_folder_example",
-        builder_data=ScoreCreationBuilderData(
-            score_data=ScoreCreationBuilderDataScoreData(
-                use_tab_staff=True,
-                use_chord_grid=True,
-                fifths=3.14,
-                nb_beats=3.14,
-                beat_type=3.14,
-                instruments=[
-                    ScoreCreationBuilderDataScoreDataInstrumentsInner(
-                        group="group_example",
-                        instrument="instrument_example",
-                        long_name="long_name_example",
-                        short_name="short_name_example",
-                        has_quarter_tone=True,
-                    ),
-                ],
-            ),
-            layout_data=ScoreCreationBuilderDataLayoutData(
-                notes_spacing_coeff=3.14,
-                length_unit="cm",
-                page_height=3.14,
-                page_width=3.14,
-                page_margin_top=3.14,
-                page_margin_bottom=3.14,
-                page_margin_left=3.14,
-                page_margin_right=3.14,
-            ),
-        ),
         filename="filename_example",
         data="data_example",
-        data_encoding="base64",
-        source=ScoreSource(
-            google_drive="google_drive_example",
-        ),
+        data_encoding="base64"
     ) # ScoreCreation | 
 
     # example passing only required values which don't have defaults set
@@ -822,6 +790,7 @@ import flat_api
 from flat_api.api import score_api
 from flat_api.model.score_modification import ScoreModification
 from flat_api.model.score_details import ScoreDetails
+from flat_api.model.score_privacy import ScorePrivacy
 from flat_api.model.flat_error_response import FlatErrorResponse
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.flat.io/v2
