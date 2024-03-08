@@ -3,6 +3,7 @@
 A group of users
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique identifier of the group | [optional] 
@@ -12,8 +13,24 @@ Name | Type | Description | Notes
 **read_only** | **bool** | &#x60;True&#x60; if the group is set in read-only  | [optional] 
 **organization** | **str** | If the group is related to an organization, this field will contain the unique identifier of the organization  | [optional] 
 **creation_date** | **datetime** | The creation date of the group | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from flat_api.models.group import Group
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Group from a JSON string
+group_instance = Group.from_json(json)
+# print the JSON string representation of the object
+print Group.to_json()
+
+# convert the object into a dict
+group_dict = group_instance.to_dict()
+# create an instance of Group from a dict
+group_form_dict = group.from_dict(group_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

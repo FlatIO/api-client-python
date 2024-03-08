@@ -3,9 +3,10 @@
 A classroom
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique identifier of the class | [optional] 
+**id** | **str** | The unique identifier of the class | 
 **state** | [**ClassState**](ClassState.md) |  | [optional] 
 **name** | **str** | The name of the class | [optional] 
 **section** | **str** | The section of the class | [optional] 
@@ -27,10 +28,26 @@ Name | Type | Description | Notes
 **mfc** | [**ClassDetailsMfc**](ClassDetailsMfc.md) |  | [optional] 
 **clever** | [**ClassDetailsClever**](ClassDetailsClever.md) |  | [optional] 
 **level** | [**ClassGradeLevel**](ClassGradeLevel.md) |  | [optional] 
-**skills_focused** | [**EduSkillsFocused**](EduSkillsFocused.md) |  | [optional] 
-**size** | **float, none_type** | Number of students in the classroom | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**skills_focused** | **List[str]** | Specific skills that will be focused in classroom | [optional] 
+**size** | **float** | Number of students in the classroom | [optional] 
 
+## Example
+
+```python
+from flat_api.models.class_details import ClassDetails
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ClassDetails from a JSON string
+class_details_instance = ClassDetails.from_json(json)
+# print the JSON string representation of the object
+print ClassDetails.to_json()
+
+# convert the object into a dict
+class_details_dict = class_details_instance.to_dict()
+# create an instance of ClassDetails from a dict
+class_details_form_dict = class_details.from_dict(class_details_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

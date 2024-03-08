@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **add_score_to_collection**
-> ScoreDetails add_score_to_collection(collection, score)
+> ScoreDetails add_score_to_collection(collection, score, sharing_key=sharing_key)
 
 Add a score to the collection
 
@@ -27,12 +27,11 @@ This operation will add a score to a collection. The default behavior will make 
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.score_details import ScoreDetails
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.score_details import ScoreDetails
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -44,46 +43,35 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-    score = "score_example" # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-    sharing_key = "sharingKey_example" # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+    sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Add a score to the collection
-        api_response = api_instance.add_score_to_collection(collection, score)
-        pprint(api_response)
-    except flat_api.ApiException as e:
-        print("Exception when calling CollectionApi->add_score_to_collection: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Add a score to the collection
         api_response = api_instance.add_score_to_collection(collection, score, sharing_key=sharing_key)
+        print("The response of CollectionApi->add_score_to_collection:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->add_score_to_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
- **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  |
- **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional]
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -97,7 +85,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -122,13 +109,12 @@ This method will create a new collection and add it to your `root` collection.
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.collection_creation import CollectionCreation
-from flat_api.model.collection import Collection
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.collection import Collection
+from flat_api.models.collection_creation import CollectionCreation
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -140,36 +126,31 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    body = CollectionCreation(
-        title="title_example",
-        privacy=CollectionPrivacy("private"),
-    ) # CollectionCreation | 
+    api_instance = flat_api.CollectionApi(api_client)
+    body = flat_api.CollectionCreation() # CollectionCreation | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Create a new collection
         api_response = api_instance.create_collection(body)
+        print("The response of CollectionApi->create_collection:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->create_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CollectionCreation**](CollectionCreation.md)|  |
+ **body** | [**CollectionCreation**](CollectionCreation.md)|  | 
 
 ### Return type
 
@@ -183,7 +164,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -207,11 +187,10 @@ This method will schedule the deletion of the collection. Until deleted, the col
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -223,32 +202,29 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete the collection
         api_instance.delete_collection(collection)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->delete_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
 
 ### Return type
 
@@ -262,7 +238,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -276,7 +251,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_score_from_collection**
-> delete_score_from_collection(collection, score)
+> delete_score_from_collection(collection, score, sharing_key=sharing_key)
 
 Delete a score from the collection
 
@@ -287,11 +262,10 @@ This method will delete a score from the collection. Unlike [`DELETE /scores/{sc
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -303,44 +277,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-    score = "score_example" # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-    sharing_key = "sharingKey_example" # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
+    sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Delete a score from the collection
-        api_instance.delete_score_from_collection(collection, score)
-    except flat_api.ApiException as e:
-        print("Exception when calling CollectionApi->delete_score_from_collection: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Delete a score from the collection
         api_instance.delete_score_from_collection(collection, score, sharing_key=sharing_key)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->delete_score_from_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
- **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  |
- **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional]
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -355,7 +318,6 @@ void (empty response body)
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -368,7 +330,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **edit_collection**
-> Collection edit_collection(collection)
+> Collection edit_collection(collection, body)
 
 Update a collection's metadata
 
@@ -377,13 +339,12 @@ Update a collection's metadata
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.collection import Collection
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.collection_modification import CollectionModification
+from flat_api.models.collection import Collection
+from flat_api.models.collection_modification import CollectionModification
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -395,47 +356,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-    body = CollectionModification(
-        title="title_example",
-        privacy=CollectionPrivacy("private"),
-    ) # CollectionModification |  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    body = flat_api.CollectionModification() # CollectionModification | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update a collection's metadata
-        api_response = api_instance.edit_collection(collection)
+        api_response = api_instance.edit_collection(collection, body)
+        print("The response of CollectionApi->edit_collection:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
-        print("Exception when calling CollectionApi->edit_collection: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
-    try:
-        # Update a collection's metadata
-        api_response = api_instance.edit_collection(collection, body=body)
-        pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->edit_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
- **body** | [**CollectionModification**](CollectionModification.md)|  | [optional]
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **body** | [**CollectionModification**](CollectionModification.md)|  | 
 
 ### Return type
 
@@ -450,7 +397,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -463,7 +409,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_collection**
-> Collection get_collection(collection)
+> Collection get_collection(collection, sharing_key=sharing_key)
 
 Get collection details
 
@@ -472,12 +418,11 @@ Get collection details
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.collection import Collection
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.collection import Collection
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -489,44 +434,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-    sharing_key = "sharingKey_example" # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # Get collection details
-        api_response = api_instance.get_collection(collection)
-        pprint(api_response)
-    except flat_api.ApiException as e:
-        print("Exception when calling CollectionApi->get_collection: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # Get collection details
         api_response = api_instance.get_collection(collection, sharing_key=sharing_key)
+        print("The response of CollectionApi->get_collection:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->get_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
- **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional]
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type
 
@@ -541,7 +475,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -554,7 +487,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_collection_scores**
-> [ScoreDetails] list_collection_scores(collection)
+> List[ScoreDetails] list_collection_scores(collection, sharing_key=sharing_key, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
 
 List the scores contained in a collection
 
@@ -565,12 +498,11 @@ Use this method to list the scores contained in a collection. If no sort option 
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.score_details import ScoreDetails
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.score_details import ScoreDetails
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -582,58 +514,47 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
-    sharing_key = "sharingKey_example" # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
-    sort = "creationDate" # str | Sort (optional)
-    direction = "asc" # str | Sort direction (optional)
-    limit = 25 # int | This is the maximum number of objects that may be returned (optional) if omitted the server will use the default value of 25
-    next = "next_example" # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
-    previous = "previous_example" # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
+    sort = 'sort_example' # str | Sort (optional)
+    direction = 'direction_example' # str | Sort direction (optional)
+    limit = 25 # int | This is the maximum number of objects that may be returned (optional) (default to 25)
+    next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
-    # example passing only required values which don't have defaults set
-    try:
-        # List the scores contained in a collection
-        api_response = api_instance.list_collection_scores(collection)
-        pprint(api_response)
-    except flat_api.ApiException as e:
-        print("Exception when calling CollectionApi->list_collection_scores: %s\n" % e)
-
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List the scores contained in a collection
         api_response = api_instance.list_collection_scores(collection, sharing_key=sharing_key, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
+        print("The response of CollectionApi->list_collection_scores:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->list_collection_scores: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
- **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional]
- **sort** | **str**| Sort | [optional]
- **direction** | **str**| Sort direction | [optional]
- **limit** | **int**| This is the maximum number of objects that may be returned | [optional] if omitted the server will use the default value of 25
- **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
- **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
+ **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
+ **sort** | **str**| Sort | [optional] 
+ **direction** | **str**| Sort direction | [optional] 
+ **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 25]
+ **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
 
 ### Return type
 
-[**[ScoreDetails]**](ScoreDetails.md)
+[**List[ScoreDetails]**](ScoreDetails.md)
 
 ### Authorization
 
@@ -643,7 +564,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -655,7 +575,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_collections**
-> [Collection] list_collections()
+> List[Collection] list_collections(parent=parent, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
 
 List the collections
 
@@ -666,12 +586,11 @@ Use this method to list the user's collections contained in `parent` (by default
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.collection import Collection
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.collection import Collection
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -683,48 +602,45 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    parent = "root" # str | List the collection contained in this `parent` collection.  This option doesn't provide a complete multi-level collection support. When sharing a collection with someone, this one will have as `parent` `sharedWithMe`.  (optional) if omitted the server will use the default value of "root"
-    sort = "creationDate" # str | Sort (optional)
-    direction = "asc" # str | Sort direction (optional)
-    limit = 25 # int | This is the maximum number of objects that may be returned (optional) if omitted the server will use the default value of 25
-    next = "next_example" # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
-    previous = "previous_example" # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    api_instance = flat_api.CollectionApi(api_client)
+    parent = 'root' # str | List the collection contained in this `parent` collection.  This option doesn't provide a complete multi-level collection support. When sharing a collection with someone, this one will have as `parent` `sharedWithMe`.  (optional) (default to 'root')
+    sort = 'sort_example' # str | Sort (optional)
+    direction = 'direction_example' # str | Sort direction (optional)
+    limit = 25 # int | This is the maximum number of objects that may be returned (optional) (default to 25)
+    next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List the collections
         api_response = api_instance.list_collections(parent=parent, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
+        print("The response of CollectionApi->list_collections:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->list_collections: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **str**| List the collection contained in this &#x60;parent&#x60; collection.  This option doesn&#39;t provide a complete multi-level collection support. When sharing a collection with someone, this one will have as &#x60;parent&#x60; &#x60;sharedWithMe&#x60;.  | [optional] if omitted the server will use the default value of "root"
- **sort** | **str**| Sort | [optional]
- **direction** | **str**| Sort direction | [optional]
- **limit** | **int**| This is the maximum number of objects that may be returned | [optional] if omitted the server will use the default value of 25
- **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
- **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
+ **parent** | **str**| List the collection contained in this &#x60;parent&#x60; collection.  This option doesn&#39;t provide a complete multi-level collection support. When sharing a collection with someone, this one will have as &#x60;parent&#x60; &#x60;sharedWithMe&#x60;.  | [optional] [default to &#39;root&#39;]
+ **sort** | **str**| Sort | [optional] 
+ **direction** | **str**| Sort direction | [optional] 
+ **limit** | **int**| This is the maximum number of objects that may be returned | [optional] [default to 25]
+ **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
 
 ### Return type
 
-[**[Collection]**](Collection.md)
+[**List[Collection]**](Collection.md)
 
 ### Authorization
 
@@ -734,7 +650,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -757,11 +672,10 @@ This method will restore the collection by removing it from the `trash` and add 
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import collection_api
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -773,32 +687,29 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = collection_api.CollectionApi(api_client)
-    collection = "collection_example" # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
+    api_instance = flat_api.CollectionApi(api_client)
+    collection = 'collection_example' # str | Unique identifier of the collection. The following aliases are supported: - `root`: The root collection of the account - `app`: Alias for the current app collection - `sharedWithMe`: Automatically contains new resources that have been shared individually - `trash`: Automatically contains resources that have been deleted 
 
-    # example passing only required values which don't have defaults set
     try:
         # Untrash a collection
         api_instance.untrash_collection(collection)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling CollectionApi->untrash_collection: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  |
+ **collection** | **str**| Unique identifier of the collection. The following aliases are supported: - &#x60;root&#x60;: The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;sharedWithMe&#x60;: Automatically contains new resources that have been shared individually - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
 
 ### Return type
 
@@ -812,7 +723,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 

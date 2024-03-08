@@ -3,12 +3,29 @@
 A MusicFirst Classroom assignment
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the course on MusicFirst Task | [optional] 
 **alternate_link** | **str** | Link to MusicFirst Classroom task | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from flat_api.models.class_assignment_mfc import ClassAssignmentMfc
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ClassAssignmentMfc from a JSON string
+class_assignment_mfc_instance = ClassAssignmentMfc.from_json(json)
+# print the JSON string representation of the object
+print ClassAssignmentMfc.to_json()
+
+# convert the object into a dict
+class_assignment_mfc_dict = class_assignment_mfc_instance.to_dict()
+# create an instance of ClassAssignmentMfc from a dict
+class_assignment_mfc_form_dict = class_assignment_mfc.from_dict(class_assignment_mfc_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

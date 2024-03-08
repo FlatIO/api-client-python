@@ -3,6 +3,7 @@
 Collection of scores
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the collection | [optional] 
@@ -14,12 +15,29 @@ Name | Type | Description | Notes
 **app** | [**CollectionApp**](CollectionApp.md) |  | [optional] 
 **creation_date** | **datetime** | The date when the collection was created | [optional] 
 **user** | [**UserPublicSummary**](UserPublicSummary.md) |  | [optional] 
+**organization** | **str** | If the score has been created in an organization, the identifier of this organization.   | [optional] 
 **rights** | [**ResourceRights**](ResourceRights.md) |  | [optional] 
-**collaborators** | [**[ResourceCollaborator]**](ResourceCollaborator.md) | The list of the collaborators of the collection | [optional] 
-**capabilities** | [**CollectionCapabilities**](CollectionCapabilities.md) |  | [optional] 
-**collections** | **[str]** | The List of parent collections, which includes all the collections this score is included. Please note that you might not have access to all of them. | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**collaborators** | [**List[ResourceCollaborator]**](ResourceCollaborator.md) | The list of the collaborators of the collection | [optional] 
+**capabilities** | [**CollectionCapabilities**](CollectionCapabilities.md) |  | 
+**collections** | **List[str]** | The List of parent collections, which includes all the collections this score is included. Please note that you might not have access to all of them. | [optional] 
 
+## Example
+
+```python
+from flat_api.models.collection import Collection
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of Collection from a JSON string
+collection_instance = Collection.from_json(json)
+# print the JSON string representation of the object
+print Collection.to_json()
+
+# convert the object into a dict
+collection_dict = collection_instance.to_dict()
+# create an instance of Collection from a dict
+collection_form_dict = collection.from_dict(collection_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 
