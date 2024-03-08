@@ -27,7 +27,7 @@ except(IOError, ImportError):
 
 setup(
     name="flat_api",
-    version="1.1.2",
+    version="1.1.3",
     description="Flat API Client",
     author="The Flat Team (https://flat.io)",
     author_email="developers@flat.io",

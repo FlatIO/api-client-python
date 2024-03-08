@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.3](https://github.com/FlatIO/api-client-python/compare/v1.1.2...v1.1.3) (2024-03-08)
+
+
+### Bug Fixes
+
+* **gh:** try fixing version bump by please-release ([bfde710](https://github.com/FlatIO/api-client-python/commit/bfde710d5a9dbaa900247af8478acf43645b5b84))
+* **release:** import version from flat_api ([4283976](https://github.com/FlatIO/api-client-python/commit/4283976e180aa85425cabc5f624fa9bbc73be911))
+
 ## [1.1.2](https://github.com/FlatIO/api-client-python/compare/v1.1.1...v1.1.2) (2024-03-08)
 
 
