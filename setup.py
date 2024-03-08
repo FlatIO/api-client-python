@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Flat API 2.17.0
+    Flat API 2.20.0
 
     OpenAPI spec version: 
     Contact: developers@flat.io
@@ -12,7 +12,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "flat_api"
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 # To install the library, run the following
 #
 # python setup.py install

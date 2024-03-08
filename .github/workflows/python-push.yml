@@ -27,7 +27,9 @@ jobs:
         run: python -m build
       - uses: google-github-actions/release-please-action@v4
         with:
-          release-type: simple
+          release-type: python
+          package-name: flat_api
+          bump-minor-pre-major: true
       - name: Publish package
         uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
         with:
