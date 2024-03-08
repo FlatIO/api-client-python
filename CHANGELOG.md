@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/FlatIO/api-client-python/compare/v1.1.0...v1.1.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* **releasee:** release-please-action -&gt; simple ([03ea4fb](https://github.com/FlatIO/api-client-python/commit/03ea4fbd53f52dda6f3c0abb45da3ab24b3e547d))
+
 ## [1.1.0](https://github.com/FlatIO/api-client-python/compare/v1.0.0...v1.1.0) (2024-03-08)
 
 
