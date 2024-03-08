@@ -7,7 +7,6 @@
 
 import sys
 from setuptools import setup, find_packages
-from flat_api import __version__
 
 # To install the library, run the following
 #
@@ -28,7 +27,7 @@ except(IOError, ImportError):
 
 setup(
     name="flat_api",
-    version=__version__,
+    version="1.1.2",
     description="Flat API Client",
     author="The Flat Team (https://flat.io)",
     author_email="developers@flat.io",
