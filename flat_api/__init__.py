@@ -15,7 +15,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.1.0"
+__version__ = "1.1.2"
 
 # import apis into sdk package
 from flat_api.api.account_api import AccountApi
