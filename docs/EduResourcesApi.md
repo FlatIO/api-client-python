@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**copy_edu_resource**](EduResourcesApi.md#copy_edu_resource) | **POST** /eduResources/{resource}/copy | Copy an education resource to a Resource Library
 [**copy_edu_resource_to_demo_class**](EduResourcesApi.md#copy_edu_resource_to_demo_class) | **POST** /eduResources/{resource}/copyToDemoClass | Copy an education assignment to a teacher demo class
 [**create_edu_resource**](EduResourcesApi.md#create_edu_resource) | **POST** /eduResources | Create a new education resource
+[**create_edu_resource_lti_link**](EduResourcesApi.md#create_edu_resource_lti_link) | **POST** /eduResources/{resource}/createLtiLink | Create an LTI link for an education resource
 [**delete_edu_resource**](EduResourcesApi.md#delete_edu_resource) | **DELETE** /eduResources/{resource} | Delete an education resource
 [**get_edu_resource**](EduResourcesApi.md#get_edu_resource) | **GET** /eduResources/{resource} | Get an education resource
 [**list_edu_libraries**](EduResourcesApi.md#list_edu_libraries) | **GET** /eduResources/libraries | List the education libraries
@@ -27,13 +28,12 @@ Copy an education resource to a Resource Library
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.edu_resource_copy import EduResourceCopy
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
+from flat_api.models.edu_resource import EduResource
+from flat_api.models.edu_resource_copy import EduResourceCopy
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -45,37 +45,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
-    edu_resource_copy = EduResourceCopy(
-        destination="destination_example",
-    ) # EduResourceCopy | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+    edu_resource_copy = flat_api.EduResourceCopy() # EduResourceCopy | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Copy an education resource to a Resource Library
         api_response = api_instance.copy_edu_resource(resource, edu_resource_copy)
+        print("The response of EduResourcesApi->copy_edu_resource:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->copy_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
- **edu_resource_copy** | [**EduResourceCopy**](EduResourceCopy.md)|  |
+ **resource** | **str**| Unique identifier of the resource | 
+ **edu_resource_copy** | [**EduResourceCopy**](EduResourceCopy.md)|  | 
 
 ### Return type
 
@@ -89,7 +85,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -112,12 +107,11 @@ Once a resource library can be published to a class (`Assignment.capabilities.ca
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.class_assignment import ClassAssignment
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.class_assignment import ClassAssignment
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -129,33 +123,31 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
 
-    # example passing only required values which don't have defaults set
     try:
         # Copy an education assignment to a teacher demo class
         api_response = api_instance.copy_edu_resource_to_demo_class(resource)
+        print("The response of EduResourcesApi->copy_edu_resource_to_demo_class:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->copy_edu_resource_to_demo_class: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
+ **resource** | **str**| Unique identifier of the resource | 
 
 ### Return type
 
@@ -169,7 +161,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -190,13 +181,12 @@ Create a new education resource
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.edu_resource_creation import EduResourceCreation
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
+from flat_api.models.edu_resource import EduResource
+from flat_api.models.edu_resource_creation import EduResourceCreation
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -208,37 +198,31 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    edu_resource_creation = EduResourceCreation(
-        type=EduResourceType("assignment"),
-        title="title_example",
-        parent="root",
-    ) # EduResourceCreation | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    edu_resource_creation = flat_api.EduResourceCreation() # EduResourceCreation | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Create a new education resource
         api_response = api_instance.create_edu_resource(edu_resource_creation)
+        print("The response of EduResourcesApi->create_edu_resource:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->create_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **edu_resource_creation** | [**EduResourceCreation**](EduResourceCreation.md)|  |
+ **edu_resource_creation** | [**EduResourceCreation**](EduResourceCreation.md)|  | 
 
 ### Return type
 
@@ -253,12 +237,87 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Fetched resource |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_edu_resource_lti_link**
+> EduResourceLtiLink create_edu_resource_lti_link(resource)
+
+Create an LTI link for an education resource
+
+This endpoint will return an LTI link that can be used to launch Flat for Education. The link, in a context from a class, will ensure the assignment has been copied in the class. 
+
+### Example
+
+* OAuth Authentication (OAuth2):
+
+```python
+import flat_api
+from flat_api.models.edu_resource_lti_link import EduResourceLtiLink
+from flat_api.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.flat.io/v2
+# See configuration.py for a list of all supported configuration parameters.
+configuration = flat_api.Configuration(
+    host = "https://api.flat.io/v2"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with flat_api.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+
+    try:
+        # Create an LTI link for an education resource
+        api_response = api_instance.create_edu_resource_lti_link(resource)
+        print("The response of EduResourcesApi->create_edu_resource_lti_link:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling EduResourcesApi->create_edu_resource_lti_link: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **resource** | **str**| Unique identifier of the resource | 
+
+### Return type
+
+[**EduResourceLtiLink**](EduResourceLtiLink.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Created LTI Link |  -  |
 **0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -273,11 +332,10 @@ Delete an education resource
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -289,32 +347,29 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
 
-    # example passing only required values which don't have defaults set
     try:
         # Delete an education resource
         api_instance.delete_edu_resource(resource)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->delete_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
+ **resource** | **str**| Unique identifier of the resource | 
 
 ### Return type
 
@@ -328,7 +383,6 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -349,12 +403,11 @@ Get an education resource
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
+from flat_api.models.edu_resource import EduResource
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -366,33 +419,31 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
 
-    # example passing only required values which don't have defaults set
     try:
         # Get an education resource
         api_response = api_instance.get_edu_resource(resource)
+        print("The response of EduResourcesApi->get_edu_resource:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->get_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
+ **resource** | **str**| Unique identifier of the resource | 
 
 ### Return type
 
@@ -407,7 +458,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-
 ### HTTP response details
 
 | Status code | Description | Response headers |
@@ -418,7 +468,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_edu_libraries**
-> [EduLibrary] list_edu_libraries()
+> List[EduLibrary] list_edu_libraries()
 
 List the education libraries
 
@@ -427,12 +477,11 @@ List the education libraries
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.edu_library import EduLibrary
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.edu_library import EduLibrary
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -444,33 +493,31 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
+    api_instance = flat_api.EduResourcesApi(api_client)
 
-    # example, this endpoint has no required or optional parameters
     try:
         # List the education libraries
         api_response = api_instance.list_edu_libraries()
+        print("The response of EduResourcesApi->list_edu_libraries:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->list_edu_libraries: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
 
-[**[EduLibrary]**](EduLibrary.md)
+[**List[EduLibrary]**](EduLibrary.md)
 
 ### Authorization
 
@@ -480,7 +527,6 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -492,7 +538,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_edu_resources**
-> [EduResource] list_edu_resources()
+> List[EduResource] list_edu_resources(parent=parent, type=type, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
 
 List education resources in a library or folder
 
@@ -501,12 +547,11 @@ List education resources in a library or folder
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
+from flat_api.models.edu_resource import EduResource
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -518,50 +563,47 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    parent = "root" # str | List the resources contained in this `parent` library or folder  (optional) if omitted the server will use the default value of "root"
-    type = "assignment" # str | Filter the returned resources by type  (optional)
-    sort = "creationDate" # str | Sort (optional) if omitted the server will use the default value of "creationDate"
-    direction = "asc" # str | Sort direction (optional)
-    limit = 25 # int | This is the maximum number of resources that may be returned (optional) if omitted the server will use the default value of 25
-    next = "next_example" # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
-    previous = "previous_example" # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    api_instance = flat_api.EduResourcesApi(api_client)
+    parent = 'root' # str | List the resources contained in this `parent` library or folder  (optional) (default to 'root')
+    type = 'type_example' # str | Filter the returned resources by type  (optional)
+    sort = 'creationDate' # str | Sort (optional) (default to 'creationDate')
+    direction = 'direction_example' # str | Sort direction (optional)
+    limit = 25 # int | This is the maximum number of resources that may be returned (optional) (default to 25)
+    next = 'next_example' # str | An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
+    previous = 'previous_example' # str | An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the `Link` header when requesting the API. These URLs will contain a `next` and `previous` cursor based on the available data.  (optional)
 
-    # example passing only required values which don't have defaults set
-    # and optional values
     try:
         # List education resources in a library or folder
         api_response = api_instance.list_edu_resources(parent=parent, type=type, sort=sort, direction=direction, limit=limit, next=next, previous=previous)
+        print("The response of EduResourcesApi->list_edu_resources:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->list_edu_resources: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **str**| List the resources contained in this &#x60;parent&#x60; library or folder  | [optional] if omitted the server will use the default value of "root"
- **type** | **str**| Filter the returned resources by type  | [optional]
- **sort** | **str**| Sort | [optional] if omitted the server will use the default value of "creationDate"
- **direction** | **str**| Sort direction | [optional]
- **limit** | **int**| This is the maximum number of resources that may be returned | [optional] if omitted the server will use the default value of 25
- **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
- **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional]
+ **parent** | **str**| List the resources contained in this &#x60;parent&#x60; library or folder  | [optional] [default to &#39;root&#39;]
+ **type** | **str**| Filter the returned resources by type  | [optional] 
+ **sort** | **str**| Sort | [optional] [default to &#39;creationDate&#39;]
+ **direction** | **str**| Sort direction | [optional] 
+ **limit** | **int**| This is the maximum number of resources that may be returned | [optional] [default to 25]
+ **next** | **str**| An opaque string cursor to fetch the next page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
+ **previous** | **str**| An opaque string cursor to fetch the previous page of data. The paginated API URLs are returned in the &#x60;Link&#x60; header when requesting the API. These URLs will contain a &#x60;next&#x60; and &#x60;previous&#x60; cursor based on the available data.  | [optional] 
 
 ### Return type
 
-[**[EduResource]**](EduResource.md)
+[**List[EduResource]**](EduResource.md)
 
 ### Authorization
 
@@ -571,7 +613,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -592,13 +633,12 @@ Move an education resource
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.edu_resource_move import EduResourceMove
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
+from flat_api.models.edu_resource import EduResource
+from flat_api.models.edu_resource_move import EduResourceMove
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -610,37 +650,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
-    edu_resource_move = EduResourceMove(
-        destination="destination_example",
-    ) # EduResourceMove | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+    edu_resource_move = flat_api.EduResourceMove() # EduResourceMove | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Move an education resource
         api_response = api_instance.move_edu_resource(resource, edu_resource_move)
+        print("The response of EduResourcesApi->move_edu_resource:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->move_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
- **edu_resource_move** | [**EduResourceMove**](EduResourceMove.md)|  |
+ **resource** | **str**| Unique identifier of the resource | 
+ **edu_resource_move** | [**EduResourceMove**](EduResourceMove.md)|  | 
 
 ### Return type
 
@@ -654,7 +690,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -677,13 +712,12 @@ Update any resources metadata (e.g. title).  Use this method to rename education
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.flat_error_response import FlatErrorResponse
-from flat_api.model.edu_resource import EduResource
-from flat_api.model.edu_resource_update import EduResourceUpdate
+from flat_api.models.edu_resource import EduResource
+from flat_api.models.edu_resource_update import EduResourceUpdate
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -695,37 +729,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
-    edu_resource_update = EduResourceUpdate(
-        title="title_example",
-    ) # EduResourceUpdate | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+    edu_resource_update = flat_api.EduResourceUpdate() # EduResourceUpdate | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update an education resource metadata
         api_response = api_instance.update_edu_resource(resource, edu_resource_update)
+        print("The response of EduResourcesApi->update_edu_resource:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->update_edu_resource: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
- **edu_resource_update** | [**EduResourceUpdate**](EduResourceUpdate.md)|  |
+ **resource** | **str**| Unique identifier of the resource | 
+ **edu_resource_update** | [**EduResourceUpdate**](EduResourceUpdate.md)|  | 
 
 ### Return type
 
@@ -739,7 +769,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -760,13 +789,12 @@ Update an education resource assignment
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.assignment_update import AssignmentUpdate
-from flat_api.model.assignment import Assignment
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.assignment import Assignment
+from flat_api.models.assignment_update import AssignmentUpdate
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -778,57 +806,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
-    assignment_update = AssignmentUpdate(
-        type=AssignmentType("none"),
-        title="title_example",
-        description="description_example",
-        attachments=[
-            ClassAttachmentCreation(
-                type="rich",
-                score="score_example",
-                worksheet="worksheet_example",
-                sharing_mode=MediaScoreSharingMode("read"),
-                lock_score_template=True,
-                url="url_example",
-                google_drive_file_id="google_drive_file_id_example",
-            ),
-        ],
-        nb_playback_authorized=3.14,
-        toolset="toolset_example",
-        cover_file="cover_file_example",
-        cover="cover_example",
-        max_points=0,
-        release_grades="auto",
-        shuffle_exercises=True,
-    ) # AssignmentUpdate | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+    assignment_update = flat_api.AssignmentUpdate() # AssignmentUpdate | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Update an education resource assignment
         api_response = api_instance.update_edu_resource_assignment(resource, assignment_update)
+        print("The response of EduResourcesApi->update_edu_resource_assignment:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->update_edu_resource_assignment: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
- **assignment_update** | [**AssignmentUpdate**](AssignmentUpdate.md)|  |
+ **resource** | **str**| Unique identifier of the resource | 
+ **assignment_update** | [**AssignmentUpdate**](AssignmentUpdate.md)|  | 
 
 ### Return type
 
@@ -842,7 +846,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 
@@ -865,13 +868,12 @@ This endpoint will copy a resource and the underlying resources. The assignment 
 * OAuth Authentication (OAuth2):
 
 ```python
-import time
 import flat_api
-from flat_api.api import edu_resources_api
-from flat_api.model.class_assignment import ClassAssignment
-from flat_api.model.edu_resource_use_in_class import EduResourceUseInClass
-from flat_api.model.flat_error_response import FlatErrorResponse
+from flat_api.models.class_assignment import ClassAssignment
+from flat_api.models.edu_resource_use_in_class import EduResourceUseInClass
+from flat_api.rest import ApiException
 from pprint import pprint
+
 # Defining the host is optional and defaults to https://api.flat.io/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = flat_api.Configuration(
@@ -883,38 +885,33 @@ configuration = flat_api.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure OAuth2 access token for authorization: OAuth2
-configuration = flat_api.Configuration(
-    host = "https://api.flat.io/v2"
-)
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = edu_resources_api.EduResourcesApi(api_client)
-    resource = "resource_example" # str | Unique identifier of the resource
-    edu_resource_use_in_class = EduResourceUseInClass(
-        classroom="classroom_example",
-        assignment="assignment_example",
-    ) # EduResourceUseInClass | 
+    api_instance = flat_api.EduResourcesApi(api_client)
+    resource = 'resource_example' # str | Unique identifier of the resource
+    edu_resource_use_in_class = flat_api.EduResourceUseInClass() # EduResourceUseInClass | 
 
-    # example passing only required values which don't have defaults set
     try:
         # Use an education resource in a class
         api_response = api_instance.use_edu_resource_in_class(resource, edu_resource_use_in_class)
+        print("The response of EduResourcesApi->use_edu_resource_in_class:\n")
         pprint(api_response)
-    except flat_api.ApiException as e:
+    except Exception as e:
         print("Exception when calling EduResourcesApi->use_edu_resource_in_class: %s\n" % e)
 ```
 
 
+
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **str**| Unique identifier of the resource |
- **edu_resource_use_in_class** | [**EduResourceUseInClass**](EduResourceUseInClass.md)|  |
+ **resource** | **str**| Unique identifier of the resource | 
+ **edu_resource_use_in_class** | [**EduResourceUseInClass**](EduResourceUseInClass.md)|  | 
 
 ### Return type
 
@@ -928,7 +925,6 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/json
-
 
 ### HTTP response details
 

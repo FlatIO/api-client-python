@@ -3,6 +3,7 @@
 Media attachment. The API will automatically resolve the details, oEmbed, and media available if possible and return them in this object 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of the assignment resolved: * &#x60;rich&#x60;, &#x60;photo&#x60;, &#x60;video&#x60; are automatically resolved as &#x60;link&#x60; * A &#x60;flat&#x60; attachment is a score document where the unique identifier will be specified in the &#x60;score&#x60; property. Its sharing mode will be provided in the &#x60;sharingMode&#x60; property.  | 
@@ -27,8 +28,24 @@ Name | Type | Description | Notes
 **icon_url** | **str** | The URL of the icon | [optional] 
 **mime_type** | **str** | The mine type of the file | [optional] 
 **google_drive_file_id** | **str** | The ID of the Google Drive File | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from flat_api.models.media_attachment import MediaAttachment
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of MediaAttachment from a JSON string
+media_attachment_instance = MediaAttachment.from_json(json)
+# print the JSON string representation of the object
+print MediaAttachment.to_json()
+
+# convert the object into a dict
+media_attachment_dict = media_attachment_instance.to_dict()
+# create an instance of MediaAttachment from a dict
+media_attachment_form_dict = media_attachment.from_dict(media_attachment_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

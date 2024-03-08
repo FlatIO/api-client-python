@@ -3,14 +3,31 @@
 A coursework on Google Classroom
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Identifier of the coursework assigned by Classroom | [optional] 
 **state** | **str** | State of the coursework | [optional] 
 **alternate_link** | **str** | Absolute link to this coursework in the Classroom web UI | [optional] 
-**topic_id** | **str, none_type** | Identifier of the topic where the assignment is created | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**topic_id** | **str** | Identifier of the topic where the assignment is created | [optional] 
 
+## Example
+
+```python
+from flat_api.models.google_classroom_coursework import GoogleClassroomCoursework
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of GoogleClassroomCoursework from a JSON string
+google_classroom_coursework_instance = GoogleClassroomCoursework.from_json(json)
+# print the JSON string representation of the object
+print GoogleClassroomCoursework.to_json()
+
+# convert the object into a dict
+google_classroom_coursework_dict = google_classroom_coursework_instance.to_dict()
+# create an instance of GoogleClassroomCoursework from a dict
+google_classroom_coursework_form_dict = google_classroom_coursework.from_dict(google_classroom_coursework_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

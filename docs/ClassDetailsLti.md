@@ -3,13 +3,30 @@
 Meta information provided by the LTI consumer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **context_id** | **str** | Unique context identifier provided | [optional] 
 **context_title** | **str** | Context title | [optional] 
 **context_label** | **str** | Context label | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from flat_api.models.class_details_lti import ClassDetailsLti
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ClassDetailsLti from a JSON string
+class_details_lti_instance = ClassDetailsLti.from_json(json)
+# print the JSON string representation of the object
+print ClassDetailsLti.to_json()
+
+# convert the object into a dict
+class_details_lti_dict = class_details_lti_instance.to_dict()
+# create an instance of ClassDetailsLti from a dict
+class_details_lti_form_dict = class_details_lti.from_dict(class_details_lti_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

@@ -3,13 +3,30 @@
 A track synchronization point
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **str** | The type of the synchronization point. If the type is &#x60;measure&#x60;, the measure uuid must be present in &#x60;measureUuid&#x60; | 
-**time** | **float** | The corresponding time in seconds | 
 **measure_uuid** | **str** | The measure unique identifier | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
+**time** | **float** | The corresponding time in seconds | 
 
+## Example
+
+```python
+from flat_api.models.score_track_point import ScoreTrackPoint
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ScoreTrackPoint from a JSON string
+score_track_point_instance = ScoreTrackPoint.from_json(json)
+# print the JSON string representation of the object
+print ScoreTrackPoint.to_json()
+
+# convert the object into a dict
+score_track_point_dict = score_track_point_instance.to_dict()
+# create an instance of ScoreTrackPoint from a dict
+score_track_point_form_dict = score_track_point.from_dict(score_track_point_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

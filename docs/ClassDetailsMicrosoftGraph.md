@@ -2,11 +2,28 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The course identifier on Microsoft Graph | [optional] 
-**any string name** | **bool, date, datetime, dict, float, int, list, str, none_type** | any string name can be used but the value must be the correct type | [optional]
 
+## Example
+
+```python
+from flat_api.models.class_details_microsoft_graph import ClassDetailsMicrosoftGraph
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of ClassDetailsMicrosoftGraph from a JSON string
+class_details_microsoft_graph_instance = ClassDetailsMicrosoftGraph.from_json(json)
+# print the JSON string representation of the object
+print ClassDetailsMicrosoftGraph.to_json()
+
+# convert the object into a dict
+class_details_microsoft_graph_dict = class_details_microsoft_graph_instance.to_dict()
+# create an instance of ClassDetailsMicrosoftGraph from a dict
+class_details_microsoft_graph_form_dict = class_details_microsoft_graph.from_dict(class_details_microsoft_graph_dict)
+```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

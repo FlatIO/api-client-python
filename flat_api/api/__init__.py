@@ -1,3 +1,13 @@
-# do not import all apis into this module because that uses a lot of memory and stack frames
-# if you need the ability to import all apis from one package, import them with
-# from flat_api.apis import AccountApi
+# flake8: noqa
+
+# import apis into api package
+from flat_api.api.account_api import AccountApi
+from flat_api.api.class_api import ClassApi
+from flat_api.api.collection_api import CollectionApi
+from flat_api.api.edu_resources_api import EduResourcesApi
+from flat_api.api.group_api import GroupApi
+from flat_api.api.organization_api import OrganizationApi
+from flat_api.api.score_api import ScoreApi
+from flat_api.api.task_api import TaskApi
+from flat_api.api.user_api import UserApi
+
