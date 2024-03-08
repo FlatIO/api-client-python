@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/FlatIO/api-client-python/compare/v1.0.0...v1.1.0) (2024-03-08)
+
+
+### Features
+
+* API 2.20.0 ([5f82d16](https://github.com/FlatIO/api-client-python/commit/5f82d16517bdcda447721026124fa8c2b6f6e077))
+
+
+### Documentation
+
+* Update ScoreApi.md ([770ff9d](https://github.com/FlatIO/api-client-python/commit/770ff9d0c6f22294b6b5c3d8f0bff248a8cbc160))
+
 ## 1.0.0 (API v2.18.0)
 
 * Updated API from v2.17.0 to v2.18.0
