@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/FlatIO/api-client-python/compare/v1.1.1...v1.1.2) (2024-03-08)
+
+
+### Bug Fixes
+
+* bump version to 1.1.0 ([5635ca7](https://github.com/FlatIO/api-client-python/commit/5635ca732a0ad6e671db5b7fd60f7ed5727b7b62))
+* **gh:** missing action step id ([e130408](https://github.com/FlatIO/api-client-python/commit/e130408dd3fd9b937a3b5c3effb4b0ad21697ce0))
+
 ## [1.1.1](https://github.com/FlatIO/api-client-python/compare/v1.1.0...v1.1.1) (2024-03-08)
 
 
