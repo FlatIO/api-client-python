@@ -26,6 +26,7 @@ jobs:
       - name: Build package
         run: python -m build
       - uses: google-github-actions/release-please-action@v4
+        id: release
         with:
           release-type: python
           package-name: flat_api
