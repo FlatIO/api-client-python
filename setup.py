@@ -1,18 +1,14 @@
 # coding: utf-8
 
 """
-    Flat API 2.20.0
-
-    OpenAPI spec version: 
-    Contact: developers@flat.io
+    Flat API
 """
 
 
 import sys
 from setuptools import setup, find_packages
+from flat_api import __version__
 
-NAME = "flat_api"
-VERSION = "1.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -31,8 +27,8 @@ except(IOError, ImportError):
     LONG_DESCRIPTION = open('README.md').read()
 
 setup(
-    name=NAME,
-    version=VERSION,
+    name="flat_api",
+    version=__version__,
     description="Flat API Client",
     author="The Flat Team (https://flat.io)",
     author_email="developers@flat.io",
