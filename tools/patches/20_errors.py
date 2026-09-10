@@ -14,6 +14,7 @@ Idempotent: writes a fixed file.
 from __future__ import annotations
 
 import pathlib
+import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 TARGET = ROOT / "flat_api" / "errors.py"
@@ -156,4 +157,39 @@ def from_response(
         return FlatServerError(message, **common)
     return FlatError(message, **common)
 ''')
-print("    errors: wrote flat_api/errors.py")
+
+# Writing errors.py is not enough: nothing raises those classes unless the request path is taught
+# to. The generated client raises its own ApiException subclasses, so a caller who follows the
+# README and catches FlatNotFoundError catches nothing. Rewire the one raise site.
+CLIENT = ROOT / "flat_api" / "api_client.py"
+client_text = CLIENT.read_text()
+
+raise_site = """                raise ApiException.from_response(
+                    http_resp=response_data,
+                    body=response_text,
+                    data=return_data,
+                )"""
+flat_raise = """                raise _flat_error_from_response(
+                    status=response_data.status,
+                    body=return_data if isinstance(return_data, dict) else response_text,
+                    headers=dict(response_data.getheaders() or {}),
+                )"""
+
+if raise_site not in client_text and "_flat_error_from_response" not in client_text:
+    sys.exit("20_errors: could not find the raise site in api_client.py (FR-025)")
+
+if raise_site in client_text:
+    client_text = client_text.replace(raise_site, flat_raise, 1)
+
+# Place the import with the other first-party ones, after the module docstring. Prepending it
+# would displace the docstring and leave a stray string expression at the top of the file.
+import_line = "from flat_api.errors import from_response as _flat_error_from_response\n"
+if import_line not in client_text:
+    anchor = "from flat_api.configuration import Configuration\n"
+    if anchor not in client_text:
+        sys.exit("20_errors: could not place the import in api_client.py (FR-025)")
+    client_text = client_text.replace(anchor, import_line + anchor, 1)
+
+CLIENT.write_text(client_text)
+
+print("    errors: wrote flat_api/errors.py and raised them from api_client.py")

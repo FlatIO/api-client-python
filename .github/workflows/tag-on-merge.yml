@@ -18,15 +18,24 @@ jobs:
       # an event created with GITHUB_TOKEN, so a tag pushed with it would never trigger release.yml
       # and nothing would ever publish. That failure is silent: the tag appears, the release
       # workflow simply never runs. Needs contents:write on this repository.
+      # Checked before checkout. An empty token there surfaces as a bare "Input required and not
+      # supplied: token", which says nothing about which secret is missing or why it matters.
+      - name: SDK_RELEASE_TOKEN must be set
+        run: |
+          test -n "${{ secrets.SDK_RELEASE_TOKEN }}" || {
+            echo "SDK_RELEASE_TOKEN is not set on this repository."
+            echo
+            echo "The tag has to be pushed with it rather than the automatic GITHUB_TOKEN, because"
+            echo "GitHub does not start a workflow run for an event created with that token. The"
+            echo "tag would appear and release.yml would never fire, publishing nothing."
+            exit 1
+          }
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.SDK_RELEASE_TOKEN }}
       - name: Tag the version if it is new
         run: |
-          test -n "${{ secrets.SDK_RELEASE_TOKEN }}" || {
-            echo "SDK_RELEASE_TOKEN is not set: the tag would not trigger release.yml"; exit 1;
-          }
           VERSION="$(cat VERSION)"
           if git rev-parse "$VERSION" >/dev/null 2>&1; then
             echo "Tag $VERSION already exists, nothing to do."
