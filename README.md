@@ -52,10 +52,12 @@ except FlatNotFoundError:
 
 ### Asynchronous use
 
-```python\nfrom flat_api import AsyncFlatClient
+```python
+from flat_api import AsyncFlatClient
 
 client = AsyncFlatClient(access_token="YOUR_TOKEN")
-# every operation is awaitable\n```
+# every operation is awaitable
+```
 
 ## Supported versions
 

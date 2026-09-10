@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.0.1](https://github.com/FlatIO/api-client-python/compare/2.0.0...2.0.1) (2026-09-10)
+
+### Bug Fixes
+
+* **docs:** close the asynchronous usage code fence in the README. Two escapes had been written as the literal characters `\n` rather than newlines, so the fence never opened or closed and every section after it rendered inside the code block on PyPI.
+
 ## [1.1.3](https://github.com/FlatIO/api-client-python/compare/v1.1.2...v1.1.3) (2024-03-08)
 
 
