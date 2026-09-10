@@ -1,0 +1,1218 @@
+{
+  "schema_version": 1,
+  "spec_version": "2.26.0",
+  "generator": {
+    "name": "python",
+    "version": "7.24.0"
+  },
+  "operations": [
+    {
+      "operation_id": "activateClass",
+      "method": "post",
+      "path": "/classes/{class}/activate",
+      "symbol": "class_api.activate_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addClassUser",
+      "method": "put",
+      "path": "/classes/{class}/users/{user}",
+      "symbol": "class_api.add_class_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addGroupUser",
+      "method": "post",
+      "path": "/groups/{group}/users",
+      "symbol": "group_api.add_group_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addOmrJobFile",
+      "method": "post",
+      "path": "/omr/jobs/{job}/files",
+      "symbol": "omr_api.add_omr_job_file",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addScoreCollaborator",
+      "method": "post",
+      "path": "/scores/{score}/collaborators",
+      "symbol": "score_api.add_score_collaborator",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addScoreToCollection",
+      "method": "put",
+      "path": "/collections/{collection}/scores/{score}",
+      "symbol": "collection_api.add_score_to_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "addScoreTrack",
+      "method": "post",
+      "path": "/scores/{score}/tracks",
+      "symbol": "score_api.add_score_track",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "archiveAssignment",
+      "method": "post",
+      "path": "/classes/{class}/assignments/{assignment}/archive",
+      "symbol": "class_api.archive_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "archiveClass",
+      "method": "post",
+      "path": "/classes/{class}/archive",
+      "symbol": "class_api.archive_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "cancelOmrJob",
+      "method": "post",
+      "path": "/omr/jobs/{job}/cancel",
+      "symbol": "omr_api.cancel_omr_job",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "copyAssignment",
+      "method": "post",
+      "path": "/classes/{class}/assignments/{assignment}/copy",
+      "symbol": "class_api.copy_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "copyEduResource",
+      "method": "post",
+      "path": "/eduResources/{resource}/copy",
+      "symbol": "edu_resources_api.copy_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "copyEduResourceToDemoClass",
+      "method": "post",
+      "path": "/eduResources/{resource}/copyToDemoClass",
+      "symbol": "edu_resources_api.copy_edu_resource_to_demo_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "countOrgaUsers",
+      "method": "get",
+      "path": "/organizations/users/count",
+      "symbol": "organization_api.count_orga_users",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createClass",
+      "method": "post",
+      "path": "/classes",
+      "symbol": "class_api.create_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createClassAssignment",
+      "method": "post",
+      "path": "/classes/{class}/assignments",
+      "symbol": "class_api.create_class_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createCollection",
+      "method": "post",
+      "path": "/collections",
+      "symbol": "collection_api.create_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createEduResource",
+      "method": "post",
+      "path": "/eduResources",
+      "symbol": "edu_resources_api.create_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createEduResourceLtiLink",
+      "method": "post",
+      "path": "/eduResources/{resource}/createLtiLink",
+      "symbol": "edu_resources_api.create_edu_resource_lti_link",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createExportTask",
+      "method": "post",
+      "path": "/scores/{score}/revisions/{revision}/{format}/task",
+      "symbol": "score_api.create_export_task",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createGroup",
+      "method": "post",
+      "path": "/groups",
+      "symbol": "group_api.create_group",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createLtiConfiguration",
+      "method": "post",
+      "path": "/organizations/lti/configurations",
+      "symbol": "organization_api.create_lti_configuration",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createLtiCredentials",
+      "method": "post",
+      "path": "/organizations/lti/credentials",
+      "symbol": "organization_api.create_lti_credentials",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createOmrJob",
+      "method": "post",
+      "path": "/omr/jobs",
+      "symbol": "omr_api.create_omr_job",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createOrganizationInvitation",
+      "method": "post",
+      "path": "/organizations/invitations",
+      "symbol": "organization_api.create_organization_invitation",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createOrganizationUser",
+      "method": "post",
+      "path": "/organizations/users",
+      "symbol": "organization_api.create_organization_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createOrganizationUserAccessToken",
+      "method": "post",
+      "path": "/organizations/users/{user}/accessToken",
+      "symbol": "organization_api.create_organization_user_access_token",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createOrganizationUserSigninLink",
+      "method": "post",
+      "path": "/organizations/users/{user}/signinLink",
+      "symbol": "organization_api.create_organization_user_signin_link",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createScore",
+      "method": "post",
+      "path": "/scores",
+      "symbol": "score_api.create_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createScoreRevision",
+      "method": "post",
+      "path": "/scores/{score}/revisions",
+      "symbol": "score_api.create_score_revision",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createSubmission",
+      "method": "put",
+      "path": "/classes/{class}/assignments/{assignment}/submissions",
+      "symbol": "class_api.create_submission",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "createTestStudentAccount",
+      "method": "post",
+      "path": "/classes/{class}/testStudent",
+      "symbol": "class_api.create_test_student_account",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteAssignment",
+      "method": "delete",
+      "path": "/classes/{class}/assignments/{assignment}",
+      "symbol": "class_api.delete_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteClassUser",
+      "method": "delete",
+      "path": "/classes/{class}/users/{user}",
+      "symbol": "class_api.delete_class_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteCollection",
+      "method": "delete",
+      "path": "/collections/{collection}",
+      "symbol": "collection_api.delete_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteEduResource",
+      "method": "delete",
+      "path": "/eduResources/{resource}",
+      "symbol": "edu_resources_api.delete_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteGroup",
+      "method": "delete",
+      "path": "/groups/{group}",
+      "symbol": "group_api.delete_group",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteLtiConfiguration",
+      "method": "delete",
+      "path": "/organizations/lti/configurations/{configuration}",
+      "symbol": "organization_api.delete_lti_configuration",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteOmrJob",
+      "method": "delete",
+      "path": "/omr/jobs/{job}",
+      "symbol": "omr_api.delete_omr_job",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteScore",
+      "method": "delete",
+      "path": "/scores/{score}",
+      "symbol": "score_api.delete_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteScoreComment",
+      "method": "delete",
+      "path": "/scores/{score}/comments/{comment}",
+      "symbol": "score_api.delete_score_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteScoreFromCollection",
+      "method": "delete",
+      "path": "/collections/{collection}/scores/{score}",
+      "symbol": "collection_api.delete_score_from_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteScoreTrack",
+      "method": "delete",
+      "path": "/scores/{score}/tracks/{track}",
+      "symbol": "score_api.delete_score_track",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteSubmission",
+      "method": "delete",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}",
+      "symbol": "class_api.delete_submission",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "deleteSubmissionComment",
+      "method": "delete",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}/comments/{comment}",
+      "symbol": "class_api.delete_submission_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "editCollection",
+      "method": "put",
+      "path": "/collections/{collection}",
+      "symbol": "collection_api.edit_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "editScore",
+      "method": "put",
+      "path": "/scores/{score}",
+      "symbol": "score_api.edit_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "editSubmission",
+      "method": "put",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}",
+      "symbol": "class_api.edit_submission",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "enrollClass",
+      "method": "post",
+      "path": "/classes/enroll/{enrollmentCode}",
+      "symbol": "class_api.enroll_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "exportSubmissionsReviewsAsCsv",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/csv",
+      "symbol": "class_api.export_submissions_reviews_as_csv",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "exportSubmissionsReviewsAsExcel",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/excel",
+      "symbol": "class_api.export_submissions_reviews_as_excel",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "forkScore",
+      "method": "post",
+      "path": "/scores/{score}/fork",
+      "symbol": "score_api.fork_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getAssignment",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}",
+      "symbol": "class_api.get_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getAuthenticatedUser",
+      "method": "get",
+      "path": "/me",
+      "symbol": "account_api.get_authenticated_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getClass",
+      "method": "get",
+      "path": "/classes/{class}",
+      "symbol": "class_api.get_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getCollection",
+      "method": "get",
+      "path": "/collections/{collection}",
+      "symbol": "collection_api.get_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getEduResource",
+      "method": "get",
+      "path": "/eduResources/{resource}",
+      "symbol": "edu_resources_api.get_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getGroupDetails",
+      "method": "get",
+      "path": "/groups/{group}",
+      "symbol": "group_api.get_group_details",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getGroupScores",
+      "method": "get",
+      "path": "/groups/{group}/scores",
+      "symbol": "score_api.get_group_scores",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getOmrCapabilities",
+      "method": "get",
+      "path": "/omr/capabilities",
+      "symbol": "omr_api.get_omr_capabilities",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getOmrJob",
+      "method": "get",
+      "path": "/omr/jobs/{job}",
+      "symbol": "omr_api.get_omr_job",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getOmrJobExport",
+      "method": "get",
+      "path": "/omr/jobs/{job}/exports/{format}",
+      "symbol": "omr_api.get_omr_job_export",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getOmrJobFile",
+      "method": "get",
+      "path": "/omr/jobs/{job}/files/{index}",
+      "symbol": "omr_api.get_omr_job_file",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScore",
+      "method": "get",
+      "path": "/scores/{score}",
+      "symbol": "score_api.get_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreCollaborator",
+      "method": "get",
+      "path": "/scores/{score}/collaborators/{collaborator}",
+      "symbol": "score_api.get_score_collaborator",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreCollaborators",
+      "method": "get",
+      "path": "/scores/{score}/collaborators",
+      "symbol": "score_api.get_score_collaborators",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreComments",
+      "method": "get",
+      "path": "/scores/{score}/comments",
+      "symbol": "score_api.get_score_comments",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreRevision",
+      "method": "get",
+      "path": "/scores/{score}/revisions/{revision}",
+      "symbol": "score_api.get_score_revision",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreRevisionData",
+      "method": "get",
+      "path": "/scores/{score}/revisions/{revision}/{format}",
+      "symbol": "score_api.get_score_revision_data",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreRevisions",
+      "method": "get",
+      "path": "/scores/{score}/revisions",
+      "symbol": "score_api.get_score_revisions",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreSubmissions",
+      "method": "get",
+      "path": "/scores/{score}/submissions",
+      "symbol": "score_api.get_score_submissions",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getScoreTrack",
+      "method": "get",
+      "path": "/scores/{score}/tracks/{track}",
+      "symbol": "score_api.get_score_track",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getSubmission",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}",
+      "symbol": "class_api.get_submission",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getSubmissionComments",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}/comments",
+      "symbol": "class_api.get_submission_comments",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getSubmissionHistory",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}/history",
+      "symbol": "class_api.get_submission_history",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getSubmissions",
+      "method": "get",
+      "path": "/classes/{class}/assignments/{assignment}/submissions",
+      "symbol": "class_api.get_submissions",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getTask",
+      "method": "get",
+      "path": "/tasks/{task}",
+      "symbol": "task_api.get_task",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getUser",
+      "method": "get",
+      "path": "/users/{user}",
+      "symbol": "user_api.get_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "getUserLikes",
+      "method": "get",
+      "path": "/users/{user}/likes",
+      "symbol": "user_api.get_user_likes",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "getUserScores",
+      "method": "get",
+      "path": "/users/{user}/scores",
+      "symbol": "user_api.get_user_scores",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listAssignments",
+      "method": "get",
+      "path": "/classes/{class}/assignments",
+      "symbol": "class_api.list_assignments",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listBillingCreditsHistory",
+      "method": "get",
+      "path": "/billing/credits/history",
+      "symbol": "omr_api.list_billing_credits_history",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listClassStudentSubmissions",
+      "method": "get",
+      "path": "/classes/{class}/students/{user}/submissions",
+      "symbol": "class_api.list_class_student_submissions",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listClasses",
+      "method": "get",
+      "path": "/classes",
+      "symbol": "class_api.list_classes",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listCollectionScores",
+      "method": "get",
+      "path": "/collections/{collection}/scores",
+      "symbol": "collection_api.list_collection_scores",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listCollections",
+      "method": "get",
+      "path": "/collections",
+      "symbol": "collection_api.list_collections",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listEduLibraries",
+      "method": "get",
+      "path": "/eduResources/libraries",
+      "symbol": "edu_resources_api.list_edu_libraries",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listEduResources",
+      "method": "get",
+      "path": "/eduResources",
+      "symbol": "edu_resources_api.list_edu_resources",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listGroupUsers",
+      "method": "get",
+      "path": "/groups/{group}/users",
+      "symbol": "group_api.list_group_users",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listGroups",
+      "method": "get",
+      "path": "/groups",
+      "symbol": "group_api.list_groups",
+      "paginated": false,
+      "documented": false
+    },
+    {
+      "operation_id": "listLtiConfigurations",
+      "method": "get",
+      "path": "/organizations/lti/configurations",
+      "symbol": "organization_api.list_lti_configurations",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listLtiCredentials",
+      "method": "get",
+      "path": "/organizations/lti/credentials",
+      "symbol": "organization_api.list_lti_credentials",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "listOmrJobs",
+      "method": "get",
+      "path": "/omr/jobs",
+      "symbol": "omr_api.list_omr_jobs",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listOrganizationInvitations",
+      "method": "get",
+      "path": "/organizations/invitations",
+      "symbol": "organization_api.list_organization_invitations",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listOrganizationUsers",
+      "method": "get",
+      "path": "/organizations/users",
+      "symbol": "organization_api.list_organization_users",
+      "paginated": true,
+      "documented": true
+    },
+    {
+      "operation_id": "listScoreTracks",
+      "method": "get",
+      "path": "/scores/{score}/tracks",
+      "symbol": "score_api.list_score_tracks",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "markScoreCommentResolved",
+      "method": "put",
+      "path": "/scores/{score}/comments/{comment}/resolved",
+      "symbol": "score_api.mark_score_comment_resolved",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "markScoreCommentUnresolved",
+      "method": "delete",
+      "path": "/scores/{score}/comments/{comment}/resolved",
+      "symbol": "score_api.mark_score_comment_unresolved",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "moveEduResource",
+      "method": "post",
+      "path": "/eduResources/{resource}/move",
+      "symbol": "edu_resources_api.move_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "postScoreComment",
+      "method": "post",
+      "path": "/scores/{score}/comments",
+      "symbol": "score_api.post_score_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "postSubmissionComment",
+      "method": "post",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}/comments",
+      "symbol": "class_api.post_submission_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "removeGroupUser",
+      "method": "delete",
+      "path": "/groups/{group}/users/{user}",
+      "symbol": "group_api.remove_group_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "removeOrganizationInvitation",
+      "method": "delete",
+      "path": "/organizations/invitations/{invitation}",
+      "symbol": "organization_api.remove_organization_invitation",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "removeOrganizationUser",
+      "method": "delete",
+      "path": "/organizations/users/{user}",
+      "symbol": "organization_api.remove_organization_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "removeScoreCollaborator",
+      "method": "delete",
+      "path": "/scores/{score}/collaborators/{collaborator}",
+      "symbol": "score_api.remove_score_collaborator",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "renameGroup",
+      "method": "put",
+      "path": "/groups/{group}",
+      "symbol": "group_api.rename_group",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "revokeLtiCredentials",
+      "method": "delete",
+      "path": "/organizations/lti/credentials/{credentials}",
+      "symbol": "organization_api.revoke_lti_credentials",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "startOmrJob",
+      "method": "post",
+      "path": "/omr/jobs/{job}/start",
+      "symbol": "omr_api.start_omr_job",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "submitOmrJobStep",
+      "method": "post",
+      "path": "/omr/jobs/{job}/steps/{step}",
+      "symbol": "omr_api.submit_omr_job_step",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "unarchiveAssignment",
+      "method": "delete",
+      "path": "/classes/{class}/assignments/{assignment}/archive",
+      "symbol": "class_api.unarchive_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "unarchiveClass",
+      "method": "delete",
+      "path": "/classes/{class}/archive",
+      "symbol": "class_api.unarchive_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "untrashCollection",
+      "method": "post",
+      "path": "/collections/{collection}/untrash",
+      "symbol": "collection_api.untrash_collection",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "untrashScore",
+      "method": "post",
+      "path": "/scores/{score}/untrash",
+      "symbol": "score_api.untrash_score",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateClass",
+      "method": "put",
+      "path": "/classes/{class}",
+      "symbol": "class_api.update_class",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateClassAssignment",
+      "method": "put",
+      "path": "/classes/{class}/assignments/{assignment}",
+      "symbol": "class_api.update_class_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateEduResource",
+      "method": "put",
+      "path": "/eduResources/{resource}",
+      "symbol": "edu_resources_api.update_edu_resource",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateEduResourceAssignment",
+      "method": "put",
+      "path": "/eduResources/{resource}/assignment",
+      "symbol": "edu_resources_api.update_edu_resource_assignment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateLtiConfiguration",
+      "method": "put",
+      "path": "/organizations/lti/configurations/{configuration}",
+      "symbol": "organization_api.update_lti_configuration",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateOrganizationUser",
+      "method": "put",
+      "path": "/organizations/users/{user}",
+      "symbol": "organization_api.update_organization_user",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateScoreComment",
+      "method": "put",
+      "path": "/scores/{score}/comments/{comment}",
+      "symbol": "score_api.update_score_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateScoreTrack",
+      "method": "put",
+      "path": "/scores/{score}/tracks/{track}",
+      "symbol": "score_api.update_score_track",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "updateSubmissionComment",
+      "method": "put",
+      "path": "/classes/{class}/assignments/{assignment}/submissions/{submission}/comments/{comment}",
+      "symbol": "class_api.update_submission_comment",
+      "paginated": false,
+      "documented": true
+    },
+    {
+      "operation_id": "useEduResourceInClass",
+      "method": "post",
+      "path": "/eduResources/{resource}/useInClass",
+      "symbol": "edu_resources_api.use_edu_resource_in_class",
+      "paginated": false,
+      "documented": true
+    }
+  ],
+  "models": [
+    "AddGroupUser200Response",
+    "AddGroupUserRequest",
+    "ApiAccessToken",
+    "AppScopes",
+    "Assignment",
+    "AssignmentCapabilities",
+    "AssignmentCapabilitiesCanPublishInClassError",
+    "AssignmentCopy",
+    "AssignmentCopyResponse",
+    "AssignmentCopyToClass",
+    "AssignmentCopyToResourceLibrary",
+    "AssignmentGroup",
+    "AssignmentSubmission",
+    "AssignmentSubmissionComment",
+    "AssignmentSubmissionCommentCreation",
+    "AssignmentSubmissionComments",
+    "AssignmentSubmissionHistory",
+    "AssignmentSubmissionHistoryAttachment",
+    "AssignmentSubmissionHistoryState",
+    "AssignmentSubmissionLti",
+    "AssignmentSubmissionPlayback",
+    "AssignmentSubmissionState",
+    "AssignmentSubmissionStudentsMode",
+    "AssignmentSubmissionUpdate",
+    "AssignmentType",
+    "AssignmentUpdate",
+    "ClassAssignment",
+    "ClassAssignmentAllOfCanvas",
+    "ClassAssignmentAllOfLti",
+    "ClassAssignmentAllOfMfc",
+    "ClassAssignmentUpdate",
+    "ClassAssignmentUpdateAllOfGoogleClassroom",
+    "ClassAssignmentUpdateAllOfMicrosoftGraph",
+    "ClassAttachmentCreation",
+    "ClassCreation",
+    "ClassDetails",
+    "ClassDetailsCanvas",
+    "ClassDetailsClever",
+    "ClassDetailsGoogleClassroom",
+    "ClassDetailsGoogleDrive",
+    "ClassDetailsIssues",
+    "ClassDetailsIssuesSyncInner",
+    "ClassDetailsLti",
+    "ClassDetailsMfc",
+    "ClassDetailsMicrosoftGraph",
+    "ClassGradeLevel",
+    "ClassRoles",
+    "ClassState",
+    "ClassUpdate",
+    "Collection",
+    "CollectionApp",
+    "CollectionCapabilities",
+    "CollectionContents",
+    "CollectionCreation",
+    "CollectionModification",
+    "CollectionPrivacy",
+    "CollectionType",
+    "CreateLtiConfiguration200Response",
+    "CreditTransaction",
+    "EduLibrary",
+    "EduResource",
+    "EduResourceAssignmentCreation",
+    "EduResourceCapabilities",
+    "EduResourceCopy",
+    "EduResourceCreation",
+    "EduResourceFolder",
+    "EduResourceLtiLink",
+    "EduResourceMove",
+    "EduResourcePrivacy",
+    "EduResourceResource",
+    "EduResourceType",
+    "EduResourceUpdate",
+    "EduResourceUseInClass",
+    "FlatErrorResponse",
+    "GoogleClassroomCoursework",
+    "GoogleClassroomSubmission",
+    "Grade",
+    "Group",
+    "GroupCreation",
+    "GroupDetails",
+    "GroupType",
+    "LicenseMode",
+    "LicenseSources",
+    "LmsName",
+    "LtiConfiguration",
+    "LtiConfiguration1p1",
+    "LtiConfiguration1p1AllOfTool",
+    "LtiConfiguration1p3",
+    "LtiConfiguration1p3Base",
+    "LtiConfiguration1p3BaseSupportedServices",
+    "LtiConfiguration1p3BaseSupportedServicesAgs",
+    "LtiConfiguration1p3BaseSupportedServicesDeepLinking",
+    "LtiConfiguration1p3BaseSupportedServicesNrps",
+    "LtiConfiguration1p3BaseTool",
+    "LtiConfiguration1p3Deployment",
+    "LtiConfiguration1p3Dynamic",
+    "LtiConfiguration1p3Manual",
+    "LtiConfigurationBase",
+    "LtiConfigurationCreate",
+    "LtiConfigurationCreate1p1",
+    "LtiConfigurationCreate1p3Deployment",
+    "LtiConfigurationCreate1p3Dynamic",
+    "LtiConfigurationCreate1p3DynamicPlatformInfo",
+    "LtiConfigurationCreate1p3Manual",
+    "LtiConfigurationUpdate",
+    "LtiConfigurationUpdateDeployment",
+    "LtiConfigurationUpdateStandalone",
+    "LtiCredentials",
+    "LtiCredentialsCreation",
+    "MediaAttachment",
+    "MediaScoreSharingMode",
+    "MicrosoftGraphAssignment",
+    "MicrosoftGraphSubmission",
+    "OmrCapabilities",
+    "OmrDetailsStepData",
+    "OmrDetailsSubmission",
+    "OmrDetectedInstrument",
+    "OmrImportedMetadata",
+    "OmrInstrumentOverride",
+    "OmrJob",
+    "OmrJobCreation",
+    "OmrJobFileMetadata",
+    "OmrJobFileUpload",
+    "OmrJobFileUploadResult",
+    "OmrJobInputFile",
+    "OmrJobOutput",
+    "OmrJobProgress",
+    "OmrJobResult",
+    "OmrJobRetention",
+    "OmrJobStatus",
+    "OmrLocaleDetails",
+    "OmrPendingStep",
+    "OmrStepName",
+    "OrganizationInvitation",
+    "OrganizationInvitationCreation",
+    "OrganizationRoles",
+    "OrganizationUserAccessTokenCreation",
+    "RenameGroupRequest",
+    "ResourceCollaborator",
+    "ResourceCollaboratorCreation",
+    "ResourceRights",
+    "ScoreComment",
+    "ScoreCommentContext",
+    "ScoreCommentCreation",
+    "ScoreCommentModeration",
+    "ScoreCommentUpdate",
+    "ScoreCommentsCounts",
+    "ScoreCreation",
+    "ScoreCreationBuilderData",
+    "ScoreCreationBuilderDataAllOfBuilderData",
+    "ScoreCreationBuilderDataAllOfBuilderDataLayoutData",
+    "ScoreCreationBuilderDataAllOfBuilderDataScoreData",
+    "ScoreCreationBuilderDataAllOfBuilderDataScoreDataInstruments",
+    "ScoreCreationCommon",
+    "ScoreCreationFileImport",
+    "ScoreCreationGoogleDriveImport",
+    "ScoreCreationType",
+    "ScoreDetails",
+    "ScoreDetailsAllOfMe",
+    "ScoreFork",
+    "ScoreLicense",
+    "ScoreLikesCounts",
+    "ScoreModification",
+    "ScorePlaysCounts",
+    "ScorePrivacy",
+    "ScoreRevision",
+    "ScoreRevisionCreation",
+    "ScoreRevisionStatistics",
+    "ScoreSource",
+    "ScoreSummary",
+    "ScoreTrack",
+    "ScoreTrackCreation",
+    "ScoreTrackCreationResponse",
+    "ScoreTrackPoint",
+    "ScoreTrackPurpose",
+    "ScoreTrackState",
+    "ScoreTrackType",
+    "ScoreTrackUpdate",
+    "ScoreViewsCounts",
+    "Task",
+    "TaskExportOptions",
+    "TaskProgress",
+    "TaskResult",
+    "TeachingTheme",
+    "TutteoProduct",
+    "UserAdminUpdate",
+    "UserAzureDetails",
+    "UserBasics",
+    "UserCommunityProfileLinks",
+    "UserCreation",
+    "UserDetails",
+    "UserDetailsAdmin",
+    "UserDetailsAdminAllOfLicense",
+    "UserPublic",
+    "UserPublicSummary",
+    "UserSigninLink",
+    "UserSigninLinkCreation"
+  ],
+  "scopes": [
+    "account.education_profile",
+    "account.email",
+    "account.public_profile",
+    "collections",
+    "collections.add_scores",
+    "collections.readonly",
+    "edu.admin",
+    "edu.admin.lti",
+    "edu.admin.lti.readonly",
+    "edu.admin.users",
+    "edu.admin.users.readonly",
+    "edu.assignments",
+    "edu.assignments.readonly",
+    "edu.classes",
+    "edu.classes.readonly",
+    "edu.resources",
+    "edu.resources.readonly",
+    "notifications.readonly",
+    "omr",
+    "scores",
+    "scores.readonly",
+    "scores.social",
+    "tasks.readonly"
+  ]
+}

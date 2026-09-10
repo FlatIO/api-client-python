@@ -65,3 +65,12 @@ target/
 
 # Virtualenv
 .venv
+
+# generation scratch tree (tools/generate.sh)
+.sdkgen-scratch/
+.openapi-spec.yaml
+
+# build and tooling artifacts
+.venv/
+.pytest_cache/
+.coverage

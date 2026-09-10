@@ -1,0 +1,36 @@
+schema_version: 1
+
+language: python
+package_name: flat-api
+registry: pypi
+
+generator:
+  name: python
+  version: 7.24.0
+  config: tools/openapi-config.json
+  # The generator emits sync OR async, never both (T001 spike). The async pass is merged into the
+  # same package by tools/patches/ so the SDK exposes FlatClient and AsyncFlatClient.
+  extra_passes:
+    - name: python
+      config: tools/openapi-config-async.json
+
+generated_paths:
+  - flat_api/**
+  - docs/reference/**
+  - .openapi-generator/**
+  - OPERATIONS.json
+
+version_file:
+  path: flat_api/__init__.py
+  pattern: '__version__ = "(?P<version>[0-9]+\.[0-9]+\.[0-9]+)"'
+
+runtime_matrix:
+  - version: '3.11'
+    upstream_eol: 2027-10-31
+  - version: '3.12'
+    upstream_eol: 2028-10-31
+  - version: '3.13'
+    upstream_eol: 2029-10-31
+
+smoke:
+  entrypoint: tools/smoke.py

@@ -1,5 +1,9 @@
-python_dateutil >= 2.5.3
-setuptools >= 21.0.0
-urllib3 >= 1.25.3, < 2.1.0
+# Runtime dependencies, kept in step with the [project] dependencies in pyproject.toml.
+# pyproject.toml is what PyPI installs from; this file is for a local checkout.
+urllib3 >= 1.25.3, < 3
+aiohttp >= 3.9
+aiohttp-retry >= 2.8
+httpx >= 0.27
 pydantic >= 2
+python-dateutil >= 2.8.2
 typing-extensions >= 4.7.1

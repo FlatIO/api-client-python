@@ -1,0 +1,9 @@
+{
+  "packageName": "flat_api",
+  "packageVersion": "2.0.0",
+  "projectName": "flat-api",
+  "library": "urllib3",
+  "generateSourceCodeOnly": true,
+  "hideGenerationTimestamp": true,
+  "disallowAdditionalPropertiesIfNotPresent": false
+}
