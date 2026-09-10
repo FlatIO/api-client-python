@@ -27,6 +27,7 @@ from urllib.parse import quote
 from typing import Tuple, Optional, List, Dict, Union
 from pydantic import SecretStr
 
+from flat_api.errors import from_response as _flat_error_from_response
 from flat_api.configuration import Configuration
 from flat_api.api_response import ApiResponse, T as ApiResponseT
 import flat_api.models
@@ -327,10 +328,10 @@ class ApiClient:
                 return_data = self.deserialize(response_text, response_type, content_type)
         finally:
             if not 200 <= response_data.status <= 299:
-                raise ApiException.from_response(
-                    http_resp=response_data,
-                    body=response_text,
-                    data=return_data,
+                raise _flat_error_from_response(
+                    status=response_data.status,
+                    body=return_data if isinstance(return_data, dict) else response_text,
+                    headers=dict(response_data.getheaders() or {}),
                 )
 
         return ApiResponse(
