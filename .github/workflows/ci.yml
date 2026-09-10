@@ -1,0 +1,36 @@
+name: CI
+
+# Build and load checks. Everything that needs a credential runs elsewhere and reports
+# back as a commit status, so no secret is reachable from this workflow.
+
+on:
+  pull_request:
+  push:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build (python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Import the installed package
+        # `--with .` installs this package into a throwaway environment, so this exercises the
+        # path a user takes and proves the dependency list in pyproject.toml is complete. Run
+        # from RUNNER_TEMP, or the import would resolve to the source directory instead of what
+        # was installed.
+        run: cd "$RUNNER_TEMP" && uv run --no-project --python ${{ matrix.python }} --with "$GITHUB_WORKSPACE" python -c "import flat_api; print(flat_api.__version__)"
+      - name: Compile every module
+        run: uv run --no-project --python ${{ matrix.python }} python -m compileall -q flat_api

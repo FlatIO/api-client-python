@@ -1,0 +1,50 @@
+name: Release
+
+# Publishing is triggered by a version tag and nothing else (FR-019a). The tag is created by
+# tag-on-merge.yml, so the approval -> merge -> tag -> publish ordering is enforced by the
+# platform rather than by convention (FR-007f).
+
+on:
+  push:
+    tags: ['[0-9]+.[0-9]+.[0-9]+']
+
+permissions:
+  contents: read
+  id-token: write # OIDC for PyPI trusted publishing and provenance (FR-021a, FR-021b)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: '3.12'
+
+      - name: The tag must match the packaged version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          PKG="$(cat VERSION)"
+          [ "$TAG" = "$PKG" ] || { echo "tag $TAG != VERSION $PKG"; exit 1; }
+
+      - run: uv build
+
+      # Assert the artifact, not just the file. setuptools derives the version from VERSION, but a
+      # broken pyproject.toml still builds: it silently produced flat_api-0.0.0 once. PyPI never
+      # lets a version be replaced, so this has to fail here rather than after the upload.
+      - name: The built artifact must carry the tagged version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          test -f "dist/flat_api-${TAG}-py3-none-any.whl" || {
+            echo "no wheel for ${TAG}; dist/ holds:"; ls dist/; exit 1;
+          }
+          test -f "dist/flat_api-${TAG}.tar.gz" || {
+            echo "no sdist for ${TAG}; dist/ holds:"; ls dist/; exit 1;
+          }
+
+      # No long-lived token exists: PyPI trusts this repository and workflow by OIDC.
+      - name: Publish to PyPI (trusted publishing)
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          attestations: true

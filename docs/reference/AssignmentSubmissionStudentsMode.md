@@ -1,0 +1,13 @@
+# AssignmentSubmissionStudentsMode
+
+Submission mode for assignments: - \"single\": Individual submissions (default) - \"group\": Group submissions (for shared writing assignments) 
+
+## Enum
+
+* `SINGLE` (value: `'single'`)
+
+* `GROUP` (value: `'group'`)
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -6,6 +6,7 @@ from flat_api.api.class_api import ClassApi
 from flat_api.api.collection_api import CollectionApi
 from flat_api.api.edu_resources_api import EduResourcesApi
 from flat_api.api.group_api import GroupApi
+from flat_api.api.omr_api import OMRApi
 from flat_api.api.organization_api import OrganizationApi
 from flat_api.api.score_api import ScoreApi
 from flat_api.api.task_api import TaskApi
