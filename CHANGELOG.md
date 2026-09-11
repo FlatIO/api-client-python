@@ -6,6 +6,22 @@
 
 * **docs:** close the asynchronous usage code fence in the README. Two escapes had been written as the literal characters `\n` rather than newlines, so the fence never opened or closed and every section after it rendered inside the code block on PyPI.
 
+## [2.0.0](https://github.com/FlatIO/api-client-python/compare/v1.1.3...2.0.0) (2026-09-11)
+
+The first release of the 2.x line. Regenerated against API specification 2.26.0, covering all 123
+public operations. See [MIGRATION.md](MIGRATION.md) for the upgrade from 1.x.
+
+### Features
+
+* Typed errors, retries with backoff, `Link` header pagination and OAuth2 token refresh.
+* Both `FlatClient` and `AsyncFlatClient` in one package. The generator emits sync or async and
+  never both, so the package is generated twice and merged.
+
+### Breaking Changes
+
+* Requires Python 3.9 or later.
+* Models and operations are regenerated, so names follow the current specification.
+
 ## [1.1.3](https://github.com/FlatIO/api-client-python/compare/v1.1.2...v1.1.3) (2024-03-08)
 
 
