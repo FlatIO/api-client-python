@@ -6,7 +6,7 @@ name: Release
 
 on:
   push:
-    tags: ['[0-9]+.[0-9]+.[0-9]+']
+    tags: ['v[0-9]+.[0-9]+.[0-9]+']
 
 permissions:
   contents: write # create the GitHub release for the tag
@@ -24,7 +24,9 @@ jobs:
 
       - name: The tag must match the packaged version
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          # Every tag in this repository, and in api-reference, carries the v. The version
+          # inside the package never does, so the tag is compared with it stripped.
+          TAG="${GITHUB_REF_NAME#v}"
           PKG="$(cat VERSION)"
           [ "$TAG" = "$PKG" ] || { echo "tag $TAG != VERSION $PKG"; exit 1; }
 
@@ -35,7 +37,9 @@ jobs:
       # lets a version be replaced, so this has to fail here rather than after the upload.
       - name: The built artifact must carry the tagged version
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          # Every tag in this repository, and in api-reference, carries the v. The version
+          # inside the package never does, so the tag is compared with it stripped.
+          TAG="${GITHUB_REF_NAME#v}"
           test -f "dist/flat_api-${TAG}-py3-none-any.whl" || {
             echo "no wheel for ${TAG}; dist/ holds:"; ls dist/; exit 1;
           }
@@ -44,7 +48,19 @@ jobs:
           }
 
       # No long-lived token exists: PyPI trusts this repository and workflow by OIDC.
+      - name: Skip the publish if this version is already on PyPI
+        id: published
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if curl -fsS "https://pypi.org/pypi/flat-api/$VERSION/json" >/dev/null 2>&1; then
+            echo "flat-api $VERSION is already on PyPI; nothing to publish."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to PyPI (trusted publishing)
+        if: steps.published.outputs.skip != 'true'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           attestations: true
@@ -55,7 +71,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          # Every tag in this repository, and in api-reference, carries the v. The version
+          # inside the package never does, so the tag is compared with it stripped.
+          TAG="${GITHUB_REF_NAME#v}"
           NOTES="$(awk -v tag="$TAG" '
             $0 ~ "^## \\[?" tag {found=1; next}
             found && /^## / {exit}
@@ -65,3 +83,25 @@ jobs:
           printf '%s\n\n---\n\nInstall: `pip install flat-api==%s`\n' "$NOTES" "$TAG" \
             > /tmp/notes.md
           gh release create "$TAG" --title "$TAG" --notes-file /tmp/notes.md --verify-tag
+
+      # The tag alone left the repository's Releases page showing a version from years ago as
+      # "Latest", which is what anyone browsing the repository sees first. The notes come from the
+      # CHANGELOG section for this version, so the release says what changed rather than nothing.
+      - name: Publish the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          NOTES="$(awk -v v="$VERSION" '
+            $0 ~ "^## \\[?" v "\\]?" { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md)"
+          [ -n "$NOTES" ] || NOTES="See CHANGELOG.md for $VERSION."
+          # Creating one that exists is an error, and a re-run of a release that already happened
+          # should be a no-op rather than a red build.
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo "Release $GITHUB_REF_NAME already exists; nothing to do."
+          else
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes "$NOTES"
+          fi

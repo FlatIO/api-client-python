@@ -36,7 +36,9 @@ jobs:
           token: ${{ secrets.SDK_RELEASE_TOKEN }}
       - name: Tag the version if it is new
         run: |
-          VERSION="$(cat VERSION)"
+          # v-prefixed, matching every tag this repository and api-reference already carry.
+          # The version inside the package stays bare; only the git tag is prefixed.
+          VERSION="v$(cat VERSION)"
           if git rev-parse "$VERSION" >/dev/null 2>&1; then
             echo "Tag $VERSION already exists, nothing to do."
             exit 0
