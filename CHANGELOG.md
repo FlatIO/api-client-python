@@ -1,12 +1,12 @@
 # Changelog
 
-## [2.0.1](https://github.com/FlatIO/api-client-python/compare/2.0.0...2.0.1) (2026-09-10)
+## [2.0.1](https://github.com/FlatIO/api-client-python/compare/v2.0.0...v2.0.1) (2026-09-10)
 
 ### Bug Fixes
 
 * **docs:** close the asynchronous usage code fence in the README. Two escapes had been written as the literal characters `\n` rather than newlines, so the fence never opened or closed and every section after it rendered inside the code block on PyPI.
 
-## [2.0.0](https://github.com/FlatIO/api-client-python/compare/v1.1.3...2.0.0) (2026-09-11)
+## [2.0.0](https://github.com/FlatIO/api-client-python/compare/v1.1.3...v2.0.0) (2026-09-11)
 
 The first release of the 2.x line. Regenerated against API specification 2.26.0, covering all 123
 public operations. See [MIGRATION.md](MIGRATION.md) for the upgrade from 1.x.
