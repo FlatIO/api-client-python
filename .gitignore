@@ -15,8 +15,11 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+# Anchored. Unanchored, these match at any depth, and lib/ matched tools/lib/, which is why
+# tools/lib/generate-common.sh was never committed and tools/generate.sh could not run from a
+# clone of this repository.
+/lib/
+/lib64/
 parts/
 sdist/
 var/
