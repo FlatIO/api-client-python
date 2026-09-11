@@ -71,26 +71,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Every tag in this repository, and in api-reference, carries the v. The version
-          # inside the package never does, so the tag is compared with it stripped.
-          TAG="${GITHUB_REF_NAME#v}"
-          NOTES="$(awk -v tag="$TAG" '
-            $0 ~ "^## \\[?" tag {found=1; next}
-            found && /^## / {exit}
-            found {print}
-          ' CHANGELOG.md)"
-          [ -n "$NOTES" ] || NOTES="See CHANGELOG.md for the changes in $TAG."
-          printf '%s\n\n---\n\nInstall: `pip install flat-api==%s`\n' "$NOTES" "$TAG" \
-            > /tmp/notes.md
-          gh release create "$TAG" --title "$TAG" --notes-file /tmp/notes.md --verify-tag
-
-      # The tag alone left the repository's Releases page showing a version from years ago as
-      # "Latest", which is what anyone browsing the repository sees first. The notes come from the
-      # CHANGELOG section for this version, so the release says what changed rather than nothing.
-      - name: Publish the GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
+          # The release is named for the tag. The version inside the package never carries the v,
+          # so the changelog lookup and the install line use it stripped.
           VERSION="${GITHUB_REF_NAME#v}"
           NOTES="$(awk -v v="$VERSION" '
             $0 ~ "^## \\[?" v "\\]?" { found = 1; next }
@@ -98,10 +80,11 @@ jobs:
             found { print }
           ' CHANGELOG.md)"
           [ -n "$NOTES" ] || NOTES="See CHANGELOG.md for $VERSION."
+          printf '%s\n\n---\n\nInstall: `pip install flat-api==%s`\n' "$NOTES" "$VERSION" > /tmp/notes.md
           # Creating one that exists is an error, and a re-run of a release that already happened
           # should be a no-op rather than a red build.
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             echo "Release $GITHUB_REF_NAME already exists; nothing to do."
           else
-            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes "$NOTES"
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file /tmp/notes.md --verify-tag
           fi
