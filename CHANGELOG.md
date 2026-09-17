@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.3](https://github.com/FlatIO/api-client-python/compare/v2.0.2...v2.0.3) (2026-09-17)
+
+Identical to 2.0.2. The regeneration pipeline ran twice against API specification 2.26.2 and each run bumps the version, so this release carries no change.
+
+## [2.0.2](https://github.com/FlatIO/api-client-python/compare/v2.0.1...v2.0.2) (2026-09-17)
+
+Regenerated against API specification 2.26.2. See the [API changelog](https://flat.io/developers/docs/api/changelog).
+
+### Features
+
+* **omr:** `OmrJobCreation.auto_rotate` (`autoRotate`). Off by default; when set, the server detects and corrects pages uploaded sideways or upside down before recognition. `OmrJob` echoes the value.
+
+### Documentation
+
+* Descriptions refreshed from the specification: no change on the wire.
+
 ## [2.0.1](https://github.com/FlatIO/api-client-python/compare/v2.0.0...v2.0.1) (2026-09-10)
 
 ### Bug Fixes
