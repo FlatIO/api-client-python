@@ -259,7 +259,7 @@ void (empty response body)
 
 Delete a score from the collection
 
-This method will delete a score from the collection. Unlike [`DELETE /scores/{score}`](#operation/deleteScore), this score will not remove the score from your account, but only from the collection.
+This method will delete a score from the collection. Unlike [`DELETE /scores/{score}`](#operation/deleteScore), this will not remove the score from your account, but only from the collection.
 This can be used to *move* a score from one collection to another, or simply remove a score from one collection when this one is contained in multiple collections.
 
 
@@ -291,7 +291,7 @@ with flat_api.ApiClient(configuration) as api_client:
     api_instance = flat_api.CollectionApi(api_client)
     collection = 'collection_example' # str | Unique identifier of the collection.  The following collection aliases are supported: - `root`: **Deprecated.** The root collection of the account - `app`: Alias for the current app collection - `trash`: Automatically contains resources that have been deleted 
     score = 'score_example' # str | Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. `ScoreDetails.id`) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with `drive-` (e.g. `drive-0B000000000`). 
-    event_properties = '{\"context\":\"discover\",\"screenLevel0\":\"home\",\"screenRoute\":\"/discover\"}' # str | Optional analytics properties merged into XP tracking for this request.  JSON-encoded string representing event properties. Example:  - `?eventProperties={\"context\":\"discover\",\"screenLevel0\":\"home\"}`  (optional)
+    event_properties = '{\"context\":\"discover\",\"screenLevel0\":\"home\",\"screenRoute\":\"/discover\"}' # str | Optional analytics properties merged into the analytics events recorded for this request.  JSON-encoded string representing event properties. Example:  - `?eventProperties={\"context\":\"discover\",\"screenLevel0\":\"home\"}`  (optional)
     sharing_key = 'sharing_key_example' # str | This sharing key must be specified to access to a score or collection with a `privacy` mode set to `privateLink` and the current user is not a collaborator of the document.  (optional)
 
     try:
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collection** | **str**| Unique identifier of the collection.  The following collection aliases are supported: - &#x60;root&#x60;: **Deprecated.** The root collection of the account - &#x60;app&#x60;: Alias for the current app collection - &#x60;trash&#x60;: Automatically contains resources that have been deleted  | 
  **score** | **str**| Unique identifier of the score document. This can be a Flat Score unique identifier (i.e. &#x60;ScoreDetails.id&#x60;) or, if the score is also a Google Drive file, the Drive file unique identifier prefixed with &#x60;drive-&#x60; (e.g. &#x60;drive-0B000000000&#x60;).  | 
- **event_properties** | **str**| Optional analytics properties merged into XP tracking for this request.  JSON-encoded string representing event properties. Example:  - &#x60;?eventProperties&#x3D;{\&quot;context\&quot;:\&quot;discover\&quot;,\&quot;screenLevel0\&quot;:\&quot;home\&quot;}&#x60;  | [optional] 
+ **event_properties** | **str**| Optional analytics properties merged into the analytics events recorded for this request.  JSON-encoded string representing event properties. Example:  - &#x60;?eventProperties&#x3D;{\&quot;context\&quot;:\&quot;discover\&quot;,\&quot;screenLevel0\&quot;:\&quot;home\&quot;}&#x60;  | [optional] 
  **sharing_key** | **str**| This sharing key must be specified to access to a score or collection with a &#x60;privacy&#x60; mode set to &#x60;privateLink&#x60; and the current user is not a collaborator of the document.  | [optional] 
 
 ### Return type

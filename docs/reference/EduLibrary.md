@@ -7,7 +7,7 @@ A Flat for Education Library
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | Unique identifier of the library.  This one can be used to list the underlying resources using &#x60;GET /v2/eduResources?parent&#x3D;{library-id}&#x60;  | 
-**name** | **str** | Name of the lirbary | 
+**name** | **str** | Name of the library | 
 **type** | **str** | Type of the library | 
 **visibility** | **str** | Visibility of the library | 
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | [**EduResourceType**](EduResourceType.md) |  | 
 **title** | **str** | Title of the resource | 
-**parent** | **str** | Identifier of the parent resource where the new one will created, e.g. a folder id or &#x60;root&#x60; | [optional] [default to 'root']
+**parent** | **str** | Identifier of the parent resource where the new one will be created, e.g. a folder id or &#x60;root&#x60; | [optional] [default to 'root']
 **sharing_description** | **str** | Sharing description of the resource | [optional] 
 **sharing_description_html** | **str** | HTML version of sharing description with rich text formatting.  Supports safe HTML tags: p, br, strong, b, em, i, u, a.  | [optional] 
 **resource** | [**EduResourceAssignmentCreation**](EduResourceAssignmentCreation.md) |  | [optional] 

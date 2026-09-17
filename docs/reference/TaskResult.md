@@ -6,8 +6,8 @@ Optional result information about this task
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**url** | **str** | URL returned by the task worker | [optional] 
-**error** | **str** | Error returned by task worker | [optional] 
+**url** | **str** | URL of the generated file, when the task produces one | [optional] 
+**error** | **str** | Error message, when the task failed | [optional] 
 
 ## Example
 

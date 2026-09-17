@@ -7,7 +7,7 @@ Use an education resource in class
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **classroom** | **str** | The destination classroom where the resource will be copied. | 
-**assignment** | **str** | An optional destination assignment where the original assignement will be copied. Must be a draft. | [optional] 
+**assignment** | **str** | An optional destination assignment where the original assignment will be copied. Must be a draft. | [optional] 
 
 ## Example
 

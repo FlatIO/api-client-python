@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **user_token** | **str** | Token received in an invitation to join the score.  | [optional] 
 **acl_read** | **bool** | &#x60;True&#x60; if the related user can read the score. (probably true if the user has a permission on the document).  | [optional] [default to True]
 **acl_write** | **bool** | &#x60;True&#x60; if the related user can modify the score.  | [optional] [default to False]
-**acl_admin** | **bool** | &#x60;True&#x60; if the related user can can manage the current document, i.e. changing the document permissions and deleting the document  | [optional] [default to False]
+**acl_admin** | **bool** | &#x60;True&#x60; if the related user can manage the current document, i.e. changing the document permissions and deleting the document  | [optional] [default to False]
 
 ## Example
 

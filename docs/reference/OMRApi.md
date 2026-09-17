@@ -196,6 +196,10 @@ runs fully automatically and only pauses at the steps you list. Steps you do not
 including ones added in the future, are auto-resolved with server defaults, so older
 clients never break.
 
+Pages are recognized in the orientation they are uploaded in. If your client does not
+let the user rotate pages before upload, set `autoRotate: true` and the server corrects
+pages uploaded sideways or upside down.
+
 
 ### Example
 
@@ -279,7 +283,7 @@ Delete an OMR job's data
 Erase a job's uploaded files and recognition results now, instead of waiting for its
 retention deadline. Use this to serve a deletion request from your own end user.
 
-Reaches the same end state as the scheduled cleanup: the files are gone, the job keeps
+Reaches the same end state as retention expiry: the files are gone, the job keeps
 the `status` it finished with, stays listable, and reports `retention.expiredDate`.
 Downloads then fail with `OMR_JOB_EXPIRED`.
 

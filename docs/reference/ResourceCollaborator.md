@@ -1,6 +1,6 @@
 # ResourceCollaborator
 
-A collaborator of a score. The `userEmail` and `group` are only available if the requesting user is a collaborator of the related score (in this case these permissions will eventualy not be listed and exposed publicly). 
+A collaborator of a score. The `userEmail` and `group` are only available if the requesting user is a collaborator of the related score (otherwise these permissions are not listed or exposed publicly). 
 
 ## Properties
 

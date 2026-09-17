@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "spec_version": "2.26.0",
+  "spec_version": "2.26.2",
   "generator": {
     "name": "python",
     "version": "7.24.0"
@@ -474,7 +474,7 @@
       "operation_id": "getGroupScores",
       "method": "get",
       "path": "/groups/{group}/scores",
-      "symbol": "score_api.get_group_scores",
+      "symbol": "group_api.get_group_scores",
       "paginated": false,
       "documented": true
     },
@@ -634,7 +634,7 @@
       "operation_id": "getUserLikes",
       "method": "get",
       "path": "/users/{user}/likes",
-      "symbol": "user_api.get_user_likes",
+      "symbol": "score_api.get_user_likes",
       "paginated": true,
       "documented": true
     },
@@ -642,7 +642,7 @@
       "operation_id": "getUserScores",
       "method": "get",
       "path": "/users/{user}/scores",
-      "symbol": "user_api.get_user_scores",
+      "symbol": "score_api.get_user_scores",
       "paginated": true,
       "documented": true
     },
@@ -1049,7 +1049,6 @@
     "CollectionModification",
     "CollectionPrivacy",
     "CollectionType",
-    "CreateLtiConfiguration200Response",
     "CreditTransaction",
     "EduLibrary",
     "EduResource",

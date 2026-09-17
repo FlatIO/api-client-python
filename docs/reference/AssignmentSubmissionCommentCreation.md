@@ -1,6 +1,6 @@
 # AssignmentSubmissionCommentCreation
 
-Creation of a assignment submission comment
+Creation of an assignment submission comment
 
 ## Properties
 

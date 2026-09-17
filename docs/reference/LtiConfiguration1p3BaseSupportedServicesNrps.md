@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **available** | **bool** | Whether NRPS claims were detected in launches from this platform | [optional] 
 **version** | **str** | NRPS version supported (e.g., \&quot;2.0\&quot;) | [optional] 
-**enabled** | **bool** | Whether we have NRPS enabled for this platform | [optional] 
+**enabled** | **bool** | Whether NRPS is enabled for this platform | [optional] 
 
 ## Example
 

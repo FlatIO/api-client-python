@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**count_orga_users**](OrganizationApi.md#count_orga_users) | **GET** /organizations/users/count | Count the organization users using the provided filters
 [**create_lti_configuration**](OrganizationApi.md#create_lti_configuration) | **POST** /organizations/lti/configurations | Create a new LTI configuration (1.1 or 1.3)
-[**create_lti_credentials**](OrganizationApi.md#create_lti_credentials) | **POST** /organizations/lti/credentials | Create a new couple of LTI 1.x credentials
+[**create_lti_credentials**](OrganizationApi.md#create_lti_credentials) | **POST** /organizations/lti/credentials | Create a new pair of LTI 1.1 credentials
 [**create_organization_invitation**](OrganizationApi.md#create_organization_invitation) | **POST** /organizations/invitations | Create a new invitation to join the organization
 [**create_organization_user**](OrganizationApi.md#create_organization_user) | **POST** /organizations/users | Create a new user account
 [**create_organization_user_access_token**](OrganizationApi.md#create_organization_user_access_token) | **POST** /organizations/users/{user}/accessToken | Create a delegated API access token for an organization user
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_lti_configuration**
-> CreateLtiConfiguration200Response create_lti_configuration(lti_configuration_create)
+> LtiConfiguration create_lti_configuration(lti_configuration_create)
 
 Create a new LTI configuration (1.1 or 1.3)
 
@@ -115,7 +115,7 @@ Create a new LTI configuration (1.1 or 1.3)
 
 ```python
 import flat_api
-from flat_api.models.create_lti_configuration200_response import CreateLtiConfiguration200Response
+from flat_api.models.lti_configuration import LtiConfiguration
 from flat_api.models.lti_configuration_create import LtiConfigurationCreate
 from flat_api.rest import ApiException
 from pprint import pprint
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateLtiConfiguration200Response**](CreateLtiConfiguration200Response.md)
+[**LtiConfiguration**](LtiConfiguration.md)
 
 ### Authorization
 
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 # **create_lti_credentials**
 > LtiCredentials create_lti_credentials(body)
 
-Create a new couple of LTI 1.x credentials
+Create a new pair of LTI 1.1 credentials
 
 DEPRECATED. Use the unified endpoints under `/organizations/lti/configurations`.
 Note: Teachers may be restricted by the organization privacy setting `lti1p1AllowTeachersCredentials`.
@@ -221,7 +221,7 @@ with flat_api.ApiClient(configuration) as api_client:
     body = flat_api.LtiCredentialsCreation() # LtiCredentialsCreation | 
 
     try:
-        # Create a new couple of LTI 1.x credentials
+        # Create a new pair of LTI 1.1 credentials
         api_response = api_instance.create_lti_credentials(body)
         print("The response of OrganizationApi->create_lti_credentials:\n")
         pprint(api_response)
@@ -266,11 +266,11 @@ Name | Type | Description  | Notes
 
 Create a new invitation to join the organization
 
-This method creates and sends invitation for teachers and admins.
+This method creates and sends an invitation for teachers and admins.
 
 Invitations can only be used by new Flat users or users who are not part of the organization yet.
 
-If the email of the user is already associated to a user of your organization, the API will simply update the role of the existing user and won't send an invitation. In this case, the property `usedBy` will be directly filled with the uniquer identifier of the corresponding user.
+If the email of the user is already associated to a user of your organization, the API will simply update the role of the existing user and won't send an invitation. In this case, the property `usedBy` will be directly filled with the unique identifier of the corresponding user.
 
 
 ### Example
@@ -1076,7 +1076,7 @@ with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = flat_api.OrganizationApi(api_client)
     user = 'user_example' # str | Unique identifier of the Flat account 
-    convert_to_individual = True # bool | If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal.  (optional)
+    convert_to_individual = True # bool | If `true`, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before performing this operation, you need to be sure that the user is at least 13 years old and has read and agreed to the Individual Terms of Service of Flat available on https://flat.io/legal.  (optional)
 
     try:
         # Remove an account from Flat
@@ -1093,7 +1093,7 @@ with flat_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user** | **str**| Unique identifier of the Flat account  | 
- **convert_to_individual** | **bool**| If &#x60;true&#x60;, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before realizing this operation, you need to be sure that the user is at least 13 years old and that this one has read and agreed to the Individual Terms of Services of Flat available on https://flat.io/legal.  | [optional] 
+ **convert_to_individual** | **bool**| If &#x60;true&#x60;, the account will be only removed from the organization and converted into an individual account on our public website, https://flat.io. This operation will remove the education-related data from the account. Before performing this operation, you need to be sure that the user is at least 13 years old and has read and agreed to the Individual Terms of Service of Flat available on https://flat.io/legal.  | [optional] 
 
 ### Return type
 

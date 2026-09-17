@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **available** | **bool** | Whether AGS claims were detected in launches from this platform | [optional] 
 **version** | **str** | AGS version supported (e.g., \&quot;2.0\&quot;) | [optional] 
-**enabled** | **bool** | Whether we have AGS enabled for this platform | [optional] 
+**enabled** | **bool** | Whether AGS is enabled for this platform | [optional] 
 **lineitems_url** | **str** | Base URL for line items operations as provided by the platform | [optional] 
 
 ## Example

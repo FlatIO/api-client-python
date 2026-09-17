@@ -6,7 +6,7 @@ LTI Link details for the class
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lti_url** | **str** | An URL that can be used to launch LTI with this resource in a classroom. | 
+**lti_url** | **str** | A URL that can be used to launch LTI with this resource in a classroom. | 
 
 ## Example
 

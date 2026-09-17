@@ -581,7 +581,7 @@ with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = flat_api.EduResourcesApi(api_client)
     parent = 'root' # str | List the resources contained in this `parent` library or folder.  Accepts a folder identifier, or the identifier of one of the libraries returned by [`listEduLibraries`](#tag/EduResources/operation/listEduLibraries). Which libraries are available depends on the account, so use the `id` values that endpoint returns rather than hardcoding this list:  * `root`: the user's own resources * `organization`: resources shared with the organization  (optional) (default to 'root')
-    without_subfolders_resources = True # bool | For the `parent` = `organization`, do not include resources from subfolders. By default in the Resource Library UI, we include resources from subfolders, but for example in a picker like LTI, we don't want to include them.  (optional)
+    without_subfolders_resources = True # bool | For the `parent` = `organization`, do not include resources from subfolders. Resources from subfolders are included by default; set this to `true` to list only the direct children, for example in a picker.  (optional)
     type = 'type_example' # str | Filter the returned resources by type  (optional)
     subjects = [flat_api.TeachingTheme()] # List[TeachingTheme] | Filter the returned resources by subjects  (optional)
     assignment_types = [flat_api.AssignmentType()] # List[AssignmentType] | Filter the returned resources by assignment types  (optional)
@@ -609,7 +609,7 @@ with flat_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **parent** | **str**| List the resources contained in this &#x60;parent&#x60; library or folder.  Accepts a folder identifier, or the identifier of one of the libraries returned by [&#x60;listEduLibraries&#x60;](#tag/EduResources/operation/listEduLibraries). Which libraries are available depends on the account, so use the &#x60;id&#x60; values that endpoint returns rather than hardcoding this list:  * &#x60;root&#x60;: the user&#39;s own resources * &#x60;organization&#x60;: resources shared with the organization  | [optional] [default to &#39;root&#39;]
- **without_subfolders_resources** | **bool**| For the &#x60;parent&#x60; &#x3D; &#x60;organization&#x60;, do not include resources from subfolders. By default in the Resource Library UI, we include resources from subfolders, but for example in a picker like LTI, we don&#39;t want to include them.  | [optional] 
+ **without_subfolders_resources** | **bool**| For the &#x60;parent&#x60; &#x3D; &#x60;organization&#x60;, do not include resources from subfolders. Resources from subfolders are included by default; set this to &#x60;true&#x60; to list only the direct children, for example in a picker.  | [optional] 
  **type** | **str**| Filter the returned resources by type  | [optional] 
  **subjects** | [**List[TeachingTheme]**](TeachingTheme.md)| Filter the returned resources by subjects  | [optional] 
  **assignment_types** | [**List[AssignmentType]**](AssignmentType.md)| Filter the returned resources by assignment types  | [optional] 
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 
 Update an education resource metadata
 
-Update any resources metadata (e.g. title).
+Update the metadata of a resource (e.g. its title).
 
 Use this method to rename education resources folders or assignments.
 

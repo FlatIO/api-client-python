@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **lms** | **str** | LMS identifier for LTI 1.1 credentials | [optional] 
 **platform_info** | [**LtiConfigurationCreate1p3DynamicPlatformInfo**](LtiConfigurationCreate1p3DynamicPlatformInfo.md) |  | [optional] 
 **locale** | **str** | Optional locale code for registration URL. Input values will be automatically normalized to a supported locale code. | [optional] 
-**deployment_type** | **str** | Parent platform key (e.g., canvas, blackboard, schoology, classlink) | 
+**deployment_type** | **str** | Parent platform key (e.g., blackboard, schoology, classlink, manabipocket, manabipocket-stg) | 
 **deployment_id** | **str** | Deployment identifier provided by the platform | 
 **client_id** | **str** | OAuth2 client_id allocated by the platform | [optional] 
 **deployment_breakdown_id** | **str** | Value of the custom claim that identifies this specific tenant (for multi-tenant platforms like Schoology) | [optional] 

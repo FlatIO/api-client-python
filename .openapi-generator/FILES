@@ -74,7 +74,6 @@ flat_api/docs/CollectionCreation.md
 flat_api/docs/CollectionModification.md
 flat_api/docs/CollectionPrivacy.md
 flat_api/docs/CollectionType.md
-flat_api/docs/CreateLtiConfiguration200Response.md
 flat_api/docs/CreditTransaction.md
 flat_api/docs/EduLibrary.md
 flat_api/docs/EduResource.md
@@ -280,7 +279,6 @@ flat_api/models/collection_creation.py
 flat_api/models/collection_modification.py
 flat_api/models/collection_privacy.py
 flat_api/models/collection_type.py
-flat_api/models/create_lti_configuration200_response.py
 flat_api/models/credit_transaction.py
 flat_api/models/edu_library.py
 flat_api/models/edu_resource.py
@@ -482,7 +480,6 @@ flat_api/test/test_collection_creation.py
 flat_api/test/test_collection_modification.py
 flat_api/test/test_collection_privacy.py
 flat_api/test/test_collection_type.py
-flat_api/test/test_create_lti_configuration200_response.py
 flat_api/test/test_credit_transaction.py
 flat_api/test/test_edu_library.py
 flat_api/test/test_edu_resource.py

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **status** | [**OmrJobStatus**](OmrJobStatus.md) |  | 
 **output** | [**OmrJobOutput**](OmrJobOutput.md) |  | [default to OmrJobOutput.LIBRARY]
 **interactive_steps** | [**List[OmrStepName]**](OmrStepName.md) | Steps this job pauses at for client input, echoing the value set at creation. | 
+**auto_rotate** | **bool** | Whether the job was created with &#x60;autoRotate&#x60;, echoing the value set at creation. | [optional] 
 **locales** | **List[str]** | Locale hints (BCP 47) the job was created with, used for OCR and as the default main language at the &#x60;details&#x60; step.  | [optional] 
 **current_step** | [**OmrStepName**](OmrStepName.md) | The pending step when &#x60;status&#x60; is &#x60;awaitingInput&#x60;. Omitted otherwise. | [optional] 
 **pending_step** | [**OmrPendingStep**](OmrPendingStep.md) |  | [optional] 

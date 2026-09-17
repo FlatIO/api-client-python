@@ -1,12 +1,12 @@
 # LtiCredentialsCreation
 
-Creation of a couple of LTI 1.x OAuth credentials
+Creation of a pair of LTI 1.1 OAuth credentials
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | Name of the couple of credentials | 
+**name** | **str** | Name of the pair of credentials | 
 **lms** | [**LmsName**](LmsName.md) |  | 
 
 ## Example
