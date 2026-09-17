@@ -1,6 +1,6 @@
 # OmrJobStatus
 
-Public, client-facing status of the job, derived from the internal job and task state.  * `draft`: created, files can still be added; not yet started or charged. * `processing`: the pipeline is running. * `awaitingInput`: paused on the `currentStep`, waiting for the client to submit it. * `done`: finished. See `result`. * `error`: failed. See `errorCode`. * `canceled`: canceled by the client. 
+Status of the job.  * `draft`: created, files can still be added; not yet started or charged. * `processing`: the pipeline is running. * `awaitingInput`: paused on the `currentStep`, waiting for the client to submit it. * `done`: finished. See `result`. * `error`: failed. See `errorCode`. * `canceled`: canceled by the client. 
 
 ## Enum
 

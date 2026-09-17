@@ -44,7 +44,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = flat_api.UserApi(api_client)
-    user = 'user_example' # str | This route parameter is the unique identifier of the user. You can specify an email instead of an unique identifier. If you are executing this request authenticated, you can use `me` as a value instead of the current User unique identifier to work on the current authenticated user. 
+    user = 'user_example' # str | This route parameter is the unique identifier of the user. You can specify an email instead of a unique identifier. If you are executing this request authenticated, you can use `me` as a value instead of the current User unique identifier to work on the current authenticated user. 
 
     try:
         # Get a public user profile
@@ -62,7 +62,7 @@ with flat_api.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | **str**| This route parameter is the unique identifier of the user. You can specify an email instead of an unique identifier. If you are executing this request authenticated, you can use &#x60;me&#x60; as a value instead of the current User unique identifier to work on the current authenticated user.  | 
+ **user** | **str**| This route parameter is the unique identifier of the user. You can specify an email instead of a unique identifier. If you are executing this request authenticated, you can use &#x60;me&#x60; as a value instead of the current User unique identifier to work on the current authenticated user.  | 
 
 ### Return type
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 List user's scores
 
 Get the list of public scores owned by a User.
-If you want to access to private scores, please use the [Collections API](#tag/Collection).
+If you want to access private scores, please use the [Collections API](#tag/Collection).
 For example `GET /v2/collections/allScores/scores` to list all recently updated scores.
 
 

@@ -6,7 +6,7 @@ A Canvas LMS assignment
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | Unique identifier of the course on Canvas assignment | [optional] 
+**id** | **str** | Unique identifier of the assignment on Canvas | [optional] 
 **alternate_link** | **str** | Link to Canvas assignment | [optional] 
 
 ## Example

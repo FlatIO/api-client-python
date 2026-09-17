@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **creation_type** | [**ScoreCreationType**](ScoreCreationType.md) |  | [optional] 
 **license** | [**ScoreLicense**](ScoreLicense.md) |  | [optional] 
 **license_text** | **str** | Additional license text written on the exported/printed score | [optional] 
-**duration_time** | **float** | In seconds, an approximative duration of the score | [optional] 
+**duration_time** | **float** | In seconds, an approximate duration of the score | [optional] 
 **number_measures** | **int** | The number of measures in the score | [optional] 
 **main_tempo_qpm** | **float** | The main tempo of the score (in QPM) | [optional] 
 **main_key_signature** | **float** | The main key signature of the score (expressed between -7 and 7). | [optional] 
@@ -31,19 +31,19 @@ Name | Type | Description | Notes
 **creation_date** | **datetime** | The date when the score was created | 
 **modification_date** | **datetime** | The date of the last revision of the score | [optional] 
 **publication_date** | **datetime** | The date when the score was published on Flat | [optional] 
-**scheduled_deletion_date** | **datetime** | The date when the score will be definitively deleted. This date can be in the past if the score will be deleted at the next deletion batch, in this case you can display something like \&quot;Deleted shortly\&quot;.  Schedule:  * For all paying users, the scores will be definitively deleted after 90 days. * For free users, the scores are no longer available after 24 hours, an can be restored with a paying account up to 90 days.  | [optional] 
+**scheduled_deletion_date** | **datetime** | The date when the score will be definitively deleted. This date can be in the past if the score will be deleted at the next deletion batch, in this case you can display something like \&quot;Deleted shortly\&quot;.  Schedule:  * For all paying users, the scores will be definitively deleted after 90 days. * For free users, the scores are no longer available after 24 hours, and can be restored with a paying account up to 90 days.  | [optional] 
 **highlighted_date** | **datetime** | The date when the score was highlighted (featured) on our community | [optional] 
 **organization** | **str** | If the score has been created in an organization, the identifier of this organization. This property is especially used with the score privacy &#x60;organizationPublic&#x60;.  | [optional] 
 **parent_score** | **str** | If the score has been forked, the unique identifier of the parent score.  | [optional] 
-**instruments** | **List[str]** | An array of the instrument identifiers used in the last version of the score. This is mainly used to display a list of the instruments in the Flat&#39;s UI or instruments icons. The format of the strings is &#x60;{instrument-group}.{instrument-id}&#x60;.  | 
+**instruments** | **List[str]** | An array of the instrument identifiers used in the last version of the score. This is mainly used to display a list of the instruments in Flat&#39;s UI or instruments icons. The format of the strings is &#x60;{instrument-group}.{instrument-id}&#x60;.  | 
 **instruments_names** | **List[str]** | An array of the instrument names used in the last version of the score. This list is localized and ready-to-display and will match the indexes from the &#x60;instruments&#x60; list.  | 
-**samples** | **List[str]** | An array of the audio samples identifiers used the different score parts. The format of the strings is &#x60;{instrument-group}.{sample-id}&#x60;.  | 
+**samples** | **List[str]** | An array of the audio sample identifiers used by the different score parts. The format of the strings is &#x60;{instrument-group}.{sample-id}&#x60;.  | 
 **google_drive_file_id** | **str** | If the user uses Google Drive and the score exists on Google Drive, this field will contain the unique identifier of the Flat score on Google Drive. You can access the document using the url: &#x60;https://drive.google.com/open?id&#x3D;{googleDriveFileId}&#x60;  | [optional] 
 **likes** | [**ScoreLikesCounts**](ScoreLikesCounts.md) |  | [optional] 
 **comments** | [**ScoreCommentsCounts**](ScoreCommentsCounts.md) |  | [optional] 
 **views** | [**ScoreViewsCounts**](ScoreViewsCounts.md) |  | [optional] 
 **plays** | [**ScorePlaysCounts**](ScorePlaysCounts.md) |  | [optional] 
-**collections** | **List[str]** | The List of parent collections, which includes all the collections this score is included. Please note that you might not have access to all of them. | [optional] 
+**collections** | **List[str]** | The list of parent collections this score is included in. Please note that you might not have access to all of them. | [optional] 
 **me** | [**ScoreDetailsAllOfMe**](ScoreDetailsAllOfMe.md) |  | [optional] 
 
 ## Example

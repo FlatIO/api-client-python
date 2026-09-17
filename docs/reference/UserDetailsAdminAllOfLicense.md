@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **expiration_date** | **datetime** | Date when the license expires | [optional] 
 **source** | [**LicenseSources**](LicenseSources.md) |  | [optional] [default to LicenseSources.ORDER]
 **mode** | [**LicenseMode**](LicenseMode.md) |  | [optional] 
-**active** | **bool** | ID of the current license | [optional] 
+**active** | **bool** | Whether the license is currently active | [optional] 
 
 ## Example
 

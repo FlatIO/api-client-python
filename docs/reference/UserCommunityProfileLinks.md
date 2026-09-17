@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **soundcloud_url** | **str** | SoundCloud Profile URL | [optional] 
 **tiktok_url** | **str** | TikTok profile URL. For updates, also accepts TikTok usernames | [optional] 
 **instagram_url** | **str** | Instagram profile URL. For updates, also accepts Instagram usernames | [optional] 
-**website_url** | **str** | Personnal website URL | [optional] 
+**website_url** | **str** | Personal website URL | [optional] 
 
 ## Example
 

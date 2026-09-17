@@ -364,7 +364,7 @@ with flat_api.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = flat_api.GroupApi(api_client)
     group = 'group_example' # str | Unique identifier of a Flat group 
-    parent = 'parent_example' # str | Filter the score forked from the score id `parent` (optional)
+    parent = 'parent_example' # str | Only return the scores forked from the score `parent` (optional)
 
     try:
         # List group's scores
@@ -383,7 +383,7 @@ with flat_api.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group** | **str**| Unique identifier of a Flat group  | 
- **parent** | **str**| Filter the score forked from the score id &#x60;parent&#x60; | [optional] 
+ **parent** | **str**| Only return the scores forked from the score &#x60;parent&#x60; | [optional] 
 
 ### Return type
 
@@ -479,7 +479,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The list of users member of the group |  -  |
+**200** | The users who are members of the group |  -  |
 **404** | Not Found - Group not found or insufficient permissions |  -  |
 **0** | Error |  -  |
 

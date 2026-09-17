@@ -1,6 +1,6 @@
 # ClassDetailsCanvas
 
-Meta information provided by Canvs LMS
+Meta information provided by Canvas LMS
 
 ## Properties
 

@@ -6,7 +6,7 @@ Move an education resource
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**destination** | **str** | Unique identifier of the destination of the folder where to move this resource. This can also be &#x60;root&#x60; to move the resource at the root of the user resource library.  | 
+**destination** | **str** | Unique identifier of the destination folder for this resource. This can also be &#x60;root&#x60; to move the resource at the root of the user resource library.  | 
 
 ## Example
 

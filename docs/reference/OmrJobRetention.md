@@ -1,6 +1,6 @@
 # OmrJobRetention
 
-Data-retention state of the job.  Present only on jobs whose `output` is `musicxml`. Jobs imported into the Flat library are part of your library content, are not covered by this policy, and omit this object entirely.  Erasure is performed by a periodic cleanup pass, so the files are removed shortly after `expiryDate` rather than exactly on it. Plan for the deadline, not the instant. 
+Data-retention state of the job.  Present only on jobs whose `output` is `musicxml`. Jobs imported into the Flat library are part of your library content, are not covered by this policy, and omit this object entirely.  Erasure happens shortly after `expiryDate` rather than exactly on it. Plan for the deadline, not the instant. 
 
 ## Properties
 

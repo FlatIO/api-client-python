@@ -125,7 +125,7 @@ This method can be used by a teacher of the class to enroll another Flat user in
 
 Only users that are part of your Organization can be enrolled in a class of this same Organization.
 
-When enrolling a user in the class, Flat will automatically add this user to the corresponding Class group, based on this role in the Organization.
+When enrolling a user in the class, Flat will automatically add this user to the corresponding Class group, based on their role in the Organization.
 
 
 ### Example
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 Archive the class
 
-Mark the class as `archived`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated.
+Mark the class as `archived`. When this course is synchronized with another app, like Google Classroom, this state will automatically be updated.
 
 
 ### Example
@@ -447,9 +447,9 @@ Classrooms on Flat allow you to create activities with assignments and post cont
 
 When creating a class, Flat automatically creates two groups: one for the teachers of the course, one for the students. The creator of this class is automatically added to the teachers group.
 
-If the classsroom is synchronized with another application like Google Classroom, some of the meta information will automatically be updated.
+If the classroom is synchronized with another application like Google Classroom, some of the meta information will automatically be updated.
 
-You can add users to this class using `PUT /classes/{class}/users/{user}`, they will automatically added to the group based on their role on Flat. Users can also enroll themselves to this class using `POST /classes/enroll/{enrollmentCode}` and the `enrollmentCode` returned in the `ClassDetails` response.
+You can add users to this class using `PUT /classes/{class}/users/{user}`, they will automatically be added to the group based on their role on Flat. Users can also enroll themselves to this class using `POST /classes/enroll/{enrollmentCode}` and the `enrollmentCode` returned in the `ClassDetails` response.
 
 
 ### Example
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 Create or edit a submission
 
 Use this method as a student to create, update and submit a submission related to an assignment.
-Students can only set `attachments` and `submit`.
+Students can only set `attachments`, `playback`, `exercisesIds` and `submit`.
 Teachers can use `PUT /classes/{class}/assignments/{assignment}/submissions/{submission}` to update a submission by id.
 
 
@@ -694,7 +694,7 @@ Name | Type | Description  | Notes
 
 Create a test student account
 
-Test students account can be created by teachers an admin and be used to experiment the assignments.
+Test student accounts can be created by teachers and admins to try out the assignments.
 
 - They are automatically added to the class.
 - They can be reset using this API endpoint (a new account will be created and the previous one scheduled for deletion).
@@ -863,7 +863,7 @@ void (empty response body)
 
 Remove a user from the class
 
-This method can be used by a teacher to remove a user from the class, or by a student to leave the classroom.
+This method can be used by a teacher of the class to remove another user from it. Removing your own account is not allowed.
 
 Warning: Removing a user from the class will remove the associated resources, including the submissions and feedback related to these submissions.
 
@@ -941,7 +941,7 @@ void (empty response body)
 
 Reset a submission
 
-Use this method as a teacher to reset a submission and allow student to start over the assignment
+Use this method as a teacher to reset a submission and allow the student to start the assignment over
 
 
 ### Example
@@ -1099,8 +1099,8 @@ void (empty response body)
 
 Edit a submission
 
-Use this method as a teacher to update the different submission and give feedback.
-Teachers can only set `return`, `draftGrade` and `grade`
+Use this method as a teacher to update a submission and give feedback.
+Teachers can only set `return`, `draftGrade` and `grade`.
 
 
 ### Example
@@ -1184,9 +1184,9 @@ Name | Type | Description  | Notes
 
 Join a class
 
-Use this method to join a class using an enrollment code given one of the teacher of this class. This code is also available in the `ClassDetails` returned to the teachers when creating the class or listing / fetching a specific class.
+Use this method to join a class using an enrollment code given by one of the teachers of this class. This code is also available in the `ClassDetails` returned to the teachers when creating the class or listing / fetching a specific class.
 
-Flat will automatically add the user to the corresponding class group based on this role in the organization.
+Flat will automatically add the user to the corresponding class group based on their role in the organization.
 
 
 ### Example
@@ -1574,7 +1574,7 @@ Name | Type | Description  | Notes
 
 List submissions related to the score
 
-This API call will list the different assignments submissions where the score is attached. This method can be used by anyone that are part of the organization and have at least read access to the document.
+This API call will list the different assignments submissions where the score is attached. This method can be used by anyone who is part of the organization and has at least read access to the document.
 
 
 ### Example
@@ -1797,7 +1797,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The comments of the score |  -  |
+**200** | The comments of the submission |  -  |
 **403** | Not granted to access to this submission |  -  |
 **404** | Submission not found |  -  |
 **0** | Error |  -  |
@@ -2357,7 +2357,7 @@ Name | Type | Description  | Notes
 
 Unarchive the class
 
-Mark the class as `active`. When this course is synchronized with another app, like Google Classroom, this state will be automatically be updated.
+Mark the class as `active`. When this course is synchronized with another app, like Google Classroom, this state will automatically be updated.
 
 
 ### Example

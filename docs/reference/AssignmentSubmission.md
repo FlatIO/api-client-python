@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **return_date** | **str** | The date when the teacher returned the work | [optional] 
 **return_creator** | **str** | The User unique identifier of the teacher who returned the submission  | [optional] 
 **grade** | **float** | Optional grade. If unset, no grade was set. | [optional] 
-**draft_grade** | **float** | Optional grade. If unset, no grade was set. This value is only visible by the teacher, and we will be set to &#x60;grade&#x60; once the teacher returns the submission | [optional] 
+**draft_grade** | **float** | Optional grade. If unset, no grade was set. This value is only visible to the teacher, and is copied to &#x60;grade&#x60; once the teacher returns the submission | [optional] 
 **max_points** | **float** | Optional max points for the grade. If set, a corresponding &#x60;draftGrade&#x60; or &#x60;grade&#x60; will be set. | [optional] 
 **exercises_ids** | **List[str]** | The ids of exercises when they need to be in a specific order | [optional] 
 **playback** | [**List[AssignmentSubmissionPlayback]**](AssignmentSubmissionPlayback.md) |  | 

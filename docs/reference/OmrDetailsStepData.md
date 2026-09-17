@@ -1,6 +1,6 @@
 # OmrDetailsStepData
 
-Detected score details for review (the \"Check your score details\" screen). The worker produces `title` and `instruments` from assembly; the language is not detected and is not part of this payload (the client reads the job's `locales`, set at creation). 
+Detected score details for the client to review before the score is built. `title` and `instruments` are detected from the input; the language is not detected and is not part of this payload (read the job's `locales`, set at creation). 
 
 ## Properties
 

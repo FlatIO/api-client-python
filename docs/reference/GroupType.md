@@ -1,6 +1,6 @@
 # GroupType
 
-The type of the group: * `generic`: A group created by a Flat user * `classTeachers`: A group created automaticaly by Flat that contains   the teachers of a class * `classStudents`: A group created automaticaly by Flat that contains   the studnets of a class * `classStudentsSubGroup`: Manually created sub-group of students of a class.  * `assignmentStudentsSubGroup`: Manually created Sub-group of students of a class, in relation to a specific assignment. 
+The type of the group: * `generic`: A group created by a Flat user * `classTeachers`: A group created automatically by Flat that contains   the teachers of a class * `classStudents`: A group created automatically by Flat that contains   the students of a class * `classStudentsSubGroup`: Manually created sub-group of students of a class.  * `assignmentStudentsSubGroup`: Manually created Sub-group of students of a class, in relation to a specific assignment. 
 
 ## Enum
 

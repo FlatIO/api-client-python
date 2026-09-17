@@ -4,15 +4,15 @@ All URIs are relative to *https://api.flat.io/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_task**](TaskApi.md#get_task) | **GET** /tasks/{task} | Get a task details
+[**get_task**](TaskApi.md#get_task) | **GET** /tasks/{task} | Get task details
 
 
 # **get_task**
 > Task get_task(task)
 
-Get a task details
+Get task details
 
-This method can be used to follow a task progression, for example while a score is being exported.
+This method can be used to follow the progress of a task, for example while a score is being exported.
 
 
 ### Example
@@ -45,7 +45,7 @@ with flat_api.ApiClient(configuration) as api_client:
     task = 'task_example' # str | Unique identifier for the task
 
     try:
-        # Get a task details
+        # Get task details
         api_response = api_instance.get_task(task)
         print("The response of TaskApi->get_task:\n")
         pprint(api_response)

@@ -6,10 +6,10 @@ Media attachment. The API will automatically resolve the details, oEmbed, and me
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** | The type of the assignment resolved: * &#x60;rich&#x60;, &#x60;photo&#x60;, &#x60;video&#x60; are automatically resolved as &#x60;link&#x60; * A &#x60;flat&#x60; attachment is a score document where the unique identifier will be specified in the &#x60;score&#x60; property. Its sharing mode will be provided in the &#x60;sharingMode&#x60; property.  | 
-**score** | **str** | An unique Flat score identifier | [optional] 
-**revision** | **str** | An unique revision identifier of a score | [optional] 
-**worksheet** | **str** | An unique worksheet identifier | [optional] 
+**type** | **str** | The resolved type of the attachment: * &#x60;rich&#x60;, &#x60;photo&#x60;, &#x60;video&#x60; are automatically resolved as &#x60;link&#x60; * A &#x60;flat&#x60; attachment is a score document where the unique identifier will be specified in the &#x60;score&#x60; property. Its sharing mode will be provided in the &#x60;sharingMode&#x60; property.  | 
+**score** | **str** | A unique Flat score identifier | [optional] 
+**revision** | **str** | A unique revision identifier of a score | [optional] 
+**worksheet** | **str** | A unique worksheet identifier | [optional] 
 **dedicated** | **bool** | True if the resource is dedicated for the assignment (for scores and worksheets), meaning on the user-side this one is stored in the assignment | [optional] 
 **track** | **str** | A unique track identifier | [optional] 
 **part_uuid** | **str** | The UUID of the instrument part selected for this attachment (for performance submissions) | [optional] 
@@ -23,11 +23,11 @@ Name | Type | Description | Notes
 **url** | **str** | The url of the attachment | [optional] 
 **thumbnail_url** | **str** | If the attachment type is &#x60;rich&#x60;, &#x60;video&#x60;, &#x60;photo&#x60; or &#x60;link&#x60;, a displayable thumbnail for this attachment  | [optional] 
 **thumbnail_width** | **int** | If the &#x60;thumbnailUrl&#x60; is available, the width of the thumbnail  | [optional] 
-**thumbnail_height** | **int** | If the &#x60;thumbnailUrl&#x60; is available, the width of the thumbnail  | [optional] 
+**thumbnail_height** | **int** | If the &#x60;thumbnailUrl&#x60; is available, the height of the thumbnail  | [optional] 
 **author_name** | **str** | The resolved author name of the attachment | [optional] 
 **author_url** | **str** | The resolved author url of the attachment | [optional] 
 **icon_url** | **str** | The URL of the icon | [optional] 
-**mime_type** | **str** | The mine type of the file | [optional] 
+**mime_type** | **str** | The MIME type of the file | [optional] 
 **google_drive_file_id** | **str** | The ID of the Google Drive File | [optional] 
 **teacher_only** | **bool** | If true, this attachment is only visible to teachers. When students view the assignment, attachments with this flag will be filtered out.  | [optional] [default to False]
 

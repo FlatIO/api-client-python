@@ -6,7 +6,7 @@ Copy the assignment to the EDU Resource Library
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**library_parent** | **str** | Identifier of the parent resource where the new one will created, e.g. a folder id or &#x60;root&#x60; | 
+**library_parent** | **str** | Identifier of the parent resource where the new one will be created, e.g. a folder id or &#x60;root&#x60; | 
 **verify_if_not_already_in_resource_library** | **bool** | Option to check if the assignment is already in Resource Library | [optional] 
 
 ## Example
