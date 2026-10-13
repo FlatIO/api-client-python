@@ -10,7 +10,7 @@ Async:
 """
 
 # --- flat_api ergonomic surface (tools/patches/90_exports.py) ---
-__version__ = "2.0.3"
+__version__ = "2.0.4"
 
 from flat_api.client import AsyncFlatClient, FlatClient
 from flat_api.errors import (
@@ -62,7 +62,7 @@ __all__ = [
 """  # noqa: E501
 
 
-__version__ = "2.0.3"
+__version__ = "2.0.4"
 
 # Define package exports
 __all__ = [
